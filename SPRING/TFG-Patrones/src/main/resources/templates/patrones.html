@@ -49,10 +49,10 @@
                 <td colspan="2"> Servicio de patrones no disponible </td>
             </tr>
             <tr th:each="patron : ${patrones}">
-                <td class="text-info"><span th:text="${patron.nombre}">Eee</span></td>
+                <td class="text-info"><span th:text="${patron.nombre}"></span></td>
                 <td><span th:text="${patron.resumen}"></span></td>
                 <td>   
-                    <a th:href="@{/patrones/(id=${patrones.id})}">
+                    TODO (usar id)
                 </td>
             </tr>
         </tbody>
@@ -62,7 +62,7 @@
 <!-- CREDITOS-->
 </br>
 </br>
-<h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h1>
+<h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h6>
 
 <!-- SCRIPT-->
 
