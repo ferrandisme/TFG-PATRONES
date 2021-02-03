@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body style="background-color:#313131;">
+
+    <!-- NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <a class="navbar-brand" href="#"> &nbsp; FINDPATTERN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(actual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="www.google.es">Encuentra tu patr&oacuten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="www.google.es">Patrones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="www.google.es">Creditos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- LISTA PATRONES-->
+</br>
+
+<div class = "row mx-auto">
+    <table class="text-white table table-responsive ">
+        <thead>
+            <tr>
+                <th> Patron </th>
+                <th> Informacion </th>
+                <th> Enlace </th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${patrones.empty}">
+                <td colspan="2"> Servicio de patrones no disponible </td>
+            </tr>
+            <tr th:each="patron : ${patrones}">
+                <td class="text-info"><span th:text="${patron.nombre}">Eee</span></td>
+                <td><span th:text="${patron.resumen}"></span></td>
+                <td>   
+                    <a th:href="@{/patrones/(id=${patrones.id})}">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- CREDITOS-->
+</br>
+</br>
+<h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h1>
+
+<!-- SCRIPT-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>
