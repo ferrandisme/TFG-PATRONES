@@ -3,9 +3,109 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
-<body>
-<h1>Resultado</h1>
-<p th:text="'Numero Patrones: ' + ${patrones.numeroPatrones}" />
+<body style="background-color:#313131;">
+
+    <!-- NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <a class="navbar-brand" href="#"> &nbsp; FINDPATTERN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(actual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="www.google.es">Encuentra tu patr&oacuten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="www.google.es">Patrones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="www.google.es">Creditos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- INFO-->
+</br>
+<div class="row justify-content-md-center text-white">
+  <div class="col-6">
+      <div class="jumbotron">
+          <h1 class="display-5">Trabaja con patrones de diseño de una forma mas simple</h1>
+          <hr class="my-4">
+          <p class="lead" th:text="'Ofrecemos distintos recursos que facilitan el trabajo y el estudio de ' + ${patrones.numeroPatrones} + ' patrones distintos.'"  />
+          <p>¿Quieres buscar si existe un patrón para solucionar tu problema de diseño?</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Buscar Patron</a>
+          </p>
+        </div> 
+  </div>
+  <div class="col col-4">
+    <img src=https://i.imgur.com/Hqo1qj2.jpg class="img-fluid" alt="Responsive image">
+ </div>
+   
+</div>
+
+
+<!-- CARACTERISTICAS-->
+</br>
+</br>
+</br>
+<h1 class="row justify-content-md-center text-white">¿Que ofrecemos?</h1>
+</br>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Identificacion</div>
+            <div class="card-body">
+              <h5 class="card-title">Encuentra y valida tu patron</h5>
+              <p class="card-text">Te ayudamos en el proceso de encontrar el mejor patrón para un problema determinado.</p>
+            </div>
+          </div>
+
+      </div>
+      <div class="col-sm">
+       
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Implementación</div>
+            <div class="card-body">
+              <h5 class="card-title">Metodos para facilitar la programación</h5>
+              <p class="card-text">Mediante una serie de herramientas que facilitan la integración de tu patron.</p>
+            </div>
+          </div>
+
+      </div>
+      <div class="col-sm">
+        
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Pruebas</div>
+            <div class="card-body">
+              <h5 class="card-title">Valida la Implementación del patrón</h5>
+              <p class="card-text">Gracias a una serie de mecanicas podras validar que el patron esta implementado de forma correcta.</p>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- CREDITOS-->
+</br>
+</br>
+<h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h1>
+
+<!-- SCRIPT-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </body>
 </html>
