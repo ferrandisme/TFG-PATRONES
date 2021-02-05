@@ -10,6 +10,8 @@ public class Patron {
         this.id = id;
     }
 
+    public Patron(){}
+
 
     public String resumen;
     public String nombre;
