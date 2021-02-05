@@ -52,7 +52,7 @@
                 <td class="text-info"><span th:text="${patron.nombre}"></span></td>
                 <td><span th:text="${patron.resumen}"></span></td>
                 <td>
-                    VER
+                    <a href="somepage.html"  th:href="@{'/patron' (${patron.nombre})}">VER PATRÓN</a>
                 </td>
             </tr>
         </tbody>
