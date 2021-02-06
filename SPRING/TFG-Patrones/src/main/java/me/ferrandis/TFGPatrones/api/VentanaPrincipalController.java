@@ -22,4 +22,9 @@ public class VentanaPrincipalController {
         model.addAttribute("patrones", patrones);
         return "principal";
     }
+
+    @GetMapping("/creditos")
+    public String informacionCreditos(Model model) {
+        return "creditos";
+    }
 }
