@@ -34,10 +34,26 @@
 
 <!-- TITULO-->
 
-<div class="row justify-content-md-center">
+<div class="row justify-content-md-center text-white">
+    <div class="col-10">
+        <h1 class="text-warning" th:text="${patron.nombre}" ></h1>
+        </br>
+        <h5 class="text-success" th:text="${patron.resumen}" ></h5>
+    </div>
+</div>
+</br>
+</br>
+<div class="col-md-6 offset-md-3">
+    <a class="btn btn-primary btn-md" href="#" role="button">¿Es util para mi problema?</a>
+</div>
+
+
+
+
+<div class="row justify-content-md-center text-white">
 
     <h1>
-        <span th:text="${patron.nombre}" th:remove="tag"></span>
+
         <!-- <small th:text="${header.subtitle}" ></small>-->
     </h1>
 
@@ -47,16 +63,30 @@
     </h3>
     -->
 </div>
-
 </br>
 
 
 
 <!-- INFO PATRON -->
+<hr class="my-4">
+<div class="col-md-6 offset-md-3">
+    <h1 class=" text-info">Ejemplo real</h1>
+</div>
 
-<!-- TODO Hacer una lectura de la lista que vaya cogiendo -->
 
+</br>
+</br>
 
+<div class="row text-white justify-content-md-center" th:each="descripcion : ${descripciones}">
+    <div class="col-6 col-md-4 " >
+        <h6 th:text="${descripcion.texto}"> </h6>
+    </div>
+    <div class="col-4 col-md-4 ">
+        <img th:src="@{${descripcion.url}}"  class="img-fluid" alt="Responsive image"/>
+    </div>
+    </br>
+    <hr class="my-4">
+</div>
 
 <!-- CREDITOS-->
 </br>

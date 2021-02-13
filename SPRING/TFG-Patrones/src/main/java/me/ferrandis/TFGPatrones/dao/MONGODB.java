@@ -42,7 +42,8 @@ public class MONGODB implements BaseDatos{
                 Patron patron = new Patron();
                 patron.nombre = (String) json.get("nombre");
                 patron.resumen = (String) json.get("resumen");
-                patron._id = UUID.fromString( (String) json.get("_id")); 
+                patron.explicacion = (String) json.get("explicacion");
+                patron._id = UUID.fromString( (String) json.get("_id"));
                 patrones.add(patron);
             }
         }
@@ -63,6 +64,7 @@ public class MONGODB implements BaseDatos{
             patron = new Patron();
             patron.nombre = (String) JSONPatron.get("nombre");
             patron.resumen = (String) JSONPatron.get("resumen");
+            patron.explicacion = (String) JSONPatron.get("explicacion");
             patron._id = (UUID) JSONPatron.get("_id");
         }
         catch(Exception e){

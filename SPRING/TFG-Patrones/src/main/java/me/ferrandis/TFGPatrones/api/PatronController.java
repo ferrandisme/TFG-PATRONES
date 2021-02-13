@@ -22,6 +22,7 @@ public class PatronController {
     public String getPatron(@RequestParam("n") String n, Model model) {
         Patron patron = patronesServicio.getPatron(n);
         model.addAttribute("patron", patron);
+        model.addAttribute("descripciones",patron.procesarResumen());
         return "patron";
     }
 }
