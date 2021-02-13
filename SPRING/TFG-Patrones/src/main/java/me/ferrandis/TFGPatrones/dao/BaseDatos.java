@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface BaseDatos {
     List<Patron> getListaPatrones();
+
+    Patron getPatron(String nombre);
 }

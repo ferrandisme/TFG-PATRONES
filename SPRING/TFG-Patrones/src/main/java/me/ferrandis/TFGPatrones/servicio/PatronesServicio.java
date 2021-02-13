@@ -9,16 +9,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ListaPatronesServicio {
+public class PatronesServicio {
 
     private final BaseDatos baseDatos;
 
     @Autowired
-    public ListaPatronesServicio(@Qualifier("MONGODB") BaseDatos dao) {
+    public PatronesServicio(@Qualifier("MONGODB") BaseDatos dao) {
         this.baseDatos = dao;
     }
 
     public List<Patron> getListaPatrones(){
         return baseDatos.getListaPatrones();
+    }
+
+    public Patron getPatron(String nombre){
+        return baseDatos.getPatron(nombre);
     }
 }

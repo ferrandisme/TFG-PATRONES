@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Repository("MONGODB")
 public class MONGODB implements BaseDatos{
@@ -41,7 +42,7 @@ public class MONGODB implements BaseDatos{
                 Patron patron = new Patron();
                 patron.nombre = (String) json.get("nombre");
                 patron.resumen = (String) json.get("resumen");
-                patron.id = (int) json.get("id");
+                patron._id = UUID.fromString( (String) json.get("_id")); 
                 patrones.add(patron);
             }
         }
@@ -51,5 +52,23 @@ public class MONGODB implements BaseDatos{
         }
 
         return patrones;
+    }
+
+    public Patron getPatron(String nombre){
+        Patron patron = null;
+        connect();
+        try {
+            Document nombrePatron = new Document("nombre",nombre);
+            Document JSONPatron = (Document) collection.find(nombrePatron).first();
+            patron = new Patron();
+            patron.nombre = (String) JSONPatron.get("nombre");
+            patron.resumen = (String) JSONPatron.get("resumen");
+            patron._id = (UUID) JSONPatron.get("_id");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return patron;
     }
 }

@@ -1,13 +1,21 @@
 package me.ferrandis.TFGPatrones.modelo;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class Patron {
 
-    public Patron(int id, String nombre, String resumen){
+    public Patron(String nombre, String resumen){
         this.resumen = resumen;
         this.nombre = nombre;
-        this.id = id;
+        this._id = UUID.randomUUID();
+    }
+
+    public Patron(UUID id,String nombre, String resumen){
+        this.resumen = resumen;
+        this.nombre = nombre;
+        this._id = id;
     }
 
     public Patron(){}
@@ -15,5 +23,5 @@ public class Patron {
 
     public String resumen;
     public String nombre;
-    public int id;
+    public UUID _id;
 }
