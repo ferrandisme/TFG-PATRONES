@@ -31,8 +31,10 @@ public class Patron {
     public Patron(){}
 
     public List<InfoPatron> procesarResumen(){
-        String descripcion[] = explicacion.split("¡ñ");
         List<InfoPatron> informacion = new ArrayList<InfoPatron>();
+        if(explicacion == null || !explicacion.contains("¡ñ"))
+            return informacion;
+        String descripcion[] = explicacion.split("¡ñ");
 
         for(int i = 0; i < descripcion.length; i ++){
             String tupla[] = descripcion[i].split("¡ç");

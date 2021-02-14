@@ -65,9 +65,19 @@ public class MONGODB implements BaseDatos{
             patron.nombre = (String) JSONPatron.get("nombre");
             patron.resumen = (String) JSONPatron.get("resumen");
             patron.explicacion = (String) JSONPatron.get("explicacion");
-            patron._id = (UUID) JSONPatron.get("_id");
+            patron._id = UUID.fromString(  (String) JSONPatron.get("_id"));
         }
+        /*catch(ClassCastException e){
+            patron._id = UUID.randomUUID();
+            System.out.println("La UUID es incorrecta. Solucionando el problema en MongoDB con UUID " + patron._id);
+            Document nombrePatron = new Document("nombre",nombre);
+            Document JSONPatron = (Document) collection.find(nombrePatron).first();
+            collection.findOneAndDelete(nombrePatron);
+            JSONPatron.remove("_id");
+            JSONPatron.append("_id",patron._id);
+        }*/
         catch(Exception e){
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
 
