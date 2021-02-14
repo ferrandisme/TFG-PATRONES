@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Inicio <span class="sr-only">(actual)</span></a>
+                <a class="nav-link" href="/home">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="www.google.es">Encuentra tu patr&oacuten</a>
@@ -31,6 +31,7 @@
         </ul>
     </div>
 </nav>
+
 
 <!-- TITULO-->
 
@@ -77,9 +78,9 @@
 </br>
 </br>
 
-<div class="row text-white justify-content-md-center" th:each="descripcion : ${descripciones}">
+<div class="row text-white justify-content-md-center align-items-center" th:each="descripcion : ${descripciones}">
     <div class="col-6 col-md-4 " >
-        <h6 th:text="${descripcion.texto}"> </h6>
+        <h6 class="text-justify" th:text="${descripcion.texto}"> </h6>
     </div>
     <div class="col-4 col-md-4 ">
         <img th:src="@{${descripcion.url}}"  class="img-fluid" alt="Responsive image"/>
