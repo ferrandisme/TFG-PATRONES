@@ -67,7 +67,10 @@ public class MONGODB implements BaseDatos{
             patron.explicacion = (String) JSONPatron.get("explicacion");
             patron._id = UUID.fromString(  (String) JSONPatron.get("_id"));
         }
-        /*catch(ClassCastException e){
+        /*
+        Este codigo solucionaba antes un problema con los UUID. Se deja por si llegara a ser necesario mas adelante. Eliminar si deja de ser util en 2022
+
+        catch(ClassCastException e){
             patron._id = UUID.randomUUID();
             System.out.println("La UUID es incorrecta. Solucionando el problema en MongoDB con UUID " + patron._id);
             Document nombrePatron = new Document("nombre",nombre);
