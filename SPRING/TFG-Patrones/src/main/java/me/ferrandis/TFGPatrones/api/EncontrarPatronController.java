@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class EncontrarPatronController {
-    
+
     @GetMapping("/encontrarPatron")
     public String informacionPrincipal(Model model) {
         return "encontrar-patron";
