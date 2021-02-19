@@ -33,62 +33,10 @@
 </nav>
 
 
-<!-- TITULO-->
-
-<div class="row justify-content-md-center text-white">
-    <div class="col-10">
-        <h1 class="text-warning" th:text="${patron.nombre}" ></h1>
-        </br>
-        <h5 class="text-success" th:text="${patron.resumen}" ></h5>
-    </div>
-</div>
-</br>
-</br>
-<div class="col-md-6 offset-md-3">
-    <a class="btn btn-primary btn-md" href="#" role="button">¿Es util para mi problema?</a>
-</div>
-
-
-
-
-<div class="row justify-content-md-center text-white">
-
-    <h1>
-
-        <!-- <small th:text="${header.subtitle}" ></small>-->
-    </h1>
-
-    <!--
-    <h3>
-        <span th:text="${patron.descripcion}" th:remove="tag"></span>
-    </h3>
-    -->
-</div>
+<!-- LISTA PATRONES-->
 </br>
 
 
-
-<!-- INFO PATRON -->
-<hr class="my-4">
-<tr th:if="${!descripciones.empty}">
-<div class="col-md-6 offset-md-3">
-    <h1 class=" text-info">Ejemplo real</h1>
-</div>
-</tr>
-
-</br>
-</br>
-
-<div class="row text-white justify-content-md-center align-items-center" th:each="descripcion : ${descripciones}">
-    <div class="col-6 col-md-4 " >
-        <h6 class="text-justify" th:text="${descripcion.texto}"> </h6>
-    </div>
-    <div class="col-4 col-md-4 ">
-        <img th:src="@{${descripcion.url}}"  class="img-fluid" alt="Responsive image"/>
-    </div>
-    </br>
-    <hr class="my-4">
-</div>
 
 <!-- CREDITOS-->
 </br>
@@ -96,7 +44,6 @@
 <h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h6>
 
 <!-- SCRIPT-->
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 </body>
