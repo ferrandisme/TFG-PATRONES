@@ -14,10 +14,9 @@ import java.util.UUID;
 @Controller
 public class TestEncontrarPatronController {
 
-
-
     @GetMapping("/testEstructural/{id}")
     public String iniciarEstructural(@PathVariable("id") String id , Model model) {
+
         return "test-encontrar-patron";
     }
 
