@@ -52,7 +52,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-white">Patrones creacionales</h5>
                     <p class="card-text text-white">Estos patrones proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código existente.</p>
-                    <a href="https://ferrandis.me/" class="btn btn-primary">Buscar Patrón</a>
+                    <a href="/testCreacional" class="btn btn-primary">Buscar Patrón</a>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-white">Patrones estructurales</h5>
                     <p class="card-text text-white">Estos patrones explican cómo ensamblar objetos y clases en estructuras más grandes, mientras se mantiene la flexibilidad y eficiencia de la estructura.</p>
-                    <a href="http://www.upv.es/ficha-personal/vpelecha" class="btn btn-primary">Buscar Patrón</a>
+                    <a href="/testEstructural" class="btn btn-primary">Buscar Patrón</a>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-white">Patrones de comportamiento</h5>
                     <p class="card-text text-white">Estos patrones tratan con algoritmos y la asignación de responsabilidades entre objetos.</p>
-                    <a href="http://www.upv.es/" class="btn btn-primary">Buscar Patrón</a>
+                    <a class="btn btn-primary" th:href="@{/testComportamiento/{idUsuario}(idUsuario = ${iduser})}"> Buscar Patrón</a>
                 </div>
             </div>
 
