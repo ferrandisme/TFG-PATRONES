@@ -11,7 +11,6 @@ import java.util.UUID;
 @Controller
 public class TestEncontrarPatronController {
 
-
     @GetMapping("/Encontrarpatron")
     public String getPreguntaPatron(@RequestParam("id") String n, Model model) {
         return "principal";
