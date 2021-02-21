@@ -17,11 +17,11 @@ public class MONGODB implements BaseDatos{
     MongoCollection collection;
 
 
-    public void connect(){
+    public void connect(String coleccion){
         try {
             mongoClient = MongoClients.create();
             database = mongoClient.getDatabase("TFG");
-            collection = database.getCollection("patrones");
+            collection = database.getCollection(coleccion);
         }
         catch (Exception e){
             System.err.println("Algo ha ido mal al crear el socket");
@@ -32,7 +32,7 @@ public class MONGODB implements BaseDatos{
 
     public List<Patron> getListaPatrones(){
         List<Patron> patrones = new ArrayList<Patron>();
-        connect();
+        connect("patrones");
 
         try {
             FindIterable iterable  = collection.find();
@@ -57,7 +57,7 @@ public class MONGODB implements BaseDatos{
 
     public Patron getPatron(String nombre){
         Patron patron = null;
-        connect();
+        connect("patrones");
         try {
             Document nombrePatron = new Document("nombre",nombre);
             Document JSONPatron = (Document) collection.find(nombrePatron).first();
