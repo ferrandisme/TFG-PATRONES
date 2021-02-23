@@ -14,19 +14,30 @@ import java.util.UUID;
 @Controller
 public class TestEncontrarPatronController {
 
+    //Nota -> Cambiado id String a int, modificar si da algun problema
     @GetMapping("/testEstructural/{id}")
-    public String iniciarEstructural(@PathVariable("id") String id , Model model) {
-
+    public String iniciarEstructural(@PathVariable("id") int id , Model model) {
+        String pregunta = CargarPregunta("estructural",id);
+        model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
     }
 
     @GetMapping("/testCreacional/{id}")
-    public String iniciarCreacional(@PathVariable("id") String id , Model model) {
+    public String iniciarCreacional(@PathVariable("id") int id , Model model) {
+        String pregunta = CargarPregunta("creacional",id);
+        model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
     }
 
     @GetMapping("/testComportamiento/{id}")
-    public String iniciarComportamiento(@PathVariable("id") String id , Model model) {
+    public String iniciarComportamiento(@PathVariable("id") int id , Model model) {
+        String pregunta = CargarPregunta("comportamiento",id);
+        model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
+    }
+
+    //Intentara cargar un test de ese tipo con dicha ID. Devolvera null en caso de no existir
+    public String CargarPregunta(String tipo, int id){
+        return "Pregunta de prueba";
     }
 }
