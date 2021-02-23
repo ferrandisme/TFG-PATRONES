@@ -16,21 +16,21 @@ public class TestEncontrarPatronController {
 
     //Nota -> Cambiado id String a int, modificar si da algun problema
     @GetMapping("/testEstructural/{id}")
-    public String iniciarEstructural(@PathVariable("id") int id , Model model) {
+    public String iniciarEstructural(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = CargarPregunta("estructural",id);
         model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
     }
 
     @GetMapping("/testCreacional/{id}")
-    public String iniciarCreacional(@PathVariable("id") int id , Model model) {
+    public String iniciarCreacional(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = CargarPregunta("creacional",id);
         model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
     }
 
     @GetMapping("/testComportamiento/{id}")
-    public String iniciarComportamiento(@PathVariable("id") int id , Model model) {
+    public String iniciarComportamiento(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = CargarPregunta("comportamiento",id);
         model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
