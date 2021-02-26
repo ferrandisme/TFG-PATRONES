@@ -1,7 +1,7 @@
 package me.ferrandis.TFGPatrones.servicio;
 
 
-import me.ferrandis.TFGPatrones.dao.BaseDatos;
+import me.ferrandis.TFGPatrones.dao.BDPatrones;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class VentanaPrincipalServicio {
 
-    private final BaseDatos baseDatos;
+    private final BDPatrones BDPatrones;
 
 
     @Autowired
-    public VentanaPrincipalServicio(@Qualifier("MONGODB") BaseDatos dao) {
-        this.baseDatos = dao;
+    public VentanaPrincipalServicio(@Qualifier("MONGOPatrones") BDPatrones dao) {
+        this.BDPatrones = dao;
     }
 
     public int getNumeroPatrones(){
-        return baseDatos.getListaPatrones().size();
+        return BDPatrones.getListaPatrones().size();
     }
 }

@@ -1,5 +1,7 @@
 package me.ferrandis.TFGPatrones.servicio;
-import me.ferrandis.TFGPatrones.dao.BaseDatos;
+import me.ferrandis.TFGPatrones.dao.BDPatrones;
+import me.ferrandis.TFGPatrones.dao.BDTest;
+import me.ferrandis.TFGPatrones.modelo.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -7,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestServicio {
 
-    private final BaseDatos baseDatos;
+    private final BDTest BDTest;
 
     @Autowired
-    public TestServicio(@Qualifier("MONGODB") BaseDatos dao) {
-        this.baseDatos = dao;
+    public TestServicio(@Qualifier("MONGOTest") BDTest dao) {
+        this.BDTest = dao;
     }
 
     public void CrearTest(String tipo, int id){
@@ -25,7 +27,7 @@ public class TestServicio {
     }
 
     //El tipo se envia con objetivo de evitar incosistencias en caso de una ID erroneo
-    public int[] CargarTest(int id, String tipo){
+    public Test CargarTest(int id, String tipo){
         return null;
     }
 
