@@ -2,7 +2,6 @@ package me.ferrandis.TFGPatrones.servicio;
 
 
 import me.ferrandis.TFGPatrones.dao.BaseDatos;
-import me.ferrandis.TFGPatrones.dao.VentanaPrincipalDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
