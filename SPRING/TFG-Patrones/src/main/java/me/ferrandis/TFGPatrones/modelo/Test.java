@@ -5,7 +5,7 @@ import java.util.List;
 public class Test {
 
     //Datos almacenables en memoria
-    public int resultados [];
+    public List<Integer> resultados;
     public int item;
     public int preguntaActual;
     //Datos para la busqueda y carga de test
@@ -15,28 +15,29 @@ public class Test {
     public List<ItemTest> preguntas;
 
     public String SiguientePregunta(){
-        return preguntas.get(item).getPregunta(preguntaActual);
+        if(item < preguntas.size())
+            return preguntas.get(item).getPregunta(preguntaActual);
+        else
+            return null;
     }
 
     public void ActualizarPregunta(int valor){
-        resultados[item] = valor;
-
+        if(resultados.size() <= valor)
+            resultados.add(valor);
+        else
+            resultados.set(item, resultados.get(item) + valor);
         AumentarIndices();
-        //GuardarEstado();
     }
 
     private void AumentarIndices(){
-        if(item >= preguntas.get(item).preguntas.size()){
-            item = 0;
-            preguntaActual++;
+        if(preguntaActual + 1 >= preguntas.get(item).preguntas.size()){
+            item++;
+            preguntaActual = 0;
         }
         else
         {
-            item++;
+            preguntaActual++;
         }
     }
 
-    /*public void GuardarEstado(){
-        //GuardarEstado
-    }*/
 }

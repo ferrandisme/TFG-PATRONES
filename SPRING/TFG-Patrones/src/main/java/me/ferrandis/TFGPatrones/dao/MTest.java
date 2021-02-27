@@ -19,11 +19,10 @@ public class MTest extends MONGODB implements BDTest{
     public Test crearTest(String tipo, int id) {
         Test test = new Test();
         int resultados[];
-        List <ItemTest> elementos = null;
 
         switch(tipo){
             case "estructural":
-                elementos = ItemTest.getTestEstructurales();
+                test.preguntas  = ItemTest.getTestEstructurales();
                 break;
             case "creacional":
                 //TODO
@@ -35,14 +34,14 @@ public class MTest extends MONGODB implements BDTest{
 
         connect("test-usuarios");
         try {
-            Document testJSON = new Document("id", id)
+            Document testJSON = new Document("_id", id)
                     .append("tipo", tipo)
                     .append("preguntaActual",0)
                     .append("item",0)
-                    .append("resultados",new int[elementos.size()]);
+                    .append("resultados", new ArrayList<Integer>());
 
             test.item = 0;
-            test.resultados = new int[elementos.size()];
+            test.resultados = new ArrayList<Integer>();
             test.preguntaActual = 0;
             test.ID = id;
             test.tipo = tipo;
@@ -58,14 +57,14 @@ public class MTest extends MONGODB implements BDTest{
     public void actualizarTest(Test test){
         connect("test-usuarios");
         try {
-            Document testJSON = new Document("id", test.ID)
+            Document testJSON = new Document("_id", test.ID)
                     .append("tipo", test.tipo)
                     .append("preguntaActual",test.preguntaActual)
                     .append("item",test.item)
                     .append("resultados",test.resultados);
 
-            Document idTest = new Document("id",test.ID);
-            collection.updateOne(idTest,testJSON);
+            Document idTest = new Document("_id",test.ID);
+            collection.replaceOne(idTest,testJSON);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -77,14 +76,14 @@ public class MTest extends MONGODB implements BDTest{
         Test test = null;
         connect("test-usuarios");
         try {
-            Document idTest = new Document("id",id);
+            Document idTest = new Document("_id",id);
             Document JSONTest = (Document) collection.find(idTest).first();
             test = new Test();
             test.preguntaActual = (int) JSONTest.get("preguntaActual");
-            test.resultados = (int[]) JSONTest.get("resultados");
+            test.resultados = (ArrayList<Integer>) JSONTest.get("resultados");
             test.item = (int) JSONTest.get("item");
             test.tipo = (String) JSONTest.get("tipo");
-            //test.ID = (int) JSONTest.get("id");
+            test.ID = (int) JSONTest.get("id");
             test.ID = id;
         }
         catch(Exception e){

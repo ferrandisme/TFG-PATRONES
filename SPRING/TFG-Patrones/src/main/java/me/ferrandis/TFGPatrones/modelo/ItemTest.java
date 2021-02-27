@@ -9,6 +9,7 @@ public class ItemTest {
     public List<String> preguntas;
 
     public String getPregunta(int contador){
+        System.out.println("CONTADOR " +contador);
         return preguntas.get(contador);
     }
 
@@ -21,14 +22,15 @@ public class ItemTest {
     public static List<ItemTest> getTestEstructurales(){
         List<ItemTest> test = new ArrayList<ItemTest>();
 
-        ArrayList<String> questions = new ArrayList<>();
-        questions.add("test1");
-        questions.add("test 2");
-        test.add(new ItemTest("Test 1" , questions ));
-        questions = new ArrayList<>();
-        questions.add("prueba 1");
-        questions.add("prueba 2");
-        test.add(new ItemTest("Prueba 1" ,  questions));
+        ArrayList<String> preguntas = new ArrayList<>();
+        preguntas.add("test1");
+        preguntas.add("test 2");
+        test.add(new ItemTest("Test 1" , preguntas ));
+
+        preguntas = new ArrayList<>();
+        preguntas.add("prueba 1");
+        preguntas.add("prueba 2");
+        test.add(new ItemTest("Prueba 1" ,  preguntas));
 
         return test;
     }

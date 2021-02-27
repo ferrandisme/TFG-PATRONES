@@ -16,8 +16,8 @@ public class TestServicio {
         this.BDTest = dao;
     }
 
-    public void CrearTest(String tipo, int id){
-        BDTest.crearTest(tipo,id);
+    public Test CrearTest(String tipo, int id){
+        return BDTest.crearTest(tipo,id);
     }
 
     public boolean ExisteTest(int id){
@@ -27,6 +27,9 @@ public class TestServicio {
         return BDTest.getTest(id);
     }
 
+    public void actualizarTest(Test test){
+         BDTest.actualizarTest(test);
+    }
     //NOTA: Deberia de hacerse un servicio que elimine los test cada X tiempo en el futuro
     /*public void borrarTest(int id){
 
