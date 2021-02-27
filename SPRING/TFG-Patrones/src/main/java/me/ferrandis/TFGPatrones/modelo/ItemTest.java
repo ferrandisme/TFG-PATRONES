@@ -17,7 +17,8 @@ public class ItemTest {
         this.preguntas = preguntas;
         this.nombre = nombre;
     }
-    private static void getTestEstructurales(){
+
+    public static List<ItemTest> getTestEstructurales(){
         List<ItemTest> test = new ArrayList<ItemTest>();
 
         ArrayList<String> questions = new ArrayList<>();
@@ -28,5 +29,7 @@ public class ItemTest {
         questions.add("prueba 1");
         questions.add("prueba 2");
         test.add(new ItemTest("Prueba 1" ,  questions));
+
+        return test;
     }
 }

@@ -4,10 +4,12 @@ import me.ferrandis.TFGPatrones.modelo.Test;
 
 public interface BDTest {
 
-    void CrearTest(String tipo, int id);
+    Test crearTest(String tipo, int id);
 
-    boolean ExisteTest(int id);
+    boolean existeTest(int id);
 
     Test getTest(int id);
+
+    void actualizarTest(Test test);
 
 }
