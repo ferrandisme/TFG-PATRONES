@@ -42,6 +42,10 @@ public class TestEncontrarPatronController {
     @GetMapping("/testCreacional/{id}")
     public String iniciarCreacional(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("creacional",id, opcion);
+        if(pregunta == null){
+            //TODO hacer pagina de resultados del test
+            return "creditos";
+        }
         model.addAttribute("pregunta",pregunta);
         return "test-encontrar-patron";
     }
@@ -73,7 +77,7 @@ public class TestEncontrarPatronController {
             System.out.println("----RESULTADOS-----");
             for(InfoTest info : test.getPuntuaciones())
             {
-                System.out.println(info.nombre);
+                System.out.println(info.nombre + " " + info.puntuacion);
             }
             System.out.println("----FIN-----");
 

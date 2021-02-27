@@ -25,11 +25,17 @@ public class Test {
     }
 
     public void ActualizarPregunta(float valor){
-        float res = valor / (1f/ preguntas.get(item).preguntas.size());
-        if(puntuaciones.size() <= item)
-            puntuaciones.add(valor / res);
-        else
-            puntuaciones.set(item, puntuaciones.get(item) + res);
+        //float res = valor / (1f/ preguntas.get(item).preguntas.size());
+        float res = valor;
+        if(puntuaciones.size() <= item) {
+            puntuaciones.add(res / preguntas.get(item).preguntas.size());
+        }
+        else {
+            //puntuaciones.set(item, puntuaciones.get(item) + res);
+            float actual = puntuaciones.get(item);
+            //res = Math.max(actual,res);
+            puntuaciones.set(item, actual + res / preguntas.get(item).preguntas.size());
+        }
         AumentarIndices();
     }
 

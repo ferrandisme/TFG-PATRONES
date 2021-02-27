@@ -15,10 +15,10 @@ public class MTest extends MONGODB implements BDTest{
 
         switch(tipo){
             case "estructural":
-                test.preguntas  = ItemTest.getTestEstructurales();
+                test.preguntas = ItemTest.getTestEstructurales();
                 break;
             case "creacional":
-                //TODO
+                test.preguntas = ItemTest.getTestCreacionales();
                 break;
             case "comportamiento":
                 //TODO
