@@ -5,14 +5,14 @@ import java.util.List;
 public class Test {
 
     //Datos almacenables en memoria
-    int resultados [];
-    int item;
-    int preguntaActual;
+    public int resultados [];
+    public int item;
+    public int preguntaActual;
     //Datos para la busqueda y carga de test
-    int ID;
-    String tipo;
+    public int ID;
+    public String tipo;
     //Informacion no cambiante
-    List<ItemTest> preguntas;
+    public List<ItemTest> preguntas;
 
     public String SiguientePregunta(){
         return preguntas.get(item).getPregunta(preguntaActual);
