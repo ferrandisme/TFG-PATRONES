@@ -17,20 +17,17 @@ public class TestServicio {
     }
 
     public void CrearTest(String tipo, int id){
-        System.out.println("Creando el test " + id + " de tipo " + tipo);
-        //Nota: Habria que refactorizar la DB en algun momento y separar MongoPatrones de MongoTest y crear
-        //una clase mongo main con metodos estaticos que ayuden a trabajar con las bases de datos.
+        BDTest.crearTest(tipo,id);
     }
 
     public boolean ExisteTest(int id){
-        return false;
+        return BDTest.existeTest(id);
     }
-
-    //El tipo se envia con objetivo de evitar incosistencias en caso de una ID erroneo
     public Test CargarTest(int id, String tipo){
-        return null;
+        return BDTest.getTest(id);
     }
 
+    //NOTA: Deberia de hacerse un servicio que elimine los test cada X tiempo en el futuro
     /*public void borrarTest(int id){
 
     }*/
