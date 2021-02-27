@@ -1,5 +1,6 @@
 package me.ferrandis.TFGPatrones.api;
 
+import me.ferrandis.TFGPatrones.modelo.Encapsulaciones.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
@@ -65,6 +66,17 @@ public class TestEncontrarPatronController {
         {
             test.ActualizarPregunta(Integer.parseInt(opcion));
             servicio.actualizarTest(test);
+        }
+
+        if(test.SiguientePregunta() == null)
+        {
+            System.out.println("----RESULTADOS-----");
+            for(InfoTest info : test.getPuntuaciones())
+            {
+                System.out.println(info.nombre);
+            }
+            System.out.println("----FIN-----");
+
         }
 
         return test.SiguientePregunta();

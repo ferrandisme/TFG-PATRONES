@@ -1,11 +1,14 @@
 package me.ferrandis.TFGPatrones.modelo;
 
+import me.ferrandis.TFGPatrones.modelo.Encapsulaciones.InfoTest;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
 
     //Datos almacenables en memoria
-    public List<Integer> resultados;
+    public List<Float> puntuaciones;
     public int item;
     public int preguntaActual;
     //Datos para la busqueda y carga de test
@@ -21,11 +24,12 @@ public class Test {
             return null;
     }
 
-    public void ActualizarPregunta(int valor){
-        if(resultados.size() <= valor)
-            resultados.add(valor);
+    public void ActualizarPregunta(float valor){
+        float res = valor / (1f/ preguntas.get(item).preguntas.size());
+        if(puntuaciones.size() <= item)
+            puntuaciones.add(valor / res);
         else
-            resultados.set(item, resultados.get(item) + valor);
+            puntuaciones.set(item, puntuaciones.get(item) + res);
         AumentarIndices();
     }
 
@@ -40,4 +44,26 @@ public class Test {
         }
     }
 
+    public List<InfoTest> getPuntuaciones(){
+
+
+        long startTime = System.nanoTime();
+
+        List<InfoTest> resultados = new ArrayList<>();
+
+        System.out.println("A " + puntuaciones.size());
+        System.out.println("B " +resultados.size());
+        for(int i = 0; i < puntuaciones.size(); i++)
+        {
+            resultados.add(new InfoTest(preguntas.get(i).nombre, puntuaciones.get(i) , ""));
+        }
+
+        resultados.sort(InfoTest::compareTo);
+
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+        System.out.println("Se ha calculado el ganador del test en " + (time/1000000000) + " segundos (" + (time/1000000) +" ms)");
+
+        return resultados;
+    }
 }
