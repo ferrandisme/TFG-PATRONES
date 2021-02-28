@@ -41,17 +41,17 @@
         <thead>
         <tr>
             <th> Patrón </th>
-            <th> Información </th>
+            <th> Afinidad [1-5] </th>
             <th> Enlace </th>
         </tr>
         </thead>
         <tbody>
         <tr th:if="${patrones.empty}">
-            <td colspan="2"> Servicio de patrones no disponible </td>
+            <td colspan="2"> Servicio de puntuaciones no disponible </td>
         </tr>
         <tr th:each="patron : ${patrones}">
             <td class="text-info"><span th:text="${patron.nombre}"></span></td>
-            <td><span th:text="${patron.resumen}"></span></td>
+            <td><span th:text="${patron.puntuacion}"></span></td>
             <td>
                 <a href="somepage.html"  th:href="@{'/patron' (n=${patron.nombre})}">VER PATRÓN</a>
             </td>

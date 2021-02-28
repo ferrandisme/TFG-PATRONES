@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -31,64 +32,60 @@ public class TestEncontrarPatronController {
     @GetMapping("/testEstructural/{id}")
     public String iniciarEstructural(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("estructural",id, opcion);
-        if(pregunta == null){
-            //TODO hacer pagina de resultados del test
-            return "creditos";
-        }
-        model.addAttribute("pregunta",pregunta);
-        return "test-encontrar-patron";
+        return ProcesarResultados(pregunta, model, id, "estructural");
     }
 
     @GetMapping("/testCreacional/{id}")
     public String iniciarCreacional(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("creacional",id, opcion);
-        if(pregunta == null){
-            //TODO hacer pagina de resultados del test
-            return "creditos";
-        }
-        model.addAttribute("pregunta",pregunta);
-        return "test-encontrar-patron";
+        return ProcesarResultados(pregunta, model, id, "creacional");
     }
 
     @GetMapping("/testComportamiento/{id}")
     public String iniciarComportamiento(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("comportamiento",id, opcion);
-        model.addAttribute("pregunta",pregunta);
-        return "test-encontrar-patron";
+        return ProcesarResultados(pregunta, model, id, "comportamiento");
     }
 
-    //Intentara cargar un test de ese tipo con dicha ID. Devolvera null en caso de no existir
+    //Intentara cargar una pregunta del test con dicha ID. Devolvera null en caso de no existir
     private String cargarPregunta(String tipo, int id, String opcion)
     {
-        Test test = cuestionarios.get(id);
-        //Cargamos el test en memoria para tenerlo disponible
-        if(test == null){
-            test = crearCuestionario( id,  tipo);
-        }
-
+        Test test = obtenerTest(id, tipo);
         if(opcion != null)
         {
             test.ActualizarPregunta(Integer.parseInt(opcion));
             servicio.actualizarTest(test);
         }
-
-        if(test.SiguientePregunta() == null)
-        {
-            System.out.println("----RESULTADOS-----");
-            for(InfoTest info : test.getPuntuaciones())
-            {
-                System.out.println(info.nombre + " " + info.puntuacion);
-            }
-            System.out.println("----FIN-----");
-
-        }
-
         return test.SiguientePregunta();
+    }
+
+    private String ProcesarResultados(String pregunta, Model model, int id, String tipo){
+        Test test = obtenerTest(id, tipo);
+        if(pregunta == null){
+            List<InfoTest> info = test.getPuntuaciones();
+            model.addAttribute("patrones",info);
+            return "resultados";
+        }else{
+            model.addAttribute("pregunta",pregunta);
+            return "test-encontrar-patron";
+        }
     }
 
     private Test crearCuestionario(int id, String tipo){
         Test test = servicio.CrearTest(tipo, id);
         cuestionarios.put(id,test);
+        return test;
+    }
+
+    private Test obtenerTest(int id, String tipo){
+        Test test = cuestionarios.get(id);
+        //Cargamos el test en memoria para tenerlo disponible
+        if(test == null){
+            test = servicio.CargarTest(id, tipo);
+        }
+        if(test == null){
+            test = crearCuestionario( id,  tipo);
+        }
         return test;
     }
 

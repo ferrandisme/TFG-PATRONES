@@ -72,6 +72,8 @@ public class MTest extends MONGODB implements BDTest{
             Document idTest = new Document("_id",id);
             Document JSONTest = (Document) collection.find(idTest).first();
             test = new Test();
+            if(JSONTest == null)
+                return null;
             test.preguntaActual = (int) JSONTest.get("preguntaActual");
             test.puntuaciones = (ArrayList<Float>) JSONTest.get("puntuaciones");
             test.item = (int) JSONTest.get("item");

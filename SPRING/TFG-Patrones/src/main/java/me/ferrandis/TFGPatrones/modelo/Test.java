@@ -51,14 +51,9 @@ public class Test {
     }
 
     public List<InfoTest> getPuntuaciones(){
-
-
-        long startTime = System.nanoTime();
-
+        //long startTime = System.nanoTime();
         List<InfoTest> resultados = new ArrayList<>();
 
-        System.out.println("A " + puntuaciones.size());
-        System.out.println("B " +resultados.size());
         for(int i = 0; i < puntuaciones.size(); i++)
         {
             resultados.add(new InfoTest(preguntas.get(i).nombre, puntuaciones.get(i) , ""));
@@ -66,9 +61,9 @@ public class Test {
 
         resultados.sort(InfoTest::compareTo);
 
-        long endTime = System.nanoTime();
-        long time = endTime - startTime;
-        System.out.println("Se ha calculado el ganador del test en " + (time/1000000000) + " segundos (" + (time/1000000) +" ms)");
+        //long endTime = System.nanoTime();
+        //long time = endTime - startTime;
+        //System.out.println("Se ha calculado el ganador del test en " + (time/1000000000) + " segundos (" + (time/1000000) +" ms)");
 
         return resultados;
     }

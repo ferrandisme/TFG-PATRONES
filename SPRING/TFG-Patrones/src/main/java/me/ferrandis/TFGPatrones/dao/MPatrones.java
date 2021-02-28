@@ -44,6 +44,8 @@ public class MPatrones extends MONGODB implements BDPatrones{
             Document nombrePatron = new Document("nombre",nombre);
             Document JSONPatron = (Document) collection.find(nombrePatron).first();
             patron = new Patron();
+            if(JSONPatron == null)
+                return null;
             patron.nombre = (String) JSONPatron.get("nombre");
             patron.resumen = (String) JSONPatron.get("resumen");
             patron.explicacion = (String) JSONPatron.get("explicacion");

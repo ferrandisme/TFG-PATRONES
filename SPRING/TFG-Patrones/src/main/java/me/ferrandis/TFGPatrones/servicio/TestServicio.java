@@ -23,6 +23,7 @@ public class TestServicio {
     public boolean ExisteTest(int id){
         return BDTest.existeTest(id);
     }
+
     public Test CargarTest(int id, String tipo){
         return BDTest.getTest(id);
     }
