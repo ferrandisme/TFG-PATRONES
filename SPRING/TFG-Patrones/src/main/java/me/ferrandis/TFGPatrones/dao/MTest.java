@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Repository("MONGOTest")
@@ -14,17 +15,8 @@ public class MTest extends MONGODB implements BDTest{
     public Test crearTest(String tipo, int id) {
         Test test = new Test();
 
-        switch(tipo){
-            case "estructural":
-                test.preguntas = ItemTest.getTestEstructurales();
-                break;
-            case "creacional":
-                test.preguntas = ItemTest.getTestCreacionales();
-                break;
-            case "comportamiento":
-                //TODO
-                break;
-        }
+
+        test.preguntas = cargarPreguntas(tipo);
 
         connect("test-usuarios");
         try {
@@ -77,12 +69,15 @@ public class MTest extends MONGODB implements BDTest{
             test = new Test();
             if(JSONTest == null)
                 return null;
+
+
             test.preguntaActual = (int) JSONTest.get("preguntaActual");
             test.puntuaciones = (ArrayList<Float>) JSONTest.get("puntuaciones");
             test.item = (int) JSONTest.get("item");
             test.tipo = (String) JSONTest.get("tipo");
             test.ordenRespuestas = (ArrayList<Integer>) JSONTest.get("ordenRespuestas");
-            test.ID = (int) JSONTest.get("id");
+            test.preguntas = cargarPreguntas(test.tipo);
+            test.ID = (int) JSONTest.get("_id");
             //test.ID = id;
         }
         catch(Exception e){
@@ -95,5 +90,17 @@ public class MTest extends MONGODB implements BDTest{
     public boolean existeTest(int id) {
         Test test = getTest(id);
         return  test != null && test.tipo != null;
+    }
+
+
+    private List<ItemTest> cargarPreguntas(String tipo){
+        switch(tipo){
+            case "estructural":
+                return ItemTest.getTestEstructurales();
+            case "creacional":
+                return ItemTest.getTestCreacionales();
+            default:
+                return ItemTest.getTestEstructurales();
+        }
     }
 }

@@ -34,7 +34,8 @@ public class Test {
         }
         else {
             //puntuaciones.set(item, puntuaciones.get(item) + res);
-            float actual = puntuaciones.get(item);
+            System.out.println( puntuaciones.get(item));
+            float actual = puntuaciones.get(item).floatValue() ;
             //res = Math.max(actual,res);
             puntuaciones.set(item, actual + res / preguntas.get(item).preguntas.size());
         }
