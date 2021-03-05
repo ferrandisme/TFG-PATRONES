@@ -16,7 +16,7 @@ public class VentanaPrincipalController {
     @Autowired
     public VentanaPrincipalController(VentanaPrincipalServicio servicio){this.ventanaPrincipalServicio = servicio;}
 
-    @GetMapping("/home")
+    @GetMapping({"","/home","/","/index.html","/index"})
     public String informacionPrincipal(Model model) {
         DatosVentanaPrincipal patrones = new DatosVentanaPrincipal(ventanaPrincipalServicio.getNumeroPatrones());
         model.addAttribute("patrones", patrones);
