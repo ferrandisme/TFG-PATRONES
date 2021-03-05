@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.dao;
 import me.ferrandis.TFGPatrones.modelo.ItemTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.stereotype.Repository;
 import org.bson.Document;
 
@@ -38,6 +39,7 @@ public class MTest extends MONGODB implements BDTest{
             test.preguntaActual = 0;
             test.ID = id;
             test.tipo = tipo;
+            test.ordenRespuestas = new ArrayList<Integer>();
             collection.insertOne(testJSON);
         }
         catch(Exception e){
@@ -54,7 +56,8 @@ public class MTest extends MONGODB implements BDTest{
                     .append("tipo", test.tipo)
                     .append("preguntaActual",test.preguntaActual)
                     .append("item",test.item)
-                    .append("puntuaciones",test.puntuaciones);
+                    .append("puntuaciones",test.puntuaciones)
+                    .append("ordenRespuestas",test.ordenRespuestas);
 
             Document idTest = new Document("_id",test.ID);
             collection.replaceOne(idTest,testJSON);
@@ -78,8 +81,9 @@ public class MTest extends MONGODB implements BDTest{
             test.puntuaciones = (ArrayList<Float>) JSONTest.get("puntuaciones");
             test.item = (int) JSONTest.get("item");
             test.tipo = (String) JSONTest.get("tipo");
+            test.ordenRespuestas = (ArrayList<Integer>) JSONTest.get("ordenRespuestas");
             test.ID = (int) JSONTest.get("id");
-            test.ID = id;
+            //test.ID = id;
         }
         catch(Exception e){
             e.printStackTrace();

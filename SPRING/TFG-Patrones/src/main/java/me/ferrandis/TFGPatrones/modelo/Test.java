@@ -14,6 +14,7 @@ public class Test {
     //Datos para la busqueda y carga de test
     public int ID;
     public String tipo;
+    public List<Integer> ordenRespuestas;
     //Informacion no cambiante
     public List<ItemTest> preguntas;
 
@@ -24,7 +25,8 @@ public class Test {
             return null;
     }
 
-    public void ActualizarPregunta(float valor){
+    public void ActualizarPregunta(int valor){
+        ordenRespuestas.add(valor);
         //float res = valor / (1f/ preguntas.get(item).preguntas.size());
         float res = valor;
         if(puntuaciones.size() <= item) {
@@ -51,7 +53,6 @@ public class Test {
     }
 
     public List<InfoTest> getPuntuaciones(){
-        //long startTime = System.nanoTime();
         List<InfoTest> resultados = new ArrayList<>();
 
         for(int i = 0; i < puntuaciones.size(); i++)
@@ -60,11 +61,6 @@ public class Test {
         }
 
         resultados.sort(InfoTest::compareTo);
-
-        //long endTime = System.nanoTime();
-        //long time = endTime - startTime;
-        //System.out.println("Se ha calculado el ganador del test en " + (time/1000000000) + " segundos (" + (time/1000000) +" ms)");
-
         return resultados;
     }
 }
