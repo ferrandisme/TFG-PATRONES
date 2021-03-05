@@ -56,7 +56,7 @@ public class Test {
 
         for(int i = 0; i < puntuaciones.size(); i++)
         {
-            resultados.add(new InfoTest(preguntas.get(i).nombre, puntuaciones.get(i) , ""));
+            resultados.add(new InfoTest(preguntas.get(i).nombre, puntuaciones.get(i) ));
         }
 
         resultados.sort(InfoTest::compareTo);
