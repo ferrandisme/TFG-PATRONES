@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.api;
 
-import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
+import me.ferrandis.TFGPatrones.DTO.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.servicio.TestServicio;
 import org.springframework.beans.factory.annotation.Autowired;

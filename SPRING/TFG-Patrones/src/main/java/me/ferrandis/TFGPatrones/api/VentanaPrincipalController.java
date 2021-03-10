@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.api;
 
-import me.ferrandis.TFGPatrones.Encapsulaciones.DatosVentanaPrincipal;
+import me.ferrandis.TFGPatrones.DTO.DatosVentanaPrincipal;
 import me.ferrandis.TFGPatrones.servicio.VentanaPrincipalServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

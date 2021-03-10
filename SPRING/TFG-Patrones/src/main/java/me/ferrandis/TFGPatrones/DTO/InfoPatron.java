@@ -1,4 +1,4 @@
-package me.ferrandis.TFGPatrones.Encapsulaciones;
+package me.ferrandis.TFGPatrones.DTO;
 
 
 import lombok.Data;
