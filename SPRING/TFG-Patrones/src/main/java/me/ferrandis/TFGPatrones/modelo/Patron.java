@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.modelo;
 import lombok.Data;
-import me.ferrandis.TFGPatrones.modelo.Encapsulaciones.InfoPatron;
+import me.ferrandis.TFGPatrones.Encapsulaciones.InfoPatron;
 
 import java.util.ArrayList;
 import java.util.List;

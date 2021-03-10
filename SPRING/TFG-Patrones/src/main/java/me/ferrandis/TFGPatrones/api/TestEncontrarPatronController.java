@@ -1,9 +1,7 @@
 package me.ferrandis.TFGPatrones.api;
 
-import me.ferrandis.TFGPatrones.modelo.Encapsulaciones.InfoTest;
-import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
-import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import me.ferrandis.TFGPatrones.servicio.TestServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Controller
 public class TestEncontrarPatronController {

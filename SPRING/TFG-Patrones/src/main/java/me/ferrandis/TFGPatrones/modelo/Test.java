@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.modelo;
 
-import me.ferrandis.TFGPatrones.modelo.Encapsulaciones.InfoTest;
+import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
 
 import java.util.ArrayList;
 import java.util.List;
