@@ -21,15 +21,21 @@ public class PatronController {
 
     @GetMapping("/patron")
     public String getPatron(@RequestParam("n") String n, Model model) {
-        Patron patron = patronesServicio.getPatron(n);
-        if(patron == null || patron.nombre == null || patron.nombre.equals("")) {
+
+        Patron patron;
+
+        try {
+            patron = patronesServicio.findById(n);
+        }
+        catch(Exception e){
             patron = new Patron();
-            patron.nombre = "El patron buscado no existe";
-            patron.resumen = "Este patron todavia tiene que ser añadido a nuestra web";
+            patron.nombre = "Error";
+            patron.resumen = e.getMessage();
             patron.explicacion = "";
             patron._id = UUID.randomUUID();
-            System.out.println("He entrado");
         }
+
+        System.err.println("Hay que cambiar esto a un DTO");
         model.addAttribute("patron", patron);
         model.addAttribute("descripciones", patron.procesarResumen());
         return "patron";

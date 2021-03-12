@@ -20,7 +20,7 @@ public class ListaPatronesController {
 
     @GetMapping("/patrones")
     public String informacionPrincipal(Model model) {
-        List<Patron> patrones = patronesServicio.getListaPatrones();
+        List<Patron> patrones = patronesServicio.getPatrones();
         model.addAttribute("patrones", patrones);
         return "patrones";
     }
