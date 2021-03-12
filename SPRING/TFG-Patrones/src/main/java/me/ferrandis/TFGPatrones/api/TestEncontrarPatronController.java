@@ -2,7 +2,7 @@ package me.ferrandis.TFGPatrones.api;
 
 import me.ferrandis.TFGPatrones.DTO.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
-import me.ferrandis.TFGPatrones.servicio.TestServicio;
+import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +17,11 @@ import java.util.Map;
 @Controller
 public class TestEncontrarPatronController {
 
-    private final TestServicio servicio;
+    private final TestServicioImp servicio;
     Map<Integer,Test> cuestionarios;
 
     @Autowired
-    public TestEncontrarPatronController(TestServicio servicio){
+    public TestEncontrarPatronController(TestServicioImp servicio){
         this.servicio = servicio;
         cuestionarios = new HashMap<Integer,Test>();
     }
