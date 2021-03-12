@@ -2,6 +2,7 @@ package me.ferrandis.TFGPatrones.dao;
 
 import me.ferrandis.TFGPatrones.modelo.Test;
 
+@Deprecated
 public interface BDTest {
 
     Test crearTest(String tipo, int id);

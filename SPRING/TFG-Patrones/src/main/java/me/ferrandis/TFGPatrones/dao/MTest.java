@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@Deprecated
 @Repository("MONGOTest")
 public class MTest extends MONGODB implements BDTest{
 

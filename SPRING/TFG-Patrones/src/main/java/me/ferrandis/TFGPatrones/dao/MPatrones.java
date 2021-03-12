@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Deprecated
 @Repository("MONGOPatrones")
 public class MPatrones extends MONGODB implements BDPatrones{
 

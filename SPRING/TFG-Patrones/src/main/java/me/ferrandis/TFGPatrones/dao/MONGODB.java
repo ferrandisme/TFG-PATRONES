@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.dao;
 import com.mongodb.client.*;
 
+@Deprecated
 public class MONGODB  {
 
     MongoClient mongoClient;
