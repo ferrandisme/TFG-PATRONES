@@ -1,7 +1,8 @@
-package me.ferrandis.TFGPatrones.DTO;
+package me.ferrandis.TFGPatrones.Encapsulaciones;
 
 import lombok.Data;
 
+@Deprecated
 @Data
 public class DatosVentanaPrincipal {
 

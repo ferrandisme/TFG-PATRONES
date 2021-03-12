@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TestServicioImp implements TestServicio{
@@ -46,8 +47,26 @@ public class TestServicioImp implements TestServicio{
     }
 
     @Override
+    public Test crearTest(String tipo, String ID) {
+        Test test = new Test();
+        test.setID(ID);
+        test.setItem(0);
+        test.setOrdenRespuestas(new ArrayList<>());
+        test.setPuntuaciones(new ArrayList<>());
+        test.setPreguntas(new ArrayList<>());
+        test.setPreguntaActual(0);
+        test.setTipo(tipo);
+        return test;
+    }
+
+    @Override
     public void deleteById(String id) {
         testRepository.deleteById(id);
+    }
+
+    @Override
+    public Test saveTest(Test test) {
+        return testRepository.save(test);
     }
 
     /*

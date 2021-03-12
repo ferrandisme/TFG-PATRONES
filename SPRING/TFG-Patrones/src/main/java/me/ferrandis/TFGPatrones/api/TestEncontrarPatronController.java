@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.api;
 
-import me.ferrandis.TFGPatrones.DTO.InfoTest;
+import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class TestEncontrarPatronController {
 
     private final TestServicioImp servicio;
-    Map<Integer,Test> cuestionarios;
 
     @Autowired
     public TestEncontrarPatronController(TestServicioImp servicio){
         this.servicio = servicio;
-        cuestionarios = new HashMap<Integer,Test>();
     }
 
     @GetMapping("/testEstructural/{id}")
@@ -45,13 +41,13 @@ public class TestEncontrarPatronController {
     }
 
     //Intentara cargar una pregunta del test con dicha ID. Devolvera null en caso de no existir
-    private String cargarPregunta(String tipo, int id, String opcion)
+    private String cargarPregunta(String tipo, String id, String opcion)
     {
         Test test = obtenerTest(id, tipo);
         if(opcion != null)
         {
             test.ActualizarPregunta(Integer.parseInt(opcion));
-            servicio.actualizarTest(test);
+            //servicio.actualizarTest(test);
         }
         return test.SiguientePregunta();
     }
@@ -68,20 +64,18 @@ public class TestEncontrarPatronController {
         }
     }
 
-    private Test crearCuestionario(int id, String tipo){
+    /*private Test crearCuestionario(int id, String tipo){
         Test test = servicio.CrearTest(tipo, id);
         cuestionarios.put(id,test);
         return test;
-    }
+    }*/
 
-    private Test obtenerTest(int id, String tipo){
-        Test test = cuestionarios.get(id);
-        //Cargamos el test en memoria para tenerlo disponible
-        if(test == null){
-            test = servicio.CargarTest(id, tipo);
-        }
-        if(test == null){
-            test = crearCuestionario( id,  tipo);
+    private Test obtenerTest(String id, String tipo){
+        Test test = null;
+        try {
+            test = servicio.findById(id);
+        } catch (Exception e) {
+            test = servicio.crearTest();
         }
         return test;
     }

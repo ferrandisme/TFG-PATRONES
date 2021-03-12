@@ -1,5 +1,4 @@
 package me.ferrandis.TFGPatrones.modelo;
-
 import java.util.ArrayList;
 import java.util.List;
 

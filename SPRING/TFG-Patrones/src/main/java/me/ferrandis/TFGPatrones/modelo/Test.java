@@ -1,10 +1,17 @@
 package me.ferrandis.TFGPatrones.modelo;
 
-import me.ferrandis.TFGPatrones.DTO.InfoTest;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Document
+@Data
 public class Test {
 
     //Datos almacenables en memoria
@@ -12,10 +19,13 @@ public class Test {
     public int item;
     public int preguntaActual;
     //Datos para la busqueda y carga de test
-    public int ID;
+    @Id
+    public String ID;
     public String tipo;
     public List<Integer> ordenRespuestas;
+
     //Informacion no cambiante
+    @Transient
     public List<ItemTest> preguntas;
 
     public String SiguientePregunta(){

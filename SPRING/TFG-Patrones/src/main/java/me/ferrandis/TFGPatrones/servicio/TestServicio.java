@@ -12,7 +12,11 @@ public interface TestServicio {
 
     boolean existTest(String id);
 
+    Test crearTest(String tipo, String ID);
+
     //Faltan los metodos para obtener DTO
 
     void deleteById(String id);
+
+    Test saveTest(Test test);
 }

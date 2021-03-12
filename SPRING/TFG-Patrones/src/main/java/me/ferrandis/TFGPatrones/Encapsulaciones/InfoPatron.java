@@ -1,8 +1,9 @@
-package me.ferrandis.TFGPatrones.DTO;
+package me.ferrandis.TFGPatrones.Encapsulaciones;
 
 
 import lombok.Data;
 
+@Deprecated
 //Clase creada por simplicidad con el uso de thymeleaf
 @Data
 public class InfoPatron {
