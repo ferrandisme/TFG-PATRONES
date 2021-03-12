@@ -13,9 +13,10 @@ import java.util.UUID;
 @Repository("MONGOPatrones")
 public class MPatrones extends MONGODB implements BDPatrones{
 
+
     public List<Patron> getListaPatrones(){
         List<Patron> patrones = new ArrayList<Patron>();
-        connect("patrones");
+        /*connect("patrones");
 
         try {
             FindIterable iterable  = collection.find();
@@ -33,7 +34,7 @@ public class MPatrones extends MONGODB implements BDPatrones{
         catch(Exception e){
             e.printStackTrace();
             System.err.println("Busqueda Finalizada por ");
-        }
+        }*/
 
         return patrones;
     }
@@ -49,8 +50,8 @@ public class MPatrones extends MONGODB implements BDPatrones{
                 return null;
             patron.nombre = (String) JSONPatron.get("nombre");
             patron.resumen = (String) JSONPatron.get("resumen");
-            patron.explicacion = (String) JSONPatron.get("explicacion");
-            patron._id = UUID.fromString(  (String) JSONPatron.get("_id"));
+            //patron.explicacion = (String) JSONPatron.get("explicacion");
+            //patron._id = UUID.fromString(  (String) JSONPatron.get("_id"));
         }
         catch(Exception e){
             e.printStackTrace();

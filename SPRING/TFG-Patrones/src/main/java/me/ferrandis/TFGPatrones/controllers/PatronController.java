@@ -1,5 +1,6 @@
-package me.ferrandis.TFGPatrones.api;
+package me.ferrandis.TFGPatrones.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.UUID;
+import java.util.ArrayList;
 
+
+@Slf4j
 @Controller
 public class PatronController {
 
@@ -31,13 +34,14 @@ public class PatronController {
             patron = new Patron();
             patron.nombre = "Error";
             patron.resumen = e.getMessage();
-            patron.explicacion = "";
-            patron._id = UUID.randomUUID();
+            patron.setTextoExplicacion(new ArrayList<>());
+            patron.setURLImagenes(new ArrayList<>());
         }
 
         System.err.println("Hay que cambiar esto a un DTO");
         model.addAttribute("patron", patron);
-        model.addAttribute("descripciones", patron.procesarResumen());
+        model.addAttribute("descripciones", patron.getTextoExplicacion());
+        model.addAttribute("imagenes", patron.getURLImagenes());
         return "patron";
     }
 }

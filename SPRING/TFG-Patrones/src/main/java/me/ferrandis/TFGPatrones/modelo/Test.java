@@ -23,7 +23,7 @@ public class Test {
     public String ID;
     public String tipo;
     public List<Integer> ordenRespuestas;
-
+    public int VersionPreguntas;
     //Informacion no cambiante
     @Transient
     public List<ItemTest> preguntas;

@@ -1,4 +1,5 @@
 package me.ferrandis.TFGPatrones.servicio;
+import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.dao.BDPatrones;
 import me.ferrandis.TFGPatrones.dao.BDTest;
 import me.ferrandis.TFGPatrones.modelo.Patron;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class TestServicioImp implements TestServicio{
 

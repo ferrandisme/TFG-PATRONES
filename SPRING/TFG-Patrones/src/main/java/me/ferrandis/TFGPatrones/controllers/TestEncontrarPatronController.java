@@ -1,9 +1,9 @@
-package me.ferrandis.TFGPatrones.api;
+package me.ferrandis.TFGPatrones.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,30 +12,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
+
+@Slf4j
 @Controller
 public class TestEncontrarPatronController {
 
     private final TestServicioImp servicio;
 
-    @Autowired
     public TestEncontrarPatronController(TestServicioImp servicio){
         this.servicio = servicio;
     }
 
     @GetMapping("/testEstructural/{id}")
-    public String iniciarEstructural(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
+    public String iniciarEstructural(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("estructural",id, opcion);
         return ProcesarResultados(pregunta, model, id, "estructural");
     }
 
     @GetMapping("/testCreacional/{id}")
-    public String iniciarCreacional(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
+    public String iniciarCreacional(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("creacional",id, opcion);
         return ProcesarResultados(pregunta, model, id, "creacional");
     }
 
     @GetMapping("/testComportamiento/{id}")
-    public String iniciarComportamiento(@PathVariable("id") int id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
+    public String iniciarComportamiento(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("comportamiento",id, opcion);
         return ProcesarResultados(pregunta, model, id, "comportamiento");
     }
@@ -48,11 +49,12 @@ public class TestEncontrarPatronController {
         {
             test.ActualizarPregunta(Integer.parseInt(opcion));
             //servicio.actualizarTest(test);
+            servicio.saveTest(test);
         }
         return test.SiguientePregunta();
     }
 
-    private String ProcesarResultados(String pregunta, Model model, int id, String tipo){
+    private String ProcesarResultados(String pregunta, Model model, String id, String tipo){
         Test test = obtenerTest(id, tipo);
         if(pregunta == null){
             List<InfoTest> info = test.getPuntuaciones();
@@ -64,18 +66,12 @@ public class TestEncontrarPatronController {
         }
     }
 
-    /*private Test crearCuestionario(int id, String tipo){
-        Test test = servicio.CrearTest(tipo, id);
-        cuestionarios.put(id,test);
-        return test;
-    }*/
-
     private Test obtenerTest(String id, String tipo){
         Test test = null;
         try {
             test = servicio.findById(id);
         } catch (Exception e) {
-            test = servicio.crearTest();
+            test = servicio.crearTest(id,tipo);
         }
         return test;
     }

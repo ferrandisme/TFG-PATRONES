@@ -30,7 +30,7 @@ public class MTest extends MONGODB implements BDTest{
             test.item = 0;
             test.puntuaciones = new ArrayList<Float>();
             test.preguntaActual = 0;
-            test.ID = id;
+            //test.ID = id;
             test.tipo = tipo;
             test.ordenRespuestas = new ArrayList<Integer>();
             collection.insertOne(testJSON);
@@ -78,7 +78,7 @@ public class MTest extends MONGODB implements BDTest{
             test.tipo = (String) JSONTest.get("tipo");
             test.ordenRespuestas = (ArrayList<Integer>) JSONTest.get("ordenRespuestas");
             test.preguntas = cargarPreguntas(test.tipo);
-            test.ID = (int) JSONTest.get("_id");
+            //test.ID = (int) JSONTest.get("_id");
             //test.ID = id;
         }
         catch(Exception e){

@@ -4,8 +4,9 @@ import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import org.springframework.core.convert.converter.Converter;
 
-public class PatronToDTOPatron implements Converter<Patron, DTOPatron> {
 
+@Deprecated
+public class  PatronToDTOPatron implements Converter<Patron, DTOPatron> {
 
     @Override
     public DTOPatron convert(Patron patron) {

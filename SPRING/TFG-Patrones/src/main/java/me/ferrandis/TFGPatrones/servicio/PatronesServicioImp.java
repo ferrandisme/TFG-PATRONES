@@ -1,5 +1,6 @@
 package me.ferrandis.TFGPatrones.servicio;
 
+import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.dao.BDPatrones;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.repository.PatronRepository;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class PatronesServicioImp implements PatronesServicio{
 
