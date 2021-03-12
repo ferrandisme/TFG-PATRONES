@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PatronesServicio {
 
-    List<Patron> getRecipes();
+    List<Patron> getPatrones();
 
     Patron findById(String id) throws Exception;
 

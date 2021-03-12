@@ -21,7 +21,7 @@ public class PatronesServicioImp implements PatronesServicio{
     }
 
     @Override
-    public List<Patron> getRecipes() {
+    public List<Patron> getPatrones() {
         List<Patron> patrones = new ArrayList<>();
         patronRepository.findAll().iterator().forEachRemaining(patrones::add);
         return patrones;
