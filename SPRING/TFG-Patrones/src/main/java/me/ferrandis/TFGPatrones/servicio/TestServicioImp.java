@@ -18,7 +18,7 @@ public class TestServicioImp implements TestServicio{
 
     private final TestRepository testRepository;
 
-    public TestServicioImp(PatronRepository testRepository) {
+    public TestServicioImp(TestRepository testRepository) {
         this.testRepository = testRepository;
     }
 
