@@ -19,4 +19,6 @@ public interface TestServicio {
     void deleteById(String id);
 
     Test saveTest(Test test);
+
+    void deleteAll();
 }

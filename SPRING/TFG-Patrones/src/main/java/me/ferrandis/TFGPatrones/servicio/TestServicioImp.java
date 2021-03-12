@@ -71,6 +71,11 @@ public class TestServicioImp implements TestServicio{
         return testRepository.save(test);
     }
 
+    @Override
+    public void deleteAll() {
+        testRepository.deleteAll();
+    }
+
     /*
     private final BDTest BDTest;
 

@@ -40,7 +40,17 @@ public class PatronesServicioImp implements PatronesServicio{
     }
 
     @Override
+    public Patron savePatron(Patron patron) {
+        return patronRepository.save(patron);
+    }
+
+    @Override
     public void deleteById(String id) {
         patronRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        patronRepository.deleteAll();
     }
 }
