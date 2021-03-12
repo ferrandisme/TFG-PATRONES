@@ -11,13 +11,13 @@ import java.util.List;
 
 @Deprecated
 @Repository("MONGOTest")
-public class MTest extends MONGODB implements BDTest{
+public class MTest {} /*extends MONGODB implements BDTest{
 
     public Test crearTest(String tipo, int id) {
         Test test = new Test();
 
 
-        test.preguntas = cargarPreguntas(tipo);
+        //test.preguntas = cargarPreguntas(tipo);
 
         connect("test-usuarios");
         try {
@@ -104,4 +104,4 @@ public class MTest extends MONGODB implements BDTest{
                 return ItemTest.getTestEstructurales();
         }
     }
-}
+}*/

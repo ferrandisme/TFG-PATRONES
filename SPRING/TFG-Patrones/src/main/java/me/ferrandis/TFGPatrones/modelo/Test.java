@@ -1,8 +1,7 @@
 package me.ferrandis.TFGPatrones.modelo;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
+import me.ferrandis.TFGPatrones.DTO.InfoTest;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,7 +25,7 @@ public class Test {
     public int VersionPreguntas;
     //Informacion no cambiante
     @Transient
-    public List<ItemTest> preguntas;
+    private List<ItemTest> preguntas;
 
     public String SiguientePregunta(){
         if(item < preguntas.size())

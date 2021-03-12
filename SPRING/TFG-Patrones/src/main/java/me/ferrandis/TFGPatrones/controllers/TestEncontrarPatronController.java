@@ -1,7 +1,7 @@
 package me.ferrandis.TFGPatrones.controllers;
 
 import lombok.extern.slf4j.Slf4j;
-import me.ferrandis.TFGPatrones.Encapsulaciones.InfoTest;
+import me.ferrandis.TFGPatrones.DTO.InfoTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
 import org.springframework.stereotype.Controller;
@@ -47,6 +47,7 @@ public class TestEncontrarPatronController {
         Test test = obtenerTest(id, tipo);
         if(opcion != null)
         {
+            System.out.println("Entro por aqui");
             test.ActualizarPregunta(Integer.parseInt(opcion));
             //servicio.actualizarTest(test);
             servicio.saveTest(test);
@@ -71,7 +72,8 @@ public class TestEncontrarPatronController {
         try {
             test = servicio.findById(id);
         } catch (Exception e) {
-            test = servicio.crearTest(id,tipo);
+            System.out.println("Creando test");
+            test = servicio.crearTest(tipo, id);
         }
         return test;
     }

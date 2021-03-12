@@ -1,6 +1,5 @@
-package me.ferrandis.TFGPatrones.Encapsulaciones;
+package me.ferrandis.TFGPatrones.DTO;
 
-@Deprecated
 public class InfoTest {
     public float puntuacion;
     public String nombre;

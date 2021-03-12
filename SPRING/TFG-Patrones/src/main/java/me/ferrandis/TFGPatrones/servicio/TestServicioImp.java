@@ -2,6 +2,7 @@ package me.ferrandis.TFGPatrones.servicio;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.dao.BDPatrones;
 import me.ferrandis.TFGPatrones.dao.BDTest;
+import me.ferrandis.TFGPatrones.modelo.ItemTest;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.repository.PatronRepository;
@@ -35,12 +36,14 @@ public class TestServicioImp implements TestServicio{
 
     @Override
     public Test findById(String id) throws Exception {
-        Optional<Test> test = testRepository.findById(id);
+        Optional<Test> testBusqueda = testRepository.findById(id);
 
-        if(!test.isPresent())
+        if(!testBusqueda.isPresent())
             throw new Exception("No se ha encontrado el Test");
 
-        return test.get();
+        Test test = testBusqueda.get();
+        test.setPreguntas(inicializarPreguntas(test.getTipo()));
+        return test;
     }
 
     @Override
@@ -55,10 +58,21 @@ public class TestServicioImp implements TestServicio{
         test.setItem(0);
         test.setOrdenRespuestas(new ArrayList<>());
         test.setPuntuaciones(new ArrayList<>());
-        test.setPreguntas(new ArrayList<>());
+        test.setPreguntas(inicializarPreguntas(tipo));
         test.setPreguntaActual(0);
         test.setTipo(tipo);
         return test;
+    }
+
+    private List<ItemTest> inicializarPreguntas(String tipo){
+        switch(tipo){
+            case "estructural":
+                return ItemTest.getTestEstructurales();
+            case "creacional":
+                return ItemTest.getTestCreacionales();
+            default:
+                return ItemTest.getTestEstructurales();
+        }
     }
 
     @Override
