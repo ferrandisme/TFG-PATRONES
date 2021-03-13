@@ -7,6 +7,7 @@ import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -29,6 +30,9 @@ public class CuestionarioToDTOCuestionario implements Converter<Cuestionario, DT
     }
 
     private List<ItemCuestionario> inicializarPreguntas(String tipo){
+        if(tipo == null)
+            return new ArrayList<>();
+
         switch(tipo){
             case "estructural":
                 return ItemCuestionario.getTestEstructurales();
