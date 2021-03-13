@@ -2,7 +2,7 @@ package me.ferrandis.TFGPatrones.servicio;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.converters.DTOTestToTest;
-import me.ferrandis.TFGPatrones.converters.TestToDTOTest;
+import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
 import me.ferrandis.TFGPatrones.modelo.Cuestionario;
 import me.ferrandis.TFGPatrones.repository.TestRepository;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import java.util.*;
 public class TestServicioImp implements TestServicio{
 
     private final TestRepository testRepository;
-    private final TestToDTOTest testToTestDTO;
+    private final CuestionarioToDTOCuestionario testToTestDTO;
     private final DTOTestToTest dtoTestToTest;
 
-    public TestServicioImp(TestRepository testRepository , TestToDTOTest testToTestDTO , DTOTestToTest dtoTestToTest) {
+    public TestServicioImp(TestRepository testRepository , CuestionarioToDTOCuestionario testToTestDTO , DTOTestToTest dtoTestToTest) {
 
         this.testRepository = testRepository;
         this.testToTestDTO = testToTestDTO;

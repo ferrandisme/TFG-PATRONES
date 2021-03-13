@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class TestToDTOTest implements Converter<Cuestionario, DTOCuestionario> {
+public class CuestionarioToDTOCuestionario implements Converter<Cuestionario, DTOCuestionario> {
 
     @Override
     public DTOCuestionario convert(Cuestionario cuestionario) {
