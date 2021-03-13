@@ -2,7 +2,7 @@ package me.ferrandis.TFGPatrones.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.DTO.InfoTest;
+import me.ferrandis.TFGPatrones.DTO.DTOInfoCuestionario;
 import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +58,7 @@ public class TestEncontrarPatronController {
     private String ProcesarResultados(String pregunta, Model model, String id, String tipo){
         DTOCuestionario test = obtenerTest(id, tipo);
         if(pregunta == null){
-            List<InfoTest> info = test.ObtenerResultados();
+            List<DTOInfoCuestionario> info = test.ObtenerResultados();
             model.addAttribute("patrones",info);
             return "resultados";
         }else{

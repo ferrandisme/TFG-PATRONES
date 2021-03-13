@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import me.ferrandis.TFGPatrones.modelo.ItemTest;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,15 +69,15 @@ public class DTOCuestionario {
         }
     }
 
-    public List<InfoTest> ObtenerResultados(){
-        List<InfoTest> resultados = new ArrayList<>();
+    public List<DTOInfoCuestionario> ObtenerResultados(){
+        List<DTOInfoCuestionario> resultados = new ArrayList<>();
 
         for(int i = 0; i < puntuaciones.size(); i++)
         {
-            resultados.add(new InfoTest(preguntas.get(i).nombre, puntuaciones.get(i) ));
+            resultados.add(new DTOInfoCuestionario(preguntas.get(i).nombre, puntuaciones.get(i) ));
         }
 
-        resultados.sort(InfoTest::compareTo);
+        resultados.sort(DTOInfoCuestionario::compareTo);
         return resultados;
     }
 
