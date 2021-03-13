@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ListaPatronesController {
 
     @GetMapping("/patrones")
     public String informacionPrincipal(Model model) {
-        List<Patron> patrones = patronesServicio.getPatrones();
+        List<DTOPatron> patrones = patronesServicio.getPatrones();
         model.addAttribute("patrones", patrones);
         return "patrones";
     }

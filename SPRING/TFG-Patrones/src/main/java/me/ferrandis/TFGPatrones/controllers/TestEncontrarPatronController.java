@@ -50,7 +50,7 @@ public class TestEncontrarPatronController {
             System.out.println("Entro por aqui");
             test.ActualizarPregunta(Integer.parseInt(opcion));
             //servicio.actualizarTest(test);
-            servicio.saveTest(test);
+            test = servicio.saveTest(test);
         }
         return test.SiguientePregunta();
     }
@@ -58,7 +58,7 @@ public class TestEncontrarPatronController {
     private String ProcesarResultados(String pregunta, Model model, String id, String tipo){
         DTOTest test = obtenerTest(id, tipo);
         if(pregunta == null){
-            List<InfoTest> info = test.getPuntuaciones();
+            List<InfoTest> info = test.ObtenerResultados();
             model.addAttribute("patrones",info);
             return "resultados";
         }else{

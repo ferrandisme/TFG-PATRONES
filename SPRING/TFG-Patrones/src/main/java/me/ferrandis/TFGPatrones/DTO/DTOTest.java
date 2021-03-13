@@ -71,7 +71,7 @@ public class DTOTest {
         }
     }
 
-    public List<InfoTest> getPuntuaciones(){
+    public List<InfoTest> ObtenerResultados(){
         List<InfoTest> resultados = new ArrayList<>();
 
         for(int i = 0; i < puntuaciones.size(); i++)

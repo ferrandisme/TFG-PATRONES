@@ -2,6 +2,7 @@ package me.ferrandis.TFGPatrones.bootstrap;
 
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.repository.PatronRepository;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import me.ferrandis.TFGPatrones.servicio.TestServicio;
 import org.springframework.context.ApplicationListener;
@@ -19,10 +20,12 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
 
     public final PatronesServicio patronesServicio;
     public final TestServicio testServicio;
+    public final PatronRepository patronRepository;
 
-    public PatronesBootstrap(PatronesServicio patronesServicio, TestServicio testServicio){
+    public PatronesBootstrap(PatronesServicio patronesServicio, TestServicio testServicio , PatronRepository patronRepository){
         this.patronesServicio = patronesServicio;
         this.testServicio = testServicio;
+        this.patronRepository = patronRepository;
     }
 
 
@@ -55,7 +58,6 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         url.add("https://i.imgur.com/KxmlXrZ.png");
         patron.setURLImagenes(url);
 
-
-        patronesServicio.savePatron(patron);
+        patronRepository.save(patron);
     }
 }

@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,15 @@ public class PatronController {
     @GetMapping("/patron")
     public String getPatron(@RequestParam("n") String n, Model model) {
 
-        Patron patron;
+        DTOPatron patron;
 
         try {
             patron = patronesServicio.findById(n);
         }
         catch(Exception e){
-            patron = new Patron();
-            patron.nombre = "Error";
-            patron.resumen = e.getMessage();
+            patron = new DTOPatron();
+            patron.setNombre("Error");
+            patron.setResumen(e.getMessage());
             patron.setTextoExplicacion(new ArrayList<>());
             patron.setURLImagenes(new ArrayList<>());
         }

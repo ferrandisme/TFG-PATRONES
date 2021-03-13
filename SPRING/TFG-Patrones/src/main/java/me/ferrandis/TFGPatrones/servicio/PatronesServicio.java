@@ -1,5 +1,6 @@
 package me.ferrandis.TFGPatrones.servicio;
 
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.modelo.Test;
 
@@ -7,13 +8,13 @@ import java.util.List;
 
 public interface PatronesServicio {
 
-    List<Patron> getPatrones();
+    List<DTOPatron> getPatrones();
 
-    Patron findById(String id) throws Exception;
+    DTOPatron findById(String id) throws Exception;
 
     //Faltan los metodos para obtener DTO
 
-    Patron savePatron(Patron patron);
+    DTOPatron savePatron(DTOPatron patron);
 
     void deleteById(String id);
 
