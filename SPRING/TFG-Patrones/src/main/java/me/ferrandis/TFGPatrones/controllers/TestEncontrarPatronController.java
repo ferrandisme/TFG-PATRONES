@@ -1,8 +1,8 @@
 package me.ferrandis.TFGPatrones.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import me.ferrandis.TFGPatrones.DTO.DTOTest;
 import me.ferrandis.TFGPatrones.DTO.InfoTest;
-import me.ferrandis.TFGPatrones.modelo.Test;
 import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +44,7 @@ public class TestEncontrarPatronController {
     //Intentara cargar una pregunta del test con dicha ID. Devolvera null en caso de no existir
     private String cargarPregunta(String tipo, String id, String opcion)
     {
-        Test test = obtenerTest(id, tipo);
+        DTOTest test = obtenerTest(id, tipo);
         if(opcion != null)
         {
             System.out.println("Entro por aqui");
@@ -56,7 +56,7 @@ public class TestEncontrarPatronController {
     }
 
     private String ProcesarResultados(String pregunta, Model model, String id, String tipo){
-        Test test = obtenerTest(id, tipo);
+        DTOTest test = obtenerTest(id, tipo);
         if(pregunta == null){
             List<InfoTest> info = test.getPuntuaciones();
             model.addAttribute("patrones",info);
@@ -67,8 +67,8 @@ public class TestEncontrarPatronController {
         }
     }
 
-    private Test obtenerTest(String id, String tipo){
-        Test test = null;
+    private DTOTest obtenerTest(String id, String tipo){
+        DTOTest test = null;
         try {
             test = servicio.findById(id);
         } catch (Exception e) {
