@@ -11,6 +11,8 @@ public class  PatronToDTOPatron implements Converter<Patron, DTOPatron> {
 
     @Override
     public DTOPatron convert(Patron patron) {
+        if(patron == null)
+            return null;
         DTOPatron dtoPatron = new DTOPatron();
         dtoPatron.setNombre(patron.getNombre());
         dtoPatron.setTextoExplicacion(patron.getTextoExplicacion());

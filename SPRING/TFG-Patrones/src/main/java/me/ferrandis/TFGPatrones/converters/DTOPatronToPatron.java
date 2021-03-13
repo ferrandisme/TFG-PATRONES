@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 public class DTOPatronToPatron implements Converter<DTOPatron, Patron> {
     @Override
     public Patron convert(DTOPatron dtopatron) {
+        if(dtopatron == null)
+            return null;
         Patron patron = new Patron();
         patron.setNombre(dtopatron.getNombre());
         patron.setTextoExplicacion(dtopatron.getTextoExplicacion());

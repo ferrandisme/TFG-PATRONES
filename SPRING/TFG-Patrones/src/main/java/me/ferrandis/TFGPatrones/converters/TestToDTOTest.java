@@ -14,6 +14,8 @@ public class TestToDTOTest implements Converter<Test, DTOTest> {
 
     @Override
     public DTOTest convert(Test test) {
+        if(test == null)
+            return null;
         DTOTest dtoTest = new DTOTest();
         dtoTest.setID(test.getID());
         dtoTest.setPreguntaActual(test.getPreguntaActual());
