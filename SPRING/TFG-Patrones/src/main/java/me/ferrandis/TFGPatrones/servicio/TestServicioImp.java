@@ -1,7 +1,7 @@
 package me.ferrandis.TFGPatrones.servicio;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.converters.DTOTestToTest;
+import me.ferrandis.TFGPatrones.converters.DTOCuestionarioToCuestionario;
 import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
 import me.ferrandis.TFGPatrones.modelo.Cuestionario;
 import me.ferrandis.TFGPatrones.repository.TestRepository;
@@ -15,13 +15,13 @@ public class TestServicioImp implements TestServicio{
 
     private final TestRepository testRepository;
     private final CuestionarioToDTOCuestionario testToTestDTO;
-    private final DTOTestToTest dtoTestToTest;
+    private final DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario;
 
-    public TestServicioImp(TestRepository testRepository , CuestionarioToDTOCuestionario testToTestDTO , DTOTestToTest dtoTestToTest) {
+    public TestServicioImp(TestRepository testRepository , CuestionarioToDTOCuestionario testToTestDTO , DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario) {
 
         this.testRepository = testRepository;
         this.testToTestDTO = testToTestDTO;
-        this.dtoTestToTest = dtoTestToTest;
+        this.dtoCuestionarioToCuestionario = dtoCuestionarioToCuestionario;
     }
 
 
@@ -74,7 +74,7 @@ public class TestServicioImp implements TestServicio{
 
     @Override
     public DTOCuestionario saveTest(DTOCuestionario test) {
-        Cuestionario cuestionarioConvertido = dtoTestToTest.convert(test);
+        Cuestionario cuestionarioConvertido = dtoCuestionarioToCuestionario.convert(test);
         return testToTestDTO.convert(testRepository.save(cuestionarioConvertido));
     }
 
