@@ -3,7 +3,7 @@ package me.ferrandis.TFGPatrones.converters;
 
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.modelo.Cuestionario;
-import me.ferrandis.TFGPatrones.modelo.ItemTest;
+import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -28,14 +28,14 @@ public class CuestionarioToDTOCuestionario implements Converter<Cuestionario, DT
         return dtoCuestionario;
     }
 
-    private List<ItemTest> inicializarPreguntas(String tipo){
+    private List<ItemCuestionario> inicializarPreguntas(String tipo){
         switch(tipo){
             case "estructural":
-                return ItemTest.getTestEstructurales();
+                return ItemCuestionario.getTestEstructurales();
             case "creacional":
-                return ItemTest.getTestCreacionales();
+                return ItemCuestionario.getTestCreacionales();
             default:
-                return ItemTest.getTestEstructurales();
+                return ItemCuestionario.getTestEstructurales();
         }
     }
 }

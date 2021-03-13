@@ -3,7 +3,7 @@ package me.ferrandis.TFGPatrones.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.ferrandis.TFGPatrones.modelo.ItemTest;
+import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class DTOCuestionario {
     public List<Integer> ordenRespuestas;
 
     //Informacion no cambiante
-    public List<ItemTest> preguntas;
+    public List<ItemCuestionario> preguntas;
 
     public int VersionPreguntas;
 
