@@ -8,7 +8,7 @@ import java.util.List;
 
 @Document
 @Data
-public class Test {
+public class Cuestionario {
 
     //Datos almacenables en memoria
     public List<Float> puntuaciones;

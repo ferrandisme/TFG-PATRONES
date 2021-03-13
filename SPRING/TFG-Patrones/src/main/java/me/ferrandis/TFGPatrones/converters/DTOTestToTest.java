@@ -1,28 +1,28 @@
 package me.ferrandis.TFGPatrones.converters;
 
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.modelo.Test;
+import me.ferrandis.TFGPatrones.modelo.Cuestionario;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class DTOTestToTest implements Converter<DTOCuestionario, Test> {
+public class DTOTestToTest implements Converter<DTOCuestionario, Cuestionario> {
 
     @Override
-    public Test convert(DTOCuestionario dtoCuestionario) {
+    public Cuestionario convert(DTOCuestionario dtoCuestionario) {
         if(dtoCuestionario == null)
             return null;
-        Test test = new Test();
-        test.setID(dtoCuestionario.getID());
-        test.setPreguntaActual(dtoCuestionario.getPreguntaActual());
-        test.setTipo(dtoCuestionario.getTipo());
-        test.setOrdenRespuestas(dtoCuestionario.getOrdenRespuestas());
+        Cuestionario cuestionario = new Cuestionario();
+        cuestionario.setID(dtoCuestionario.getID());
+        cuestionario.setPreguntaActual(dtoCuestionario.getPreguntaActual());
+        cuestionario.setTipo(dtoCuestionario.getTipo());
+        cuestionario.setOrdenRespuestas(dtoCuestionario.getOrdenRespuestas());
         //test.setPreguntas(dtoTest.getPreguntas());
-        test.setVersionPreguntas(dtoCuestionario.getVersionPreguntas());
-        test.setPuntuaciones(dtoCuestionario.getPuntuaciones());
-        test.setItem(dtoCuestionario.getItem());
-        return test;
+        cuestionario.setVersionPreguntas(dtoCuestionario.getVersionPreguntas());
+        cuestionario.setPuntuaciones(dtoCuestionario.getPuntuaciones());
+        cuestionario.setItem(dtoCuestionario.getItem());
+        return cuestionario;
     }
 
 }

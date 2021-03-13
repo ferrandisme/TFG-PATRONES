@@ -1,5 +1,5 @@
 package me.ferrandis.TFGPatrones.converters;
-
+import static org.junit.jupiter.api.Assertions.*;
 import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,44 +8,42 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public class DTOPatronToPatronCuestionario {
 
-public class PatronToDTOPatronTest {
-    public Patron patron;
-    public PatronToDTOPatron patronToDTOPatron;
+    public DTOPatron dtoPatron;
+    public DTOPatronToPatron dtoPatronToPatron;
 
 
     @BeforeEach
     public void setUp(){
-        patronToDTOPatron = new PatronToDTOPatron();
+        dtoPatronToPatron = new DTOPatronToPatron();
     }
 
     @Test
     public void testNullObject(){
-        patron = null;
-        assertNull(patronToDTOPatron.convert(patron));
+        dtoPatron = null;
+        assertNull(dtoPatronToPatron.convert(dtoPatron));
     }
 
     @Test
     public void testEmptyObject(){
-        patron = new Patron();
-        assertNotNull(patronToDTOPatron.convert(patron));
+        dtoPatron = new DTOPatron();
+        assertNotNull(dtoPatronToPatron.convert(dtoPatron));
     }
 
     @Test
     public void testConvert(){
-        patron = new Patron();
-        patron.setResumen("Nombre");
-        patron.setResumen("Resumen");
+        dtoPatron = new DTOPatron();
+        dtoPatron.setResumen("Nombre");
+        dtoPatron.setResumen("Resumen");
         List<String> urlImagenes = new ArrayList<>();
         urlImagenes.add("TextoDeURL1");
         urlImagenes.add("TextoDeURL2");
-        patron.setURLImagenes(urlImagenes);
+        dtoPatron.setURLImagenes(urlImagenes);
         List<String> textoExplicacion = new ArrayList<>();
         textoExplicacion.add("Explicacion1");
         textoExplicacion.add("Explicacion2");
-        DTOPatron dtoPatron = patronToDTOPatron.convert(patron);
+        Patron patron = dtoPatronToPatron.convert(dtoPatron);
 
         assertEquals(patron.getNombre(), dtoPatron.getNombre());
         assertEquals(patron.getResumen(), dtoPatron.getResumen());
