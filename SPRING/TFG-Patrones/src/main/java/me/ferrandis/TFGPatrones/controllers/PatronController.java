@@ -38,8 +38,6 @@ public class PatronController {
             patron.setTextoExplicacion(new ArrayList<>());
             patron.setURLImagenes(new ArrayList<>());
         }
-
-        System.err.println("Hay que cambiar esto a un DTO");
         model.addAttribute("patron", patron);
         model.addAttribute("descripciones", patron.getTextoExplicacion());
         model.addAttribute("imagenes", patron.getURLImagenes());
