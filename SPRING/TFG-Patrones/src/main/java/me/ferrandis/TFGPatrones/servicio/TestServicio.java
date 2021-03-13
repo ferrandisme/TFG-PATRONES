@@ -1,25 +1,24 @@
 package me.ferrandis.TFGPatrones.servicio;
 
-import me.ferrandis.TFGPatrones.DTO.DTOTest;
-import me.ferrandis.TFGPatrones.modelo.Test;
+import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 
 import java.util.List;
 
 public interface TestServicio {
 
-    List<DTOTest> getTest();
+    List<DTOCuestionario> getTest();
 
-    DTOTest findById(String id) throws Exception;
+    DTOCuestionario findById(String id) throws Exception;
 
     boolean existTest(String id);
 
-    DTOTest crearTest(String tipo, String ID);
+    DTOCuestionario crearTest(String tipo, String ID);
 
     //Faltan los metodos para obtener DTO
 
     void deleteById(String id);
 
-    DTOTest saveTest(DTOTest test);
+    DTOCuestionario saveTest(DTOCuestionario test);
 
     void deleteAll();
 }

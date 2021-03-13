@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DTOTest {
+public class DTOCuestionario {
 
     public List<Float> puntuaciones;
     public int item;

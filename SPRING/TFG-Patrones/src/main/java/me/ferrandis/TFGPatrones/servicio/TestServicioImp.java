@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.servicio;
 import lombok.extern.slf4j.Slf4j;
-import me.ferrandis.TFGPatrones.DTO.DTOTest;
+import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.converters.DTOTestToTest;
 import me.ferrandis.TFGPatrones.converters.TestToDTOTest;
 import me.ferrandis.TFGPatrones.modelo.Test;
@@ -26,8 +26,8 @@ public class TestServicioImp implements TestServicio{
 
 
     @Override
-    public List<DTOTest> getTest() {
-        List<DTOTest> tests = new ArrayList<>();
+    public List<DTOCuestionario> getTest() {
+        List<DTOCuestionario> tests = new ArrayList<>();
         Iterator<Test> resultados =  testRepository.findAll().iterator();
         while(resultados.hasNext()){
             tests.add( testToTestDTO.convert(resultados.next()));
@@ -36,13 +36,13 @@ public class TestServicioImp implements TestServicio{
     }
 
     @Override
-    public DTOTest findById(String id) throws Exception {
+    public DTOCuestionario findById(String id) throws Exception {
         Optional<Test> testBusqueda = testRepository.findById(id);
 
         if(!testBusqueda.isPresent())
             throw new Exception("No se ha encontrado el Test");
 
-        DTOTest test =  testToTestDTO.convert(testBusqueda.get());
+        DTOCuestionario test =  testToTestDTO.convert(testBusqueda.get());
         return test;
     }
 
@@ -52,7 +52,7 @@ public class TestServicioImp implements TestServicio{
     }
 
     @Override
-    public DTOTest crearTest(String tipo, String ID) {
+    public DTOCuestionario crearTest(String tipo, String ID) {
         Test test = new Test();
         test.setID(ID);
         test.setItem(0);
@@ -61,8 +61,8 @@ public class TestServicioImp implements TestServicio{
         test.setPreguntaActual(0);
         test.setTipo(tipo);
         test.setVersionPreguntas(0);
-        DTOTest dtoTest = testToTestDTO.convert(testRepository.save(test));
-        return dtoTest;
+        DTOCuestionario dtoCuestionario = testToTestDTO.convert(testRepository.save(test));
+        return dtoCuestionario;
     }
 
 
@@ -73,7 +73,7 @@ public class TestServicioImp implements TestServicio{
     }
 
     @Override
-    public DTOTest saveTest(DTOTest test) {
+    public DTOCuestionario saveTest(DTOCuestionario test) {
         Test testConvertido = dtoTestToTest.convert(test);
         return testToTestDTO.convert(testRepository.save(testConvertido));
     }
