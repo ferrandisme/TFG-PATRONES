@@ -47,7 +47,7 @@ public class TestEncontrarPatronController {
         DTOTest test = obtenerTest(id, tipo);
         if(opcion != null)
         {
-            System.out.println("Entro por aqui");
+            //System.out.println("Entro por aqui");
             test.ActualizarPregunta(Integer.parseInt(opcion));
             //servicio.actualizarTest(test);
             test = servicio.saveTest(test);
