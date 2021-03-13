@@ -4,7 +4,7 @@ import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 
 import java.util.List;
 
-public interface TestServicio {
+public interface CuestionarioServicio {
 
     List<DTOCuestionario> getTest();
 

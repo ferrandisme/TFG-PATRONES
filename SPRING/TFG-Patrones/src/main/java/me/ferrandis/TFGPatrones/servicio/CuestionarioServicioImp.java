@@ -11,13 +11,13 @@ import java.util.*;
 
 @Slf4j
 @Service
-public class TestServicioImp implements TestServicio{
+public class CuestionarioServicioImp implements CuestionarioServicio {
 
     private final TestRepository testRepository;
     private final CuestionarioToDTOCuestionario testToTestDTO;
     private final DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario;
 
-    public TestServicioImp(TestRepository testRepository , CuestionarioToDTOCuestionario testToTestDTO , DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario) {
+    public CuestionarioServicioImp(TestRepository testRepository , CuestionarioToDTOCuestionario testToTestDTO , DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario) {
 
         this.testRepository = testRepository;
         this.testToTestDTO = testToTestDTO;

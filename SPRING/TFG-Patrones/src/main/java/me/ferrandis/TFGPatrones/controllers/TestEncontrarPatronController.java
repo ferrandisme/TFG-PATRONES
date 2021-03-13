@@ -3,7 +3,7 @@ package me.ferrandis.TFGPatrones.controllers;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOInfoCuestionario;
-import me.ferrandis.TFGPatrones.servicio.TestServicioImp;
+import me.ferrandis.TFGPatrones.servicio.CuestionarioServicioImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +17,9 @@ import java.util.*;
 @Controller
 public class TestEncontrarPatronController {
 
-    private final TestServicioImp servicio;
+    private final CuestionarioServicioImp servicio;
 
-    public TestEncontrarPatronController(TestServicioImp servicio){
+    public TestEncontrarPatronController(CuestionarioServicioImp servicio){
         this.servicio = servicio;
     }
 

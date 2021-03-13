@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.repository.PatronRepository;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
-import me.ferrandis.TFGPatrones.servicio.TestServicio;
+import me.ferrandis.TFGPatrones.servicio.CuestionarioServicio;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -19,12 +19,12 @@ import java.util.List;
 public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     public final PatronesServicio patronesServicio;
-    public final TestServicio testServicio;
+    public final CuestionarioServicio cuestionarioServicio;
     public final PatronRepository patronRepository;
 
-    public PatronesBootstrap(PatronesServicio patronesServicio, TestServicio testServicio , PatronRepository patronRepository){
+    public PatronesBootstrap(PatronesServicio patronesServicio, CuestionarioServicio cuestionarioServicio, PatronRepository patronRepository){
         this.patronesServicio = patronesServicio;
-        this.testServicio = testServicio;
+        this.cuestionarioServicio = cuestionarioServicio;
         this.patronRepository = patronRepository;
     }
 
@@ -34,7 +34,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         System.err.println("ACTIVADO MODO DE BORRADO DE BD EN CADA INICIO");
         patronesServicio.deleteAll();
-        testServicio.deleteAll();
+        cuestionarioServicio.deleteAll();
         if (patronesServicio.getPatrones().size() == 0)
          cargarPatrones();
         log.debug("[!] Cargado set inicial de datos");
