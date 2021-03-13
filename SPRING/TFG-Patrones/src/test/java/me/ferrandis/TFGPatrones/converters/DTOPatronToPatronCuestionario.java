@@ -21,8 +21,7 @@ public class DTOPatronToPatronCuestionario {
 
     @Test
     public void testNullObject(){
-        dtoPatron = null;
-        assertNull(dtoPatronToPatron.convert(dtoPatron));
+        assertNull(dtoPatronToPatron.convert(null));
     }
 
     @Test

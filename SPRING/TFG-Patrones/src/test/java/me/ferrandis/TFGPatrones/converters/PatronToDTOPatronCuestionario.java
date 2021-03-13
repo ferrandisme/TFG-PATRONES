@@ -23,8 +23,7 @@ public class PatronToDTOPatronCuestionario {
 
     @Test
     public void testNullObject(){
-        patron = null;
-        assertNull(patronToDTOPatron.convert(patron));
+        assertNull(patronToDTOPatron.convert(null));
     }
 
     @Test
