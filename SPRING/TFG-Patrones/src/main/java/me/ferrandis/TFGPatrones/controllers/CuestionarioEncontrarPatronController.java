@@ -15,11 +15,11 @@ import java.util.*;
 
 @Slf4j
 @Controller
-public class TestEncontrarPatronController {
+public class CuestionarioEncontrarPatronController {
 
     private final CuestionarioServicioImp servicio;
 
-    public TestEncontrarPatronController(CuestionarioServicioImp servicio){
+    public CuestionarioEncontrarPatronController(CuestionarioServicioImp servicio){
         this.servicio = servicio;
     }
 
