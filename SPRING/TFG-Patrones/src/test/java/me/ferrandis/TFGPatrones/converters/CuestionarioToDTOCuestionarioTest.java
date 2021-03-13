@@ -54,14 +54,14 @@ public class CuestionarioToDTOCuestionarioTest {
 
         DTOCuestionario dtoCuestionario = cuestionarioToDTOCuestionario.convert(cuestionario);
 
-        assertEquals(dtoCuestionario.getID(), dtoCuestionario.getID());
-        assertEquals(dtoCuestionario.getItem(), dtoCuestionario.getItem());
-        assertEquals(dtoCuestionario.getTipo(), dtoCuestionario.getTipo());
-        assertEquals(dtoCuestionario.getPuntuaciones(), dtoCuestionario.getPuntuaciones());
-        assertEquals(dtoCuestionario.getVersionPreguntas(), dtoCuestionario.getVersionPreguntas());
-        assertEquals(dtoCuestionario.getID(), dtoCuestionario.getID());
-        assertEquals(dtoCuestionario.getOrdenRespuestas(), dtoCuestionario.getOrdenRespuestas());
-        assertEquals(dtoCuestionario.getPreguntaActual(), dtoCuestionario.getPreguntaActual());
+        assertEquals(dtoCuestionario.getID(), cuestionario.getID());
+        assertEquals(dtoCuestionario.getItem(), cuestionario.getItem());
+        assertEquals(dtoCuestionario.getTipo(), cuestionario.getTipo());
+        assertEquals(dtoCuestionario.getPuntuaciones(), cuestionario.getPuntuaciones());
+        assertEquals(dtoCuestionario.getVersionPreguntas(), cuestionario.getVersionPreguntas());
+        assertEquals(dtoCuestionario.getID(), cuestionario.getID());
+        assertEquals(dtoCuestionario.getOrdenRespuestas(), cuestionario.getOrdenRespuestas());
+        assertEquals(dtoCuestionario.getPreguntaActual(), cuestionario.getPreguntaActual());
         assertTrue(dtoCuestionario.getPreguntas().size() > 0);
 
     }
