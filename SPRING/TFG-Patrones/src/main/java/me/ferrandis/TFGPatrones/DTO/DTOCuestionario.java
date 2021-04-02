@@ -26,14 +26,7 @@ public class DTOCuestionario {
     public List<ItemCuestionario> preguntas;
 
     public int VersionPreguntas;
-
-    public class InformacionTest {
-        public float puntuacion;
-        public String nombre;
-    }
-
-
-
+    
     public String SiguientePregunta(){
         if(item < preguntas.size())
             return preguntas.get(item).getPregunta(preguntaActual);
