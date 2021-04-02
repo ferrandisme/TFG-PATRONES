@@ -26,7 +26,7 @@ public class DTOCuestionario {
     public List<ItemCuestionario> preguntas;
 
     public int VersionPreguntas;
-    
+
     public String SiguientePregunta(){
         if(item < preguntas.size())
             return preguntas.get(item).getPregunta(preguntaActual);
