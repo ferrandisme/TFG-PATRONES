@@ -80,12 +80,12 @@
 </br>
 </br>
 
-<div class="row text-white justify-content-md-center align-items-center" th:each="descripcion : ${descripciones}">
+<div class="row text-white justify-content-md-center align-items-center" th:each="descripcion, iterStat : ${descripciones}">
     <div class="col-6 col-md-4 " >
-        <h6 class="text-justify" th:text="${descripcion.texto}"> </h6>
+        <h6 class="text-justify" th:text="${descripcion}"> </h6>
     </div>
     <div class="col-4 col-md-4 ">
-        <img th:src="@{${descripcion.url}}"  class="img-fluid" alt="Responsive image"/>
+        <img th:src="@{${imagenes[iterStat.index]}}"  class="img-fluid" alt="Responsive image"/>
     </div>
     </br>
     <hr class="my-4">

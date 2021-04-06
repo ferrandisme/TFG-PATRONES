@@ -1,5 +1,7 @@
-package me.ferrandis.TFGPatrones.api;
+package me.ferrandis.TFGPatrones.controllers;
 
+import lombok.extern.slf4j.Slf4j;
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.UUID;
+import java.util.ArrayList;
 
+
+@Slf4j
 @Controller
 public class PatronController {
 
@@ -22,17 +25,22 @@ public class PatronController {
 
     @GetMapping("/patron")
     public String getPatron(@RequestParam("n") String n, Model model) {
-        Patron patron = patronesServicio.getPatron(n);
-        if(patron == null || patron.nombre == null || patron.nombre.equals("")) {
-            patron = new Patron();
-            patron.nombre = "El patron buscado no existe";
-            patron.resumen = "Este patron todavia tiene que ser añadido a nuestra web";
-            patron.explicacion = "";
-            patron._id = UUID.randomUUID();
-            System.out.println("He entrado");
+
+        DTOPatron patron;
+
+        try {
+            patron = patronesServicio.findById(n);
+        }
+        catch(Exception e){
+            patron = new DTOPatron();
+            patron.setNombre("Error");
+            patron.setResumen(e.getMessage());
+            patron.setTextoExplicacion(new ArrayList<>());
+            patron.setURLImagenes(new ArrayList<>());
         }
         model.addAttribute("patron", patron);
-        model.addAttribute("descripciones", patron.procesarResumen());
+        model.addAttribute("descripciones", patron.getTextoExplicacion());
+        model.addAttribute("imagenes", patron.getURLImagenes());
         return "patron";
     }
 }

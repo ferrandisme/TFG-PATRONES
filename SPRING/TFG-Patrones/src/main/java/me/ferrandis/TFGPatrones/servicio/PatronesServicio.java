@@ -1,28 +1,20 @@
 package me.ferrandis.TFGPatrones.servicio;
 
-import me.ferrandis.TFGPatrones.dao.BDPatrones;
-import me.ferrandis.TFGPatrones.modelo.Patron;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 
 import java.util.List;
 
-@Service
-public class PatronesServicio {
+public interface PatronesServicio {
 
-    private final BDPatrones BDPatrones;
+    List<DTOPatron> getPatrones();
 
-    @Autowired
-    public PatronesServicio(@Qualifier("MONGOPatrones") BDPatrones dao) {
-        this.BDPatrones = dao;
-    }
+    DTOPatron findById(String id) throws Exception;
 
-    public List<Patron> getListaPatrones(){
-        return BDPatrones.getListaPatrones();
-    }
+    //Faltan los metodos para obtener DTO
 
-    public Patron getPatron(String nombre){
-        return BDPatrones.getPatron(nombre);
-    }
+    DTOPatron savePatron(DTOPatron patron);
+
+    void deleteById(String id);
+
+    void deleteAll();
 }

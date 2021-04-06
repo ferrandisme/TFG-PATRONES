@@ -1,36 +1,28 @@
 package me.ferrandis.TFGPatrones.modelo;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import me.ferrandis.TFGPatrones.DTO.InfoPatron;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Document
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Patron {
 
     public String resumen;
+    @Id
     public String nombre;
-    public UUID _id;
-    public String explicacion;
 
-    public Patron(String nombre, String resumen, String explicacion){
-        this.resumen = resumen;
-        this.nombre = nombre;
-        this._id = UUID.randomUUID();
-        this.explicacion = explicacion;
-    }
+    List<String> textoExplicacion;
+    List<String> URLImagenes;
 
-    public Patron(UUID id,String nombre, String resumen, String explicacion){
-        this.resumen = resumen;
-        this.nombre = nombre;
-        this._id = id;
-        this.explicacion = explicacion;
-    }
-
-    public Patron(){}
-
-    public List<InfoPatron> procesarResumen(){
+   /* public List<InfoPatron> procesarResumen(){
         List<InfoPatron> informacion = new ArrayList<InfoPatron>();
         if(explicacion == null || !explicacion.contains("¡ñ"))
             return informacion;
@@ -41,7 +33,7 @@ public class Patron {
             informacion.add(new InfoPatron(tupla[0].trim(),tupla[1].trim()));
         }
         return informacion;
-    }
+    }*/
 
 }
 

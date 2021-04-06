@@ -1,22 +1,31 @@
-package me.ferrandis.TFGPatrones.modelo;
+package me.ferrandis.TFGPatrones.DTO;
 
-import me.ferrandis.TFGPatrones.DTO.InfoTest;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
 
-    //Datos almacenables en memoria
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class DTOCuestionario {
+
     public List<Float> puntuaciones;
     public int item;
     public int preguntaActual;
-    //Datos para la busqueda y carga de test
-    public int ID;
+
+    public String ID;
     public String tipo;
     public List<Integer> ordenRespuestas;
+
     //Informacion no cambiante
-    public List<ItemTest> preguntas;
+    public List<ItemCuestionario> preguntas;
+
+    public int VersionPreguntas;
 
     public String SiguientePregunta(){
         if(item < preguntas.size())
@@ -53,15 +62,16 @@ public class Test {
         }
     }
 
-    public List<InfoTest> getPuntuaciones(){
-        List<InfoTest> resultados = new ArrayList<>();
+    public List<DTOInfoCuestionario> ObtenerResultados(){
+        List<DTOInfoCuestionario> resultados = new ArrayList<>();
 
         for(int i = 0; i < puntuaciones.size(); i++)
         {
-            resultados.add(new InfoTest(preguntas.get(i).nombre, puntuaciones.get(i) ));
+            resultados.add(new DTOInfoCuestionario(preguntas.get(i).nombre, puntuaciones.get(i) ));
         }
 
-        resultados.sort(InfoTest::compareTo);
+        resultados.sort(DTOInfoCuestionario::compareTo);
         return resultados;
     }
+
 }
