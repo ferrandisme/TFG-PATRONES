@@ -44,7 +44,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         log.debug("[!] Cargando patrones...");
         Patron patron = new Patron();
         patron.setNombre("Mediador");
-        patron.setResumen("Descripcion");
+        patron.setResumen("Descripcion de ejemplo del patron donde se explica un caso de uso o que es :)");
 
         List<String> texto = new ArrayList<>();
         texto.add("Para el ejemplo de hoy vamos a analizar un caso de estudio basado en las aplicaciones de FaceBook. Este es un ejemplo simplificado y no es como funcionan en la vida real. Vamos a suponer que las 4 aplicaciones intercambias datos y avisos directamentre entre si ya que el usuario tiene vinculadas las 4 a una unica cuenta de correo electronico. Esto se hace con el fin de mostrar los mejores anuncios en cada una de las redes sociales. Haciendo asi que si por ejemplo buscas videojeugos en instagram, al entrar a facebook te sugiera anuncios sobre el ultimo lanzamiento de la PS5.");
