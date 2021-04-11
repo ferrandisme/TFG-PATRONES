@@ -59,16 +59,6 @@
 
 <div class="row justify-content-md-center text-white">
 
-    <h1>
-
-        <!-- <small th:text="${header.subtitle}" ></small>-->
-    </h1>
-
-    <!--
-    <h3>
-        <span th:text="${patron.descripcion}" th:remove="tag"></span>
-    </h3>
-    -->
 </div>
 </br>
 
@@ -85,7 +75,38 @@
 </br>
 </br>
 
-<div class="row text-white justify-content-md-center align-items-center" th:each="descripcion, iterStat : ${descripciones}">
+<!-- DEFINICION/AYUDA -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class = "col-auto">
+            <table class="text-white table-borderless text-center table table-responsive ">
+                <thead>
+                <tr>
+                    <th>  </th>
+                    <th>  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${descripciones.empty}">
+                    <td colspan="2"> Servicio de patrones no disponible </td>
+                </tr>
+                <tr th:each="descripcion, iterStat : ${descripciones}">
+                    <td  style="padding: 50px; font-size: 110%; width: 60.00%; margin: 0px auto;">
+                        <p class="text-center" th:text="${descripcion}"></p>
+                    </td>
+                    <td style="padding: 50px; width: 40.00%; margin: 0px auto;">
+                        <img th:src="@{${imagenes[iterStat.index]}}"  class="img-fluid" alt="Responsive image"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="row text-white justify-content-md-center align-items-center" th:each="descripcion, iterStat : ${descripciones}">
     <div class="col-6 col-md-4 " >
         <h6 class="text-justify" th:text="${descripcion}"> </h6>
     </div>
@@ -94,7 +115,7 @@
     </div>
     </br>
     <hr class="my-4">
-</div>
+</div>-->
 
 <!-- CREDITOS-->
 </br>
