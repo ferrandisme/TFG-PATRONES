@@ -22,6 +22,10 @@ public class Patron {
     List<String> textoExplicacion;
     List<String> URLImagenes;
 
+    List<String> Documentacion;
+
+    List<String> Sinergias;
+
    /* public List<InfoPatron> procesarResumen(){
         List<InfoPatron> informacion = new ArrayList<InfoPatron>();
         if(explicacion == null || !explicacion.contains("¡ñ"))

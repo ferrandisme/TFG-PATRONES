@@ -42,11 +42,23 @@ public class DTOPatronToPatronCuestionario {
         List<String> textoExplicacion = new ArrayList<>();
         textoExplicacion.add("Explicacion1");
         textoExplicacion.add("Explicacion2");
+        dtoPatron.setTextoExplicacion(textoExplicacion);
+        List<String> documentacion = new ArrayList<>();
+        documentacion.add("Explicacion1");
+        documentacion.add("Explicacion2");
+        dtoPatron.setDocumentacion(documentacion);
+        List<String> sinergias = new ArrayList<>();
+        sinergias.add("Explicacion1");
+        sinergias.add("Explicacion2");
+        dtoPatron.setSinergias(sinergias);
+
         Patron patron = dtoPatronToPatron.convert(dtoPatron);
 
         assertEquals(patron.getNombre(), dtoPatron.getNombre());
         assertEquals(patron.getResumen(), dtoPatron.getResumen());
         assertEquals(patron.getTextoExplicacion(), dtoPatron.getTextoExplicacion());
         assertEquals(patron.getURLImagenes(), dtoPatron.getURLImagenes());
+        assertEquals(patron.getDocumentacion(), dtoPatron.getDocumentacion());
+        assertEquals(patron.getSinergias(), dtoPatron.getSinergias());
     }
 }

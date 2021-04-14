@@ -18,6 +18,8 @@ public class DTOPatronToPatron implements Converter<DTOPatron, Patron> {
         patron.setTextoExplicacion(dtopatron.getTextoExplicacion());
         patron.setURLImagenes(dtopatron.getURLImagenes());
         patron.setResumen(dtopatron.getResumen());
+        patron.setDocumentacion(dtopatron.getDocumentacion());
+        patron.setSinergias(dtopatron.getSinergias());
         return patron;
     }
 }
