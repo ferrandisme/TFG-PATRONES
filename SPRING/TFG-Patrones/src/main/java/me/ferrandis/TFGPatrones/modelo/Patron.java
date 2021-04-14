@@ -22,9 +22,9 @@ public class Patron {
     List<String> textoExplicacion;
     List<String> URLImagenes;
 
-    List<String> Documentacion;
+    List<String> documentacion;
 
-    List<String> Sinergias;
+    List<String> sinergias;
 
    /* public List<InfoPatron> procesarResumen(){
         List<InfoPatron> informacion = new ArrayList<InfoPatron>();

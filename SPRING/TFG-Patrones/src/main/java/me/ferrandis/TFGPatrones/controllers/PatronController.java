@@ -41,6 +41,8 @@ public class PatronController {
         model.addAttribute("patron", patron);
         model.addAttribute("descripciones", patron.getTextoExplicacion());
         model.addAttribute("imagenes", patron.getURLImagenes());
+        model.addAttribute("documentacion", patron.getDocumentacion());
+        model.addAttribute("sinergias", patron.getSinergias());
         return "patron";
     }
 }

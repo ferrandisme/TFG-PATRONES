@@ -40,20 +40,64 @@
 
 <!-- TITULO-->
 
-<div class="row justify-content-md-center text-white">
-    <div class="col-10">
-        <h1 class="text-warning" th:text="${patron.nombre}" ></h1>
-        </br>
-        <h5 class="text-success" th:text="${patron.resumen}" ></h5>
+</br>
+<tr th:if="!${descripciones.empty}">
+    <div class="row justify-content-md-center text-white">
+        <div class="col-10">
+            <h1 class="text-warning" th:text="${patron.nombre}" ></h1>
+            </br>
+            <h5 class="text-success" th:text="${patron.resumen}" ></h5>
+        </div>
     </div>
-</div>
+</tr>
 </br>
 </br>
 
-<tr th:if="!${descripciones.empty}">
-    <div class="col-md-6 offset-md-3">
-        <a class="btn btn-primary btn-md" href="#" role="button">¿Es util para mi problema?</a>
+
+
+<!--  SINERGIAS/DOCUMENTACION -->
+<div class="container text-white col-md-6 offset-md-3">
+    <div class="row">
+        <div class="col">
+            <div th:if="!${documentacion.empty}">
+                <div class="col-md-6 offset-md-3">
+                    <h5 class="text-info">Enlaces a documentacion</h5>
+                </div>
+                <br>
+                <ul class="nav">
+                    <div th:each="referencia : ${documentacion}">
+                        <li class="nav-item">
+                            <a class="nav-link active" target="_blank" href="somepage.html" th:href="@{'' + ${referencia}}">Consultar</a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col">
+            <div th:if="!${sinergias.empty}">
+                <div class="col-md-6 offset-md-3">
+                    <h5 class="text-info">Sinergias</h5>
+                    <br>
+                </div>
+                <ul class="nav">
+                    <div th:each="referencia : ${sinergias}">
+                        <h5 th:text="${referencia}"></h5>
+                        <br>
+                    </div>
+                </ul>
+            </div>
+        </div>
     </div>
+</div>
+
+<!--  BOTON PARA COMPROBAR SI ES UTIL PARA TU PROBLEMA, COMENTADO HASTA QUE TENGA FUNCIONALIDAD
+
+
+<tr th:if="!${descripciones.empty}">
+   <div class="col-md-6 offset-md-3">
+       <a class="btn btn-primary btn-md" href="#" role="button">¿Es util para mi problema?</a>
+   </div>
 </tr>
 
 
@@ -62,6 +106,7 @@
 </div>
 </br>
 
+--->
 
 
 <!-- INFO PATRON -->

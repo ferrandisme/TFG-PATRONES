@@ -19,6 +19,6 @@ public class DTOPatron {
     List<String> textoExplicacion;
     List<String> URLImagenes;
 
-    List<String> Documentacion;
-    List<String> Sinergias;
+    List<String> documentacion;
+    List<String> sinergias;
 }

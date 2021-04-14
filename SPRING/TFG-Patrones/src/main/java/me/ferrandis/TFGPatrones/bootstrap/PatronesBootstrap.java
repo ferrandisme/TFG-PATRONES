@@ -58,6 +58,14 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         url.add("https://i.imgur.com/KxmlXrZ.png");
         patron.setURLImagenes(url);
 
+        List<String> documentacion = new ArrayList<>();
+        documentacion.add("https://google.es");
+        patron.setDocumentacion(documentacion);
+
+        List<String> sinergias = new ArrayList<>();
+        sinergias.add("Prueba a combinar ese patron con X patron para crear un buen efecto");
+        patron.setSinergias(sinergias);
+
         patronRepository.save(patron);
     }
 }
