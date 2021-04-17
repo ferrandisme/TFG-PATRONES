@@ -60,10 +60,12 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
 
         List<String> documentacion = new ArrayList<>();
         documentacion.add("https://google.es");
+        documentacion.add("https://cliente.tuneupprocess.com");
         patron.setDocumentacion(documentacion);
 
         List<String> sinergias = new ArrayList<>();
         sinergias.add("Prueba a combinar ese patron con X patron para crear un buen efecto");
+        sinergias.add("Este patron junto a X formara un Y que puede ser interesante para tu aplicación");
         patron.setSinergias(sinergias);
 
         patronRepository.save(patron);

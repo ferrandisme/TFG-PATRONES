@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Slf4j
@@ -43,6 +45,20 @@ public class PatronController {
         model.addAttribute("imagenes", patron.getURLImagenes());
         model.addAttribute("documentacion", patron.getDocumentacion());
         model.addAttribute("sinergias", patron.getSinergias());
+
+        List<String> nombreDocumentacion = new ArrayList<>();
+
+        for(String url : patron.getDocumentacion()){
+            String formated = StringUtils.split(url,".")[StringUtils.split(url,".").length-2];
+            if(formated.contains("/")){
+                formated = StringUtils.split(formated,"//")[1];
+            }
+            formated = StringUtils.capitalize(formated);
+            nombreDocumentacion.add(formated);
+        }
+        model.addAttribute("nombreDocumentacion",nombreDocumentacion);
+
+
         return "patron";
     }
 }
