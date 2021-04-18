@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
+import me.ferrandis.TFGPatrones.modelo.Pregunta;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 public class DTOCuestionario {
 
+    public String ID;
+    List<Pregunta> preguntas;
+    List<String> respuestas;
+    Integer versionPreguntas;
+    boolean finalizado;
+
+    /*
     public List<Float> puntuaciones;
     public int item;
     public int preguntaActual;
@@ -72,6 +81,6 @@ public class DTOCuestionario {
 
         resultados.sort(DTOInfoCuestionario::compareTo);
         return resultados;
-    }
+    }*/
 
 }

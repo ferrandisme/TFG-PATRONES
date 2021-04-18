@@ -4,12 +4,14 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Document
 @Data
 public class Cuestionario {
 
+    /*
     //Datos almacenables en memoria
     public List<Float> puntuaciones;
     public int item;
@@ -19,8 +21,14 @@ public class Cuestionario {
     public String ID;
     public String tipo;
     public List<Integer> ordenRespuestas;
-    public int VersionPreguntas;
-    //Informacion no cambiante
-    //@Transient
-    //private List<ItemTest> preguntas;
+    public int VersionPreguntas;*/
+
+
+    @Id
+    public String ID;
+    List<Pregunta> preguntas;
+    List<String> respuestas;
+    Integer versionPreguntas;
+    boolean finalizado;
+    LocalDate fechaCreacion;
 }

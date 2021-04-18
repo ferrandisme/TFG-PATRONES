@@ -12,8 +12,7 @@ import java.util.List;
 public class DTOPregunta {
 
         public String ID;
-
         String texto;
-
         List<String> resultado;
+        String tipo;
 }

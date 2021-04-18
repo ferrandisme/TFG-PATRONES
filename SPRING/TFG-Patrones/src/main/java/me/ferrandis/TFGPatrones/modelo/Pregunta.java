@@ -17,8 +17,7 @@ public class Pregunta {
 
     @Id
     public String ID;
-
     String texto;
-
     List<String> resultado;
+    String tipo;
 }

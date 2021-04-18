@@ -23,7 +23,7 @@ public class CuestionarioEncontrarPatronController {
         this.servicio = servicio;
     }
 
-    @GetMapping("/testEstructural/{id}")
+    /*@GetMapping("/testEstructural/{id}")
     public String iniciarEstructural(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("estructural",id, opcion);
         return ProcesarResultados(pregunta, model, id, "estructural");
@@ -39,10 +39,19 @@ public class CuestionarioEncontrarPatronController {
     public String iniciarComportamiento(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         String pregunta = cargarPregunta("comportamiento",id, opcion);
         return ProcesarResultados(pregunta, model, id, "comportamiento");
+    }*/
+
+
+    @GetMapping("/test/{id}")
+    public String iniciarEstructural(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
+        //String pregunta = cargarPregunta("estructural",id, opcion);
+        //return ProcesarResultados(pregunta, model, id, "estructural");
+        return servicio.getSiguientePregunta(id);
     }
 
+
     //Intentara cargar una pregunta del test con dicha ID. Devolvera null en caso de no existir
-    private String cargarPregunta(String tipo, String id, String opcion)
+    /*private String cargarPregunta(String tipo, String id, String opcion)
     {
         DTOCuestionario test = obtenerTest(id, tipo);
         if(opcion != null)
@@ -73,9 +82,9 @@ public class CuestionarioEncontrarPatronController {
             test = servicio.findById(id);
         } catch (Exception e) {
             System.out.println("Creando test");
-            test = servicio.crearTest(tipo, id);
+            test = servicio.crearTest(id);
         }
         return test;
-    }
+    }*/
 
 }

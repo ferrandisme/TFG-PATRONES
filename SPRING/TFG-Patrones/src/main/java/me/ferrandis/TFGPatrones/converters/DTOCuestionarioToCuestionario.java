@@ -7,21 +7,16 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class DTOCuestionarioToCuestionario implements Converter<DTOCuestionario, Cuestionario> {
+public class DTOCuestionarioToCuestionario {
 
-    @Override
-    public Cuestionario convert(DTOCuestionario dtoCuestionario) {
+    public static Cuestionario convert(DTOCuestionario dtoCuestionario) {
         if(dtoCuestionario == null)
             return null;
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(dtoCuestionario.getID());
-        cuestionario.setPreguntaActual(dtoCuestionario.getPreguntaActual());
-        cuestionario.setTipo(dtoCuestionario.getTipo());
-        cuestionario.setOrdenRespuestas(dtoCuestionario.getOrdenRespuestas());
-        //test.setPreguntas(dtoTest.getPreguntas());
+        cuestionario.setPreguntasID(dtoCuestionario.getPreguntasID());
         cuestionario.setVersionPreguntas(dtoCuestionario.getVersionPreguntas());
-        cuestionario.setPuntuaciones(dtoCuestionario.getPuntuaciones());
-        cuestionario.setItem(dtoCuestionario.getItem());
+        cuestionario.setFinalizado(dtoCuestionario.isFinalizado());
         return cuestionario;
     }
 

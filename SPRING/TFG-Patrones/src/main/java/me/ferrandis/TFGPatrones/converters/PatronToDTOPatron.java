@@ -7,10 +7,9 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class  PatronToDTOPatron implements Converter<Patron, DTOPatron> {
+public class  PatronToDTOPatron{
 
-    @Override
-    public DTOPatron convert(Patron patron) {
+    public static DTOPatron convert(Patron patron) {
         if(patron == null)
             return null;
         DTOPatron dtoPatron = new DTOPatron();

@@ -11,24 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CuestionarioToDTOCuestionario implements Converter<Cuestionario, DTOCuestionario> {
+public class CuestionarioToDTOCuestionario{
 
-    @Override
-    public DTOCuestionario convert(Cuestionario cuestionario) {
+    public static DTOCuestionario convert(Cuestionario cuestionario) {
         if(cuestionario == null)
             return null;
         DTOCuestionario dtoCuestionario = new DTOCuestionario();
         dtoCuestionario.setID(cuestionario.getID());
-        dtoCuestionario.setPreguntaActual(cuestionario.getPreguntaActual());
-        dtoCuestionario.setTipo(cuestionario.getTipo());
-        dtoCuestionario.setOrdenRespuestas(cuestionario.getOrdenRespuestas());
-        dtoCuestionario.setPreguntas(inicializarPreguntas(cuestionario.getTipo()));
+        dtoCuestionario.setPreguntasID(cuestionario.getPreguntasID());
         dtoCuestionario.setVersionPreguntas(cuestionario.getVersionPreguntas());
-        dtoCuestionario.setPuntuaciones(cuestionario.getPuntuaciones());
-        dtoCuestionario.setItem(cuestionario.getItem());
+        dtoCuestionario.setFinalizado(cuestionario.isFinalizado());
         return dtoCuestionario;
     }
 
+    /*
     private List<ItemCuestionario> inicializarPreguntas(String tipo){
         if(tipo == null)
             return new ArrayList<>();
@@ -41,5 +37,5 @@ public class CuestionarioToDTOCuestionario implements Converter<Cuestionario, DT
             default:
                 return ItemCuestionario.getTestEstructurales();
         }
-    }
+    }*/
 }

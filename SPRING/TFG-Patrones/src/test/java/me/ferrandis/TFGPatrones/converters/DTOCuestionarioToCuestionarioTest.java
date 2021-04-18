@@ -37,7 +37,8 @@ public class DTOCuestionarioToCuestionarioTest {
     @Test
     public void testConvert(){
 
-        dtoCuestionario = new DTOCuestionario();
+        assertTrue(false);
+        /*dtoCuestionario = new DTOCuestionario();
         dtoCuestionario.setTipo("estructural");
         dtoCuestionario.setItem(2);
         List<Float> puntuaciones = new ArrayList<>();
@@ -61,6 +62,6 @@ public class DTOCuestionarioToCuestionarioTest {
         assertEquals(dtoCuestionario.getVersionPreguntas(), cuestionario.getVersionPreguntas());
         assertEquals(dtoCuestionario.getID(), cuestionario.getID());
         assertEquals(dtoCuestionario.getOrdenRespuestas(), cuestionario.getOrdenRespuestas());
-        assertEquals(dtoCuestionario.getPreguntaActual(), cuestionario.getPreguntaActual());
+        assertEquals(dtoCuestionario.getPreguntaActual(), cuestionario.getPreguntaActual());*/
     }
 }

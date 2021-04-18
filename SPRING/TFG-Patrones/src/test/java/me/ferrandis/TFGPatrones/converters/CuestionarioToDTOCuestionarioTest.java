@@ -6,6 +6,7 @@ import me.ferrandis.TFGPatrones.modelo.Cuestionario;
 import me.ferrandis.TFGPatrones.modelo.Patron;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,8 @@ public class CuestionarioToDTOCuestionarioTest {
     @Test
     public void testConvert(){
 
-        cuestionario = new Cuestionario();
+        assertTrue(false);
+        /*cuestionario = new Cuestionario();
         cuestionario.setTipo("estructural");
         cuestionario.setItem(2);
         List<Float> puntuaciones = new ArrayList<>();
@@ -62,7 +64,7 @@ public class CuestionarioToDTOCuestionarioTest {
         assertEquals(dtoCuestionario.getID(), cuestionario.getID());
         assertEquals(dtoCuestionario.getOrdenRespuestas(), cuestionario.getOrdenRespuestas());
         assertEquals(dtoCuestionario.getPreguntaActual(), cuestionario.getPreguntaActual());
-        assertTrue(dtoCuestionario.getPreguntas().size() > 0);
+        assertTrue(dtoCuestionario.getPreguntas().size() > 0);*/
 
     }
 }
