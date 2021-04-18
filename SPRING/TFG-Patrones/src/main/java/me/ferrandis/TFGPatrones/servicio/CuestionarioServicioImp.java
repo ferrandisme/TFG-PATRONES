@@ -4,7 +4,7 @@ import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.converters.DTOCuestionarioToCuestionario;
 import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
 import me.ferrandis.TFGPatrones.modelo.Cuestionario;
-import me.ferrandis.TFGPatrones.repository.TestRepository;
+import me.ferrandis.TFGPatrones.repository.CuestionarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,13 +13,13 @@ import java.util.*;
 @Service
 public class CuestionarioServicioImp implements CuestionarioServicio {
 
-    private final TestRepository testRepository;
+    private final CuestionarioRepository cuestionarioRepository;
     private final CuestionarioToDTOCuestionario testToTestDTO;
     private final DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario;
 
-    public CuestionarioServicioImp(TestRepository testRepository , CuestionarioToDTOCuestionario testToTestDTO , DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario) {
+    public CuestionarioServicioImp(CuestionarioRepository cuestionarioRepository, CuestionarioToDTOCuestionario testToTestDTO , DTOCuestionarioToCuestionario dtoCuestionarioToCuestionario) {
 
-        this.testRepository = testRepository;
+        this.cuestionarioRepository = cuestionarioRepository;
         this.testToTestDTO = testToTestDTO;
         this.dtoCuestionarioToCuestionario = dtoCuestionarioToCuestionario;
     }
@@ -28,7 +28,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
     @Override
     public List<DTOCuestionario> getTest() {
         List<DTOCuestionario> tests = new ArrayList<>();
-        Iterator<Cuestionario> resultados =  testRepository.findAll().iterator();
+        Iterator<Cuestionario> resultados =  cuestionarioRepository.findAll().iterator();
         while(resultados.hasNext()){
             tests.add( testToTestDTO.convert(resultados.next()));
         }
@@ -37,7 +37,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
 
     @Override
     public DTOCuestionario findById(String id) throws Exception {
-        Optional<Cuestionario> testBusqueda = testRepository.findById(id);
+        Optional<Cuestionario> testBusqueda = cuestionarioRepository.findById(id);
 
         if(!testBusqueda.isPresent())
             throw new Exception("No se ha encontrado el Test");
@@ -48,7 +48,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
 
     @Override
     public boolean existTest(String id){
-        return testRepository.findById(id).isPresent();
+        return cuestionarioRepository.findById(id).isPresent();
     }
 
     @Override
@@ -61,7 +61,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         cuestionario.setPreguntaActual(0);
         cuestionario.setTipo(tipo);
         cuestionario.setVersionPreguntas(0);
-        DTOCuestionario dtoCuestionario = testToTestDTO.convert(testRepository.save(cuestionario));
+        DTOCuestionario dtoCuestionario = testToTestDTO.convert(cuestionarioRepository.save(cuestionario));
         return dtoCuestionario;
     }
 
@@ -69,18 +69,18 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
 
     @Override
     public void deleteById(String id) {
-        testRepository.deleteById(id);
+        cuestionarioRepository.deleteById(id);
     }
 
     @Override
     public DTOCuestionario saveTest(DTOCuestionario test) {
         Cuestionario cuestionarioConvertido = dtoCuestionarioToCuestionario.convert(test);
-        return testToTestDTO.convert(testRepository.save(cuestionarioConvertido));
+        return testToTestDTO.convert(cuestionarioRepository.save(cuestionarioConvertido));
     }
 
     @Override
     public void deleteAll() {
-        testRepository.deleteAll();
+        cuestionarioRepository.deleteAll();
     }
 
 }
