@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.servicio;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
+import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import me.ferrandis.TFGPatrones.converters.DTOCuestionarioToCuestionario;
 import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
@@ -9,6 +10,7 @@ import me.ferrandis.TFGPatrones.modelo.Pregunta;
 import me.ferrandis.TFGPatrones.repository.CuestionarioRepository;
 import me.ferrandis.TFGPatrones.repository.PreguntaRepository;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -68,8 +70,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         cuestionario.setVersionPreguntas(0);
         cuestionario.setFinalizado(false);
         cuestionario.setFechaCreacion(LocalDate.now());
-        //TODO crear preguntas
-        //cuestionario.setPreguntas();
+        cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(ENCONTRAR_TIPO));
         return cuestionario;
     }
 
@@ -90,25 +91,67 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
     }
 
     @Override
-    public String getSiguientePregunta(String id, Integer opcion) {
+    public DTOEstadoCuestionario getSiguientePregunta(String id, Integer opcion) {
         Cuestionario cuestionario = crearTestModelo(id);
         List<Pregunta> preguntas = cuestionario.getPreguntas();
+        DTOEstadoCuestionario result = new DTOEstadoCuestionario();
+        result.setSolucionado(false);
 
-        if(opcion == null && preguntas.size() > 0){
-            return preguntas.get(0).getTexto();
+        if(preguntas == null || preguntas.size() == 0  || cuestionario.isFinalizado()){
+            result.setAcabado(true);
+            result.setSolucionado(cuestionario.isEncontrado());
+            result.setTexto(cuestionario.getResultado());
+            return result;
         }
+        else if(opcion == null && preguntas.size() > 0){
+            result.setTexto(preguntas.get(0).getTexto());
+            result.setAcabado(false);
+            return result;
+        }
+
         String accion = preguntas.get(0).getResultado().get(opcion);
         if(accion.contains(TIPO)){
             cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(accion.replace(TIPO, "").toLowerCase()));
+            result.setTexto(cuestionario.getPreguntas().get(0).getTexto());
+            result.setAcabado(false);
         }
-
-        preguntas.remove(0);
-        if(accion.contains(SOLUCION)){
+        else if(accion.contains(ELIMINAR)){
+            eliminar(accion, preguntas,cuestionario);
+            return getSiguientePregunta(id,opcion);
+        }
+        else if(accion.contains(SOLUCION)){
             cuestionario.setFinalizado(true);
             cuestionario.setPreguntas(new ArrayList<>());
+            cuestionario.setEncontrado(true);
+            result.setTexto(accion.replace(SOLUCION, ""));
+            result.setAcabado(true);
+            result.setSolucionado(true);
         }
+        return result;
+    }
 
-        return null;
+    private void eliminar(String accion, List<Pregunta> preguntas, Cuestionario cuestionario){
+        String patronAEliminar = accion.replace(ELIMINAR, "");
+        List<Pregunta> nuevasPreguntas = new ArrayList<>();
+        for(Pregunta pregunta : preguntas){
+            boolean otrosResultados = false;
+            List<String> resultados = pregunta.getResultado();
+            for(int i = 0; i < resultados.size(); i++){
+                String accionPregunta = resultados.get(i);
+                if(accionPregunta.contains(SOLUCION)){
+                    if(accionPregunta.replace(ELIMINAR,"").equals(patronAEliminar)){
+                        pregunta.getResultado().set(i,"");
+                    }
+                    else{
+                        otrosResultados = true;
+                    }
+                }
+                if(otrosResultados){
+                    nuevasPreguntas.add(pregunta);
+                }
+            }
+        }
+        cuestionario.setPreguntas(nuevasPreguntas);
     }
 
 }

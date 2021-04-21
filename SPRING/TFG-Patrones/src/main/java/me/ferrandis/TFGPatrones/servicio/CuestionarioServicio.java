@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.servicio;
 
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
+import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
 
 import java.util.List;
 
@@ -8,6 +9,8 @@ public interface CuestionarioServicio {
 
     public static final String TIPO = "TIPO:";
     public static final String SOLUCION = "SOLUCION:";
+    public static final String ELIMINAR = "ELIMINAR:";
+    public static final String ENCONTRAR_TIPO = "ENCONTRARTIPO";
 
     List<DTOCuestionario> getTest();
 
@@ -23,5 +26,5 @@ public interface CuestionarioServicio {
 
     void deleteAll();
 
-    String getSiguientePregunta(String id, Integer opcion);
+    DTOEstadoCuestionario getSiguientePregunta(String id, Integer opcion);
 }

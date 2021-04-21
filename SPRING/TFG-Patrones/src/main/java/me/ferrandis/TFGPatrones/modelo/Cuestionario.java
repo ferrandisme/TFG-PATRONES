@@ -31,4 +31,6 @@ public class Cuestionario {
     Integer versionPreguntas;
     boolean finalizado;
     LocalDate fechaCreacion;
+    String resultado;
+    boolean encontrado;
 }

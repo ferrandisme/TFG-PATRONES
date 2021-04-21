@@ -13,11 +13,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pregunta {
+public class Pregunta implements Comparable<Pregunta>{
 
     @Id
     public String ID;
+    Integer orden;
     String texto;
     List<String> resultado;
     String tipo;
+
+    @Override
+    public int compareTo(Pregunta p) {
+        return this.orden.compareTo(p.getOrden());
+    }
 }

@@ -46,7 +46,8 @@ public class CuestionarioEncontrarPatronController {
     public String iniciarEstructural(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
         //String pregunta = cargarPregunta("estructural",id, opcion);
         //return ProcesarResultados(pregunta, model, id, "estructural");
-        return servicio.getSiguientePregunta(id);
+        //return servicio.getSiguientePregunta(id);
+        return "";
     }
 
 
