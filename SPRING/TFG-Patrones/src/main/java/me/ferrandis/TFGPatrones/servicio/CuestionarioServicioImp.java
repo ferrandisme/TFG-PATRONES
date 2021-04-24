@@ -64,10 +64,13 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         }
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(ID);
+        cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(ENCONTRAR_TIPO));
+        cuestionario.setRespuestas(new ArrayList<>());
         cuestionario.setVersionPreguntas(0);
         cuestionario.setFinalizado(false);
         cuestionario.setFechaCreacion(LocalDate.now());
-        cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(ENCONTRAR_TIPO));
+        cuestionario.setResultado("");
+        cuestionario.setEncontrado(false);
         return cuestionario;
     }
 
@@ -106,6 +109,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
             return result;
         }
 
+        opcion--; // 1-5 to 0-4
         String accion = preguntas.get(0).getResultado().get(opcion);
         if(accion.contains(TIPO)){
             cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(accion.replace(TIPO, "").toLowerCase()));

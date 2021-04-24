@@ -83,7 +83,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         pregunta.setID("1");
         pregunta.setOrden(0);
         pregunta.setTexto("Texto de la pregunta de encontrar tipò");
-        pregunta.setTipo("ESTRUCTURAL");
+        pregunta.setTipo(CuestionarioServicio.ENCONTRAR_TIPO);
         List<String> resultado = new ArrayList<>();
         resultado.add("");
         resultado.add("");
@@ -97,7 +97,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         pregunta.setID("2");
         pregunta.setOrden(0);
         pregunta.setTexto("Texto de la pregunta, la 5 elimina mediador");
-        pregunta.setTipo("ESTRUCTURAL");
+        pregunta.setTipo(PreguntasServicio.ESTRUCTURAL);
         resultado = new ArrayList<>();
         resultado.add("");
         resultado.add("");
@@ -111,7 +111,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         pregunta.setID("3");
         pregunta.setOrden(1);
         pregunta.setTexto("Si has respondido 5 esto no deberia de existir");
-        pregunta.setTipo("ESTRUCTURAL");
+        pregunta.setTipo(PreguntasServicio.ESTRUCTURAL);
         resultado = new ArrayList<>();
         resultado.add("");
         resultado.add("");
@@ -125,7 +125,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         pregunta.setID("3");
         pregunta.setOrden(2);
         pregunta.setTexto("Esta no deberia de existir si has marcado la 5 antes.");
-        pregunta.setTipo("ESTRUCTURAL");
+        pregunta.setTipo(PreguntasServicio.ESTRUCTURAL);
         resultado = new ArrayList<>();
         resultado.add("");
         resultado.add("");
@@ -140,7 +140,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         pregunta.setID("4");
         pregunta.setOrden(3);
         pregunta.setTexto("Esta la solucion es fabrica");
-        pregunta.setTipo("ESTRUCTURAL");
+        pregunta.setTipo(PreguntasServicio.ESTRUCTURAL);
         resultado = new ArrayList<>();
         resultado.add("");
         resultado.add("");
@@ -155,7 +155,7 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         pregunta.setID("43");
         pregunta.setOrden(-1);
         pregunta.setTexto("Esto es una prueba de que el orden funciona");
-        pregunta.setTipo("ESTRUCTURAL");
+        pregunta.setTipo(PreguntasServicio.ESTRUCTURAL);
         resultado = new ArrayList<>();
         resultado.add("");
         resultado.add("");
