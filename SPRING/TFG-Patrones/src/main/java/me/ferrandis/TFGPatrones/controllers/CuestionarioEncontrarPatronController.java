@@ -2,6 +2,7 @@ package me.ferrandis.TFGPatrones.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
+import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOInfoCuestionario;
 import me.ferrandis.TFGPatrones.servicio.CuestionarioServicioImp;
 import org.springframework.stereotype.Controller;
@@ -43,11 +44,21 @@ public class CuestionarioEncontrarPatronController {
 
 
     @GetMapping("/test/{id}")
-    public String iniciarEstructural(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
-        //String pregunta = cargarPregunta("estructural",id, opcion);
-        //return ProcesarResultados(pregunta, model, id, "estructural");
-        //return servicio.getSiguientePregunta(id);
-        return "";
+    public String iniciarTest(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") Integer opcion , Model model) {
+
+        DTOEstadoCuestionario estado = servicio.getSiguientePregunta(id,opcion);
+        return procesarResultado(estado,model);
+    }
+
+    private String procesarResultado(DTOEstadoCuestionario estado, Model model){
+        if(estado.isAcabado()){
+            model.addAttribute("solucion",estado.getTexto());
+            return "resultados";
+        }
+        else{
+            model.addAttribute("pregunta", estado.getTexto());
+            return "test-encontrar-patron";
+        }
     }
 
 

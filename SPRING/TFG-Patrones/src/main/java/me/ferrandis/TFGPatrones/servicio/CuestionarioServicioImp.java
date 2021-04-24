@@ -2,15 +2,12 @@ package me.ferrandis.TFGPatrones.servicio;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
-import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import me.ferrandis.TFGPatrones.converters.DTOCuestionarioToCuestionario;
 import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
 import me.ferrandis.TFGPatrones.modelo.Cuestionario;
 import me.ferrandis.TFGPatrones.modelo.Pregunta;
 import me.ferrandis.TFGPatrones.repository.CuestionarioRepository;
-import me.ferrandis.TFGPatrones.repository.PreguntaRepository;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -95,6 +92,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         Cuestionario cuestionario = crearTestModelo(id);
         List<Pregunta> preguntas = cuestionario.getPreguntas();
         DTOEstadoCuestionario result = new DTOEstadoCuestionario();
+        result.setAcabado(false);
         result.setSolucionado(false);
 
         if(preguntas == null || preguntas.size() == 0  || cuestionario.isFinalizado()){
@@ -105,7 +103,6 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         }
         else if(opcion == null && preguntas.size() > 0){
             result.setTexto(preguntas.get(0).getTexto());
-            result.setAcabado(false);
             return result;
         }
 
@@ -113,7 +110,6 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         if(accion.contains(TIPO)){
             cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(accion.replace(TIPO, "").toLowerCase()));
             result.setTexto(cuestionario.getPreguntas().get(0).getTexto());
-            result.setAcabado(false);
         }
         else if(accion.contains(ELIMINAR)){
             eliminar(accion, preguntas,cuestionario);
