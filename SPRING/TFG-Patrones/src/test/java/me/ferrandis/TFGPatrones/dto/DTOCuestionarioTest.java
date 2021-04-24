@@ -16,7 +16,7 @@ public class DTOCuestionarioTest {
 
     DTOCuestionario dtoCuestionario;
     List<ItemCuestionario> preguntas = ItemCuestionario.getTestEstructurales();
-
+/*
     @BeforeEach
     public void setUp(){
         dtoCuestionario = new DTOCuestionario();
@@ -48,5 +48,5 @@ public class DTOCuestionarioTest {
         assertNotEquals(pregunta,pregunta2);
         assertEquals(pregunta,preguntas.get(0).getPregunta(0));
         assertEquals(pregunta2,preguntas.get(0).getPregunta(1));
-    }
+    }*/
 }
