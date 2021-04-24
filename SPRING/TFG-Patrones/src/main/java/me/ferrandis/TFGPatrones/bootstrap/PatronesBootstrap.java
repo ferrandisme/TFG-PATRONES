@@ -2,15 +2,19 @@ package me.ferrandis.TFGPatrones.bootstrap;
 
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.modelo.Pregunta;
 import me.ferrandis.TFGPatrones.repository.PatronRepository;
+import me.ferrandis.TFGPatrones.repository.PreguntaRepository;
 import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
 import me.ferrandis.TFGPatrones.servicio.CuestionarioServicio;
+import me.ferrandis.TFGPatrones.servicio.PreguntasServicio;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -21,22 +25,25 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
     public final PatronesServicio patronesServicio;
     public final CuestionarioServicio cuestionarioServicio;
     public final PatronRepository patronRepository;
+    public final PreguntaRepository preguntaRepository;
 
-    public PatronesBootstrap(PatronesServicio patronesServicio, CuestionarioServicio cuestionarioServicio, PatronRepository patronRepository){
+    public PatronesBootstrap(PatronesServicio patronesServicio, CuestionarioServicio cuestionarioServicio, PatronRepository patronRepository, PreguntaRepository preguntaRepository){
         this.patronesServicio = patronesServicio;
         this.cuestionarioServicio = cuestionarioServicio;
         this.patronRepository = patronRepository;
+        this.preguntaRepository = preguntaRepository;
     }
 
 
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        System.err.println("ACTIVADO MODO DE BORRADO DE BD EN CADA INICIO");
+        log.error("ACTIVADO MODO DE BORRADO DE BD EN CADA INICIO");
         patronesServicio.deleteAll();
         cuestionarioServicio.deleteAll();
+        preguntaRepository.deleteAll();
         if (patronesServicio.getPatrones().size() == 0)
-         cargarPatrones();
+            cargarPatrones();
         log.debug("[!] Cargado set inicial de datos");
     }
 
@@ -69,5 +76,96 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
         patron.setSinergias(sinergias);
 
         patronRepository.save(patron);
+
+        log.debug("[!] Cargando preguntas...");
+
+        Pregunta pregunta = new Pregunta();
+        pregunta.setID("1");
+        pregunta.setOrden(0);
+        pregunta.setTexto("Texto de la pregunta de encontrar tipò");
+        pregunta.setTipo("ESTRUCTURAL");
+        List<String> resultado = new ArrayList<>();
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add(CuestionarioServicio.TIPO + PreguntasServicio.ESTRUCTURAL);
+        pregunta.setResultado(resultado);
+        preguntaRepository.save(pregunta);
+
+        pregunta = new Pregunta();
+        pregunta.setID("2");
+        pregunta.setOrden(0);
+        pregunta.setTexto("Texto de la pregunta, la 5 elimina mediador");
+        pregunta.setTipo("ESTRUCTURAL");
+        resultado = new ArrayList<>();
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add(CuestionarioServicio.ELIMINAR + "Mediador");
+        pregunta.setResultado(resultado);
+        preguntaRepository.save(pregunta);
+
+        pregunta = new Pregunta();
+        pregunta.setID("3");
+        pregunta.setOrden(1);
+        pregunta.setTexto("Si has respondido 5 esto no deberia de existir");
+        pregunta.setTipo("ESTRUCTURAL");
+        resultado = new ArrayList<>();
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add(CuestionarioServicio.ELIMINAR + "Mediador");
+        pregunta.setResultado(resultado);
+        preguntaRepository.save(pregunta);
+
+        pregunta = new Pregunta();
+        pregunta.setID("3");
+        pregunta.setOrden(2);
+        pregunta.setTexto("Esta no deberia de existir si has marcado la 5 antes.");
+        pregunta.setTipo("ESTRUCTURAL");
+        resultado = new ArrayList<>();
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add(CuestionarioServicio.SOLUCION + "Mediador");
+        pregunta.setResultado(resultado);
+        preguntaRepository.save(pregunta);
+
+
+        pregunta = new Pregunta();
+        pregunta.setID("4");
+        pregunta.setOrden(3);
+        pregunta.setTexto("Esta la solucion es fabrica");
+        pregunta.setTipo("ESTRUCTURAL");
+        resultado = new ArrayList<>();
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add(CuestionarioServicio.SOLUCION + "Fabrica");
+        pregunta.setResultado(resultado);
+        preguntaRepository.save(pregunta);
+
+
+        pregunta = new Pregunta();
+        pregunta.setID("43");
+        pregunta.setOrden(-1);
+        pregunta.setTexto("Esto es una prueba de que el orden funciona");
+        pregunta.setTipo("ESTRUCTURAL");
+        resultado = new ArrayList<>();
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        resultado.add("");
+        pregunta.setResultado(resultado);
+        preguntaRepository.save(pregunta);
+
+
+        log.warn("Finalizada carga de datos de ejemplo y borrado de la base de datos");
     }
 }
