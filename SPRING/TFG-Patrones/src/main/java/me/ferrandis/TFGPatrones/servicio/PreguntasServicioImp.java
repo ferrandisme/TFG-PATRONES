@@ -20,7 +20,7 @@ public class PreguntasServicioImp implements PreguntasServicio{
 
     @Override
     public List<Pregunta> getPreguntasTipo(String tipo) {
-        List<Pregunta> preguntas = preguntaRepository.findAllByTipo(tipo);
+        List<Pregunta> preguntas = preguntaRepository.findAllByTipo(tipo.toUpperCase());
         preguntas.sort(Pregunta::compareTo);
         return preguntas;
     }

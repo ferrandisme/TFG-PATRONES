@@ -92,7 +92,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
 
     @Override
     public DTOEstadoCuestionario getSiguientePregunta(String id, Integer opcion) {
-        Cuestionario cuestionario = crearTestModelo(id);
+            Cuestionario cuestionario = crearTestModelo(id);
         List<Pregunta> preguntas = cuestionario.getPreguntas();
         DTOEstadoCuestionario result = new DTOEstadoCuestionario();
         result.setAcabado(false);
@@ -111,13 +111,20 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
 
         opcion--; // 1-5 to 0-4
         String accion = preguntas.get(0).getResultado().get(opcion);
+        preguntas.remove(0);
+        cuestionario.setPreguntas(preguntas);
         if(accion.contains(TIPO)){
-            cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(accion.replace(TIPO, "").toLowerCase()));
-            result.setTexto(cuestionario.getPreguntas().get(0).getTexto());
+            cuestionario.setPreguntas(preguntasServicio.getPreguntasTipo(accion.replace(TIPO, "")));
+            cuestionarioRepository.save(cuestionario);
+            return getSiguientePregunta(id,null);
         }
         else if(accion.contains(ELIMINAR)){
-            eliminar(accion, preguntas,cuestionario);
-            return getSiguientePregunta(id,opcion);
+            List<String> patronesAElimiar = Arrays.asList(accion.split(","));
+            for(String patron : patronesAElimiar) {
+                eliminar(patron, preguntas, cuestionario);
+            }
+            cuestionarioRepository.save(cuestionario);
+            return getSiguientePregunta(id, null);
         }
         else if(accion.contains(SOLUCION)){
             cuestionario.setFinalizado(true);
@@ -127,6 +134,11 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
             result.setAcabado(true);
             result.setSolucionado(true);
         }
+        else{
+            cuestionarioRepository.save(cuestionario);
+            return getSiguientePregunta(id,null);
+        }
+        cuestionarioRepository.save(cuestionario);
         return result;
     }
 
@@ -136,19 +148,24 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         for(Pregunta pregunta : preguntas){
             boolean otrosResultados = false;
             List<String> resultados = pregunta.getResultado();
-            for(int i = 0; i < resultados.size(); i++){
+            for(int i = 0; i < 5; i++){
                 String accionPregunta = resultados.get(i);
                 if(accionPregunta.contains(SOLUCION)){
-                    if(accionPregunta.replace(ELIMINAR,"").equals(patronAEliminar)){
+                    if(accionPregunta.replace(SOLUCION,"").equals(patronAEliminar)){
                         pregunta.getResultado().set(i,"");
                     }
                     else{
                         otrosResultados = true;
                     }
+                }else if(accionPregunta.contains(ELIMINAR)){
+                    if( !accion.equals(accionPregunta))
+                        otrosResultados = true;
+                    else
+                        pregunta.getResultado().set(i,"");
                 }
-                if(otrosResultados){
-                    nuevasPreguntas.add(pregunta);
-                }
+            }
+            if(otrosResultados){
+                nuevasPreguntas.add(pregunta);
             }
         }
         cuestionario.setPreguntas(nuevasPreguntas);

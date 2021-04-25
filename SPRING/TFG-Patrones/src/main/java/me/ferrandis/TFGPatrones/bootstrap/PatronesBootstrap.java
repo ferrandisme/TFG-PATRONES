@@ -77,6 +77,17 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
 
         patronRepository.save(patron);
 
+        patron = new Patron();
+        patron.setNombre("Fabrica");
+        patron.setResumen("Descripcion Farica)");
+        patron.setSinergias(new ArrayList<>());
+        patron.setURLImagenes(new ArrayList<>());
+        patron.setDocumentacion(new ArrayList<>());
+        patron.setTextoExplicacion(new ArrayList<>());
+
+        patronRepository.save(patron);
+        //-------------------------
+
         log.debug("[!] Cargando preguntas...");
 
         Pregunta pregunta = new Pregunta();

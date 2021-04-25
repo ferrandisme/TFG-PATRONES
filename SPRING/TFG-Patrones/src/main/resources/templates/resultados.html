@@ -42,28 +42,9 @@
 </br>
 
 <div class="row justify-content-center">
-    <div class="col-auto">
-        <table class="text-white table table-responsive ">
-            <thead>
-            <tr>
-                <th> Patrón </th>
-                <th> Afinidad [1-5] </th>
-                <th> Enlace </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:if="${patrones.empty}">
-                <td colspan="2"> Servicio de puntuaciones no disponible </td>
-            </tr>
-            <tr th:each="patron : ${patrones}">
-                <td class="text-info"><span th:text="${patron.nombre}"></span></td>
-                <td><span th:text="${patron.puntuacion}"></span></td>
-                <td>
-                    <a href="somepage.html"  th:href="@{'/patron' (n=${patron.nombre})}">VER PATRÓN</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="col-auto text-danger">
+       <h3>No se ha podido encontrar una solucion al problema. Por favor, vuelvelo a intentar.</h3>
+        <h5 th:text="${solucion}"></h5>
     </div>
 </div>
 <!-- CREDITOS-->

@@ -48,13 +48,15 @@ public class PatronController {
 
         List<String> nombreDocumentacion = new ArrayList<>();
 
-        for(String url : patron.getDocumentacion()){
-            String formated = StringUtils.split(url,".")[StringUtils.split(url,".").length-2];
-            if(formated.contains("/")){
-                formated = StringUtils.split(formated,"//")[1];
+        if(patron.getDocumentacion() != null) {
+            for (String url : patron.getDocumentacion()) {
+                String formated = StringUtils.split(url, ".")[StringUtils.split(url, ".").length - 2];
+                if (formated.contains("/")) {
+                    formated = StringUtils.split(formated, "//")[1];
+                }
+                formated = StringUtils.capitalize(formated);
+                nombreDocumentacion.add(formated);
             }
-            formated = StringUtils.capitalize(formated);
-            nombreDocumentacion.add(formated);
         }
         model.addAttribute("nombreDocumentacion",nombreDocumentacion);
 

@@ -41,7 +41,6 @@
 <!-- TITULO-->
 
 </br>
-<tr th:if="!${descripciones.empty}">
     <div class="row justify-content-md-center text-white">
         <div class="col-10">
             <h1 class="text-warning" th:text="${patron.nombre}" ></h1>
@@ -49,7 +48,6 @@
             <h5 class="text-success" th:text="${patron.resumen}" ></h5>
         </div>
     </div>
-</tr>
 </br>
 </br>
 
@@ -135,7 +133,7 @@
                 </thead>
                 <tbody>
                 <tr th:if="${descripciones.empty}">
-                    <td colspan="2"> Servicio de patrones no disponible </td>
+                    <td colspan="2"> No existe ejemplo para este patron </td>
                 </tr>
                 <tr th:each="descripcion, iterStat : ${descripciones}">
                     <td  style="padding: 50px; font-size: 110%; width: 60.00%; margin: 0px auto;">

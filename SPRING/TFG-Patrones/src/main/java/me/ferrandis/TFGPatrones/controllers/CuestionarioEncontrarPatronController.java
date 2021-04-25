@@ -24,25 +24,6 @@ public class CuestionarioEncontrarPatronController {
         this.servicio = servicio;
     }
 
-    /*@GetMapping("/testEstructural/{id}")
-    public String iniciarEstructural(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
-        String pregunta = cargarPregunta("estructural",id, opcion);
-        return ProcesarResultados(pregunta, model, id, "estructural");
-    }
-
-    @GetMapping("/testCreacional/{id}")
-    public String iniciarCreacional(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
-        String pregunta = cargarPregunta("creacional",id, opcion);
-        return ProcesarResultados(pregunta, model, id, "creacional");
-    }
-
-    @GetMapping("/testComportamiento/{id}")
-    public String iniciarComportamiento(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") String opcion , Model model) {
-        String pregunta = cargarPregunta("comportamiento",id, opcion);
-        return ProcesarResultados(pregunta, model, id, "comportamiento");
-    }*/
-
-
     @GetMapping("/test/{id}")
     public String iniciarTest(@PathVariable("id") String id , @RequestParam(required = false, name = "opcion") Integer opcion , Model model) {
 
@@ -51,52 +32,16 @@ public class CuestionarioEncontrarPatronController {
     }
 
     private String procesarResultado(DTOEstadoCuestionario estado, Model model){
-        if(estado.isAcabado()){
-            model.addAttribute("solucion",estado.getTexto());
-            return "resultados";
-        }
-        else{
+        if(!estado.isAcabado()){
             model.addAttribute("pregunta", estado.getTexto());
             return "test-encontrar-patron";
         }
-    }
-
-
-    //Intentara cargar una pregunta del test con dicha ID. Devolvera null en caso de no existir
-    /*private String cargarPregunta(String tipo, String id, String opcion)
-    {
-        DTOCuestionario test = obtenerTest(id, tipo);
-        if(opcion != null)
-        {
-            //System.out.println("Entro por aqui");
-            test.ActualizarPregunta(Integer.parseInt(opcion));
-            //servicio.actualizarTest(test);
-            test = servicio.saveTest(test);
+        else if(estado.isSolucionado()){
+            return "redirect:/patron?n=" + estado.getTexto();
         }
-        return test.SiguientePregunta();
-    }
-
-    private String ProcesarResultados(String pregunta, Model model, String id, String tipo){
-        DTOCuestionario test = obtenerTest(id, tipo);
-        if(pregunta == null){
-            List<DTOInfoCuestionario> info = test.ObtenerResultados();
-            model.addAttribute("patrones",info);
+        else{
+            model.addAttribute("solucion",estado.getTexto());
             return "resultados";
-        }else{
-            model.addAttribute("pregunta",pregunta);
-            return "test-encontrar-patron";
         }
     }
-
-    private DTOCuestionario obtenerTest(String id, String tipo){
-        DTOCuestionario test = null;
-        try {
-            test = servicio.findById(id);
-        } catch (Exception e) {
-            System.out.println("Creando test");
-            test = servicio.crearTest(id);
-        }
-        return test;
-    }*/
-
 }
