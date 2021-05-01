@@ -92,7 +92,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
 
     @Override
     public DTOEstadoCuestionario getSiguientePregunta(String id, Integer opcion) {
-            Cuestionario cuestionario = crearTestModelo(id);
+        Cuestionario cuestionario = crearTestModelo(id);
         List<Pregunta> preguntas = cuestionario.getPreguntas();
         DTOEstadoCuestionario result = new DTOEstadoCuestionario();
         result.setAcabado(false);
@@ -135,6 +135,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
             result.setSolucionado(true);
         }
         else{
+            //No actions for this solution
             cuestionarioRepository.save(cuestionario);
             return getSiguientePregunta(id,null);
         }
@@ -142,7 +143,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         return result;
     }
 
-    private void eliminar(String accion, List<Pregunta> preguntas, Cuestionario cuestionario){
+    public void eliminar(String accion, List<Pregunta> preguntas, Cuestionario cuestionario){
         String patronAEliminar = accion.replace(ELIMINAR, "");
         List<Pregunta> nuevasPreguntas = new ArrayList<>();
         for(Pregunta pregunta : preguntas){

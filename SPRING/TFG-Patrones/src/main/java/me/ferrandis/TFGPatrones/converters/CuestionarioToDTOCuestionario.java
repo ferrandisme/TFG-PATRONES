@@ -24,18 +24,4 @@ public class CuestionarioToDTOCuestionario{
         return dtoCuestionario;
     }
 
-    /*
-    private List<ItemCuestionario> inicializarPreguntas(String tipo){
-        if(tipo == null)
-            return new ArrayList<>();
-
-        switch(tipo){
-            case "estructural":
-                return ItemCuestionario.getTestEstructurales();
-            case "creacional":
-                return ItemCuestionario.getTestCreacionales();
-            default:
-                return ItemCuestionario.getTestEstructurales();
-        }
-    }*/
 }
