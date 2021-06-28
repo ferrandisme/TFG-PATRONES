@@ -1,16 +1,9 @@
 package me.ferrandis.TFGPatrones.dto;
 
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
-import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import me.ferrandis.TFGPatrones.model.ItemCuestionario;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class DTOCuestionarioTest {
 

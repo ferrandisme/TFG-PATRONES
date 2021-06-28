@@ -1,4 +1,4 @@
-package me.ferrandis.TFGPatrones.servicio;
+package me.ferrandis.TFGPatrones.service;
 
 import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 

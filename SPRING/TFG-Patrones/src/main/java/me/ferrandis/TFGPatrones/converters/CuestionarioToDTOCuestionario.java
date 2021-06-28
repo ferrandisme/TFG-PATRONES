@@ -2,13 +2,8 @@ package me.ferrandis.TFGPatrones.converters;
 
 
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.modelo.Cuestionario;
-import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
-import org.springframework.core.convert.converter.Converter;
+import me.ferrandis.TFGPatrones.model.Cuestionario;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class CuestionarioToDTOCuestionario{

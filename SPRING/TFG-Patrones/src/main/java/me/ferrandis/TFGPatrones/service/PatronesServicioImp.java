@@ -1,10 +1,10 @@
-package me.ferrandis.TFGPatrones.servicio;
+package me.ferrandis.TFGPatrones.service;
 
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.converters.DTOPatronToPatron;
 import me.ferrandis.TFGPatrones.converters.PatronToDTOPatron;
-import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.model.Patron;
 import me.ferrandis.TFGPatrones.repository.PatronRepository;
 import org.springframework.stereotype.Service;
 

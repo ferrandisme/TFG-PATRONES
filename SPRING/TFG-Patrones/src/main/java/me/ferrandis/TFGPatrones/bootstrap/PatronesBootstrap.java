@@ -1,20 +1,19 @@
 package me.ferrandis.TFGPatrones.bootstrap;
 
 import lombok.extern.slf4j.Slf4j;
-import me.ferrandis.TFGPatrones.modelo.Patron;
-import me.ferrandis.TFGPatrones.modelo.Pregunta;
+import me.ferrandis.TFGPatrones.model.Patron;
+import me.ferrandis.TFGPatrones.model.Pregunta;
 import me.ferrandis.TFGPatrones.repository.PatronRepository;
 import me.ferrandis.TFGPatrones.repository.PreguntaRepository;
-import me.ferrandis.TFGPatrones.servicio.PatronesServicio;
-import me.ferrandis.TFGPatrones.servicio.CuestionarioServicio;
-import me.ferrandis.TFGPatrones.servicio.PreguntasServicio;
+import me.ferrandis.TFGPatrones.service.PatronesServicio;
+import me.ferrandis.TFGPatrones.service.CuestionarioServicio;
+import me.ferrandis.TFGPatrones.service.PreguntasServicio;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 

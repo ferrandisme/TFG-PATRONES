@@ -1,6 +1,6 @@
 package me.ferrandis.TFGPatrones.repository;
 
-import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.model.Patron;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -3,11 +3,8 @@ package me.ferrandis.TFGPatrones.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
-import me.ferrandis.TFGPatrones.modelo.Pregunta;
-import org.springframework.data.annotation.Id;
+import me.ferrandis.TFGPatrones.model.Pregunta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

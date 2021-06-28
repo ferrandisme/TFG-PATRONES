@@ -1,4 +1,4 @@
-package me.ferrandis.TFGPatrones.modelo;
+package me.ferrandis.TFGPatrones.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

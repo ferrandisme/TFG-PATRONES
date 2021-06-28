@@ -1,6 +1,6 @@
-package me.ferrandis.TFGPatrones.servicio;
+package me.ferrandis.TFGPatrones.service;
 
-import me.ferrandis.TFGPatrones.modelo.Pregunta;
+import me.ferrandis.TFGPatrones.model.Pregunta;
 
 import java.util.List;
 

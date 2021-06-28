@@ -1,7 +1,7 @@
 package me.ferrandis.TFGPatrones.converters;
 import static org.junit.jupiter.api.Assertions.*;
 import me.ferrandis.TFGPatrones.DTO.DTOPatron;
-import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.model.Patron;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

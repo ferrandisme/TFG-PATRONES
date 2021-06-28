@@ -1,13 +1,10 @@
-package me.ferrandis.TFGPatrones.servicio;
+package me.ferrandis.TFGPatrones.service;
 
-import me.ferrandis.TFGPatrones.modelo.Pregunta;
+import me.ferrandis.TFGPatrones.model.Pregunta;
 import me.ferrandis.TFGPatrones.repository.PreguntaRepository;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class PreguntasServicioImp implements PreguntasServicio{

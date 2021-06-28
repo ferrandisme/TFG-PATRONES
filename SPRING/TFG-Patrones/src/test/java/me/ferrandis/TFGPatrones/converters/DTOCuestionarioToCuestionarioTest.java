@@ -1,14 +1,8 @@
 package me.ferrandis.TFGPatrones.converters;
 
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.modelo.Cuestionario;
-import me.ferrandis.TFGPatrones.modelo.ItemCuestionario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 

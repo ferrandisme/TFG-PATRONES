@@ -1,11 +1,11 @@
-package me.ferrandis.TFGPatrones.servicio;
+package me.ferrandis.TFGPatrones.service;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
 import me.ferrandis.TFGPatrones.converters.DTOCuestionarioToCuestionario;
 import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
-import me.ferrandis.TFGPatrones.modelo.Cuestionario;
-import me.ferrandis.TFGPatrones.modelo.Pregunta;
+import me.ferrandis.TFGPatrones.model.Cuestionario;
+import me.ferrandis.TFGPatrones.model.Pregunta;
 import me.ferrandis.TFGPatrones.repository.CuestionarioRepository;
 import org.springframework.stereotype.Service;
 

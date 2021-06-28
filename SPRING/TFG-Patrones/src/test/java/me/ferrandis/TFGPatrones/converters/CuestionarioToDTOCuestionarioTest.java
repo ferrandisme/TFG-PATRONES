@@ -1,16 +1,8 @@
 package me.ferrandis.TFGPatrones.converters;
 
-import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
-import me.ferrandis.TFGPatrones.DTO.DTOPatron;
-import me.ferrandis.TFGPatrones.modelo.Cuestionario;
-import me.ferrandis.TFGPatrones.modelo.Patron;
+import me.ferrandis.TFGPatrones.model.Cuestionario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.web.client.HttpServerErrorException;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
