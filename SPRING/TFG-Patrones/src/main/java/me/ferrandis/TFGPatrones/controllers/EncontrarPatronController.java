@@ -14,8 +14,8 @@ public class EncontrarPatronController {
     @GetMapping("/encontrarPatron")
     public String informacionPrincipal(Model model) {
         Random rand = new Random();
-        //long randomNum = rand.nextInt((Integer.MAX_VALUE));
-        model.addAttribute("iduser", UUID.randomUUID());
-        return "encontrar-patron";
+        long randomNum = rand.nextInt((Integer.MAX_VALUE));
+        //model.addAttribute("iduser", UUID.randomUUID());
+        return "redirect:/test/" + randomNum;
     }
 }
