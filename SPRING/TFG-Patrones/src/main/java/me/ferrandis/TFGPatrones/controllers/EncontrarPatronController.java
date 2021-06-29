@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @Slf4j
 @Controller
-@RequestMapping("/user")
 public class EncontrarPatronController {
 
     @GetMapping("/encontrarPatron")

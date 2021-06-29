@@ -13,7 +13,6 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/user")
 public class ListaPatronesController {
 
 

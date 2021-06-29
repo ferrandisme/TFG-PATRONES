@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @Controller
-@RequestMapping("/user")
 public class CuestionarioEncontrarPatronController {
 
     private final CuestionarioServicioImp servicio;

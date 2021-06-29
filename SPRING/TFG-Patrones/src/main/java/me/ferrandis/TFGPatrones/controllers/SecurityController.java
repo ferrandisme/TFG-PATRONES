@@ -17,9 +17,6 @@ import java.time.LocalDateTime;
 @Controller
 public class SecurityController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SecurityController.class);
-
-
     @GetMapping("/login")
     public String login( Model model) {
         return "admin/login";
