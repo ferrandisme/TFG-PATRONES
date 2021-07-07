@@ -18,7 +18,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         //TODO refactorizar URL a user/* para simplificar permisos
         http
                 .authorizeRequests()
-                .antMatchers("/admin").authenticated()
+                .antMatchers("/admin").authenticated() //TODO añadir /actuator para evitar accesos no deseados en futuras versiones.
                 .and()
                 .formLogin()
                 .loginPage("/login")

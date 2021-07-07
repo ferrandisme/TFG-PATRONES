@@ -47,9 +47,49 @@
 
 <h3 class="text-center text-warning pt-5">Panel administrativo</h3>
 <p class="text-center text-white pt-4">Bienvenido al panel administrativo. Desde aqui podrás configurar diversos parametros del servidor y obtener información de el.</p>
+</br>
+</br>
+
+
+<hr class="my-4">
+
+<p class="text-center text-info pt-4">A continuacion dispones del codigo de configurarcion .yml de prometheus, que te permitirá obtener estadisticas del uso de la aplicación.</p>
+<p class="text-center text-secondary pt-4">Nota: Es posible que tengas que sustituir ['HOST_IP:8080'] por la dirrecion del servidor a la que accedes.</p>
+
+<div class="row">
+    <div class="col-8 ">
+        <pre>
+        <code class="text-center text-danger ">
+        # my global config <br>
+        global: <br>
+        scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute. <br>
+        evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute. <br>
+        # scrape_timeout is set to the global default (10s). <br>
+
+            - job_name: 'prometheus' <br>
+            # metrics_path defaults to '/metrics' <br>
+            # scheme defaults to 'http'. <br>
+            static_configs: <br>
+            - targets: ['127.0.0.1:9090'] <br>
+            <br>
+            - job_name: 'spring-actuator' <br>
+            metrics_path: '/actuator/prometheus' <br>
+            scrape_interval: 5s <br>
+            static_configs: <br>
+            - targets: ['HOST_IP:8080'] <br>
+            basic_auth: <br>
+            username: "admin" <br>
+            password: "1234" <br>
+        </code>
+        </pre>
+    </div>
+</div>
+
+
 <!-- CREDITOS-->
 </br>
 </br>
+
 <h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h6>
 
 
