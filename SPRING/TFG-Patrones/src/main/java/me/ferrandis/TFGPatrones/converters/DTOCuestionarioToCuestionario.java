@@ -4,7 +4,7 @@ import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.model.Cuestionario;
 import org.springframework.stereotype.Component;
 
-
+@Deprecated
 @Component
 public class DTOCuestionarioToCuestionario {
 

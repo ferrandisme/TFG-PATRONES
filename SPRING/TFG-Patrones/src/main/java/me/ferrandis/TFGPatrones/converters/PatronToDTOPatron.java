@@ -4,7 +4,7 @@ import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.model.Patron;
 import org.springframework.stereotype.Component;
 
-
+@Deprecated
 @Component
 public class  PatronToDTOPatron{
 

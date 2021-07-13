@@ -2,6 +2,7 @@ package me.ferrandis.TFGPatrones.service;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
+import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import me.ferrandis.TFGPatrones.converters.DTOCuestionarioToCuestionario;
 import me.ferrandis.TFGPatrones.converters.CuestionarioToDTOCuestionario;
 import me.ferrandis.TFGPatrones.model.Cuestionario;
@@ -93,7 +94,7 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
     @Override
     public DTOEstadoCuestionario getSiguientePregunta(String id, Integer opcion) {
         Cuestionario cuestionario = crearTestModelo(id);
-        List<Pregunta> preguntas = cuestionario.getPreguntas();
+        List<DTOPregunta> preguntas = cuestionario.getPreguntas();
         DTOEstadoCuestionario result = new DTOEstadoCuestionario();
         result.setAcabado(false);
         result.setSolucionado(false);
@@ -143,10 +144,10 @@ public class CuestionarioServicioImp implements CuestionarioServicio {
         return result;
     }
 
-    public void eliminar(String accion, List<Pregunta> preguntas, Cuestionario cuestionario){
+    public void eliminar(String accion, List<DTOPregunta> preguntas, Cuestionario cuestionario){
         String patronAEliminar = accion.replace(ELIMINAR, "");
-        List<Pregunta> nuevasPreguntas = new ArrayList<>();
-        for(Pregunta pregunta : preguntas){
+        List<DTOPregunta> nuevasPreguntas = new ArrayList<>();
+        for(DTOPregunta pregunta : preguntas){
             boolean otrosResultados = false;
             List<String> resultados = pregunta.getResultado();
             for(int i = 0; i < 5; i++){

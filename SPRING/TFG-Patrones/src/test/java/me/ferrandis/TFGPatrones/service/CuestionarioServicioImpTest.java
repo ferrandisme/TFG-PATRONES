@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.service;
 
 import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
+import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import me.ferrandis.TFGPatrones.model.Cuestionario;
 import me.ferrandis.TFGPatrones.model.Pregunta;
 import me.ferrandis.TFGPatrones.repository.CuestionarioRepository;
@@ -45,7 +46,7 @@ class CuestionarioServicioImpTest {
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(id1);
         cuestionario.setEncontrado(false);
-        List<Pregunta > preguntas = new ArrayList<Pregunta>();
+        List<DTOPregunta > preguntas = new ArrayList<DTOPregunta>();
         cuestionario.setPreguntas(preguntas);
         Mockito.when(cuestionarioRepository.findById(id1)).thenReturn(Optional.of(cuestionario));
 
@@ -66,8 +67,8 @@ class CuestionarioServicioImpTest {
         //datos cuestionario
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(id1);
-        List<Pregunta > preguntas = new ArrayList<Pregunta>();
-        Pregunta p = new Pregunta();
+        List<DTOPregunta > preguntas = new ArrayList<DTOPregunta>();
+        DTOPregunta p = new DTOPregunta();
         p.setTexto(resultado);
         preguntas.add(p);
         cuestionario.setPreguntas(preguntas);
@@ -92,15 +93,15 @@ class CuestionarioServicioImpTest {
         //datos cuestionario
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(id1);
-        List<Pregunta > preguntas = new ArrayList<Pregunta>();
-        Pregunta p = new Pregunta();
+        List<DTOPregunta> preguntas = new ArrayList<DTOPregunta>();
+        DTOPregunta p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{CuestionarioServicio.TIPO + tipo, "" , "" , "" , ""}));
         p.setTexto(resultado);
         preguntas.add(p);
         cuestionario.setPreguntas(preguntas);
 
-        List<Pregunta > preguntas2 = new ArrayList<Pregunta>();
-        Pregunta p2 = new Pregunta();
+        List<DTOPregunta > preguntas2 = new ArrayList<DTOPregunta>();
+        DTOPregunta p2 = new DTOPregunta();
         p2.setTexto(resultado);
         preguntas2.add(p2);
         Mockito.when(cuestionarioRepository.findById(id1)).thenReturn(Optional.of(cuestionario));
@@ -129,12 +130,12 @@ class CuestionarioServicioImpTest {
         //datos cuestionario
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(id1);
-        List<Pregunta > preguntas = new ArrayList<Pregunta>();
-        Pregunta p = new Pregunta();
+        List<DTOPregunta > preguntas = new ArrayList<DTOPregunta>();
+        DTOPregunta p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{CuestionarioServicio.ELIMINAR + tipo, "" , "" , "" , ""}));
         preguntas.add(p);
 
-        p = new Pregunta();
+        p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{CuestionarioServicio.SOLUCION + tipo2, "" , "" , "" , ""}));
         p.setTexto(resultado);
         preguntas.add(p);
@@ -161,8 +162,8 @@ class CuestionarioServicioImpTest {
         //datos cuestionario
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(id1);
-        List<Pregunta > preguntas = new ArrayList<Pregunta>();
-        Pregunta p = new Pregunta();
+        List<DTOPregunta > preguntas = new ArrayList<DTOPregunta>();
+        DTOPregunta p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{CuestionarioServicio.SOLUCION + tipo, "" , "" , "" , ""}));
         preguntas.add(p);
 
@@ -188,14 +189,14 @@ class CuestionarioServicioImpTest {
         String solucion2  = CuestionarioServicio.SOLUCION + PATRON_2;
 
         //preguntas
-        List<Pregunta > preguntas = new ArrayList<Pregunta>();
-        Pregunta p = new Pregunta();
+        List<DTOPregunta > preguntas = new ArrayList<DTOPregunta>();
+        DTOPregunta p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{accion, "" , "" , "" , solucion}));
         preguntas.add(p);
-        p = new Pregunta();
+        p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{accion, eliminar , "" , "" , solucion}));
         preguntas.add(p);
-        p = new Pregunta();
+        p = new DTOPregunta();
         p.setResultado(Arrays.asList(new String[]{accion, "" , solucion2 , "" , solucion}));
         preguntas.add(p);
 

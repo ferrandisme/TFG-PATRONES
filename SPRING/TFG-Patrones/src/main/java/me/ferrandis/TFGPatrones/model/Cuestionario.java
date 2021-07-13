@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.model;
 
 import lombok.Data;
+import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -26,7 +27,7 @@ public class Cuestionario {
 
     @Id
     public String ID;
-    List<Pregunta> preguntas;
+    List<DTOPregunta> preguntas;
     List<String> respuestas;
     Integer versionPreguntas;
     boolean finalizado;
