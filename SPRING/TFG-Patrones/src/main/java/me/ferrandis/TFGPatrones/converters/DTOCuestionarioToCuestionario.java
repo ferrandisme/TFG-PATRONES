@@ -13,7 +13,7 @@ public class DTOCuestionarioToCuestionario {
             return null;
         Cuestionario cuestionario = new Cuestionario();
         cuestionario.setID(dtoCuestionario.getID());
-        cuestionario.setPreguntas(dtoCuestionario.getPreguntas());
+        //cuestionario.setPreguntas(dtoCuestionario.getPreguntas());
         cuestionario.setVersionPreguntas(dtoCuestionario.getVersionPreguntas());
         cuestionario.setFinalizado(dtoCuestionario.isFinalizado());
         return cuestionario;
