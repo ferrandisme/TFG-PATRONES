@@ -15,4 +15,6 @@ public interface PreguntasServicio {
 
     List<DTOPregunta> getTodasPreguntas();
 
+    void updateAndRemove(List<DTOPregunta> preguntas);
+
 }

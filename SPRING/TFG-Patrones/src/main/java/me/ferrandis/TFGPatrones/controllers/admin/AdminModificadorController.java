@@ -1,16 +1,17 @@
 package me.ferrandis.TFGPatrones.controllers.admin;
 
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
+import me.ferrandis.TFGPatrones.DTO.DTOInformacionAdmin;
 import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import me.ferrandis.TFGPatrones.service.PreguntasServicio;
+import me.ferrandis.TFGPatrones.utils.ParserAdminUtil;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -32,17 +33,27 @@ public class AdminModificadorController {
     @GetMapping("/admin/cuestionario")
     public String obtenerCuestionario(Model model) {
         List<DTOPregunta> preguntas = preguntasServicio.getTodasPreguntas();
-        model.addAttribute("preguntas", preguntas);
-        model.addAttribute("pregunta", new DTOPregunta());
+        String preguntasConvertidas = ParserAdminUtil.obtenerPreguntas(preguntas);
+        DTOInformacionAdmin info = new DTOInformacionAdmin();
+        info.setTexto(preguntasConvertidas);
+        model.addAttribute("dtoinformacionadmin" ,info );
         return "admin/preguntas";
     }
 
-    @PostMapping
-    public String actualizarPreguntas(List <DTOPregunta> preguntas){
-            if (preguntas == null) {
+    @PostMapping("/admin/cuestionario")
+    public String actualizarPreguntas(@ModelAttribute("dtoinformacionadmin") DTOInformacionAdmin dtoinformacionadmin){
+            if (dtoinformacionadmin == null) {
                 throw new RuntimeException();
             } else {
-              return "admin/configuracion";
+                //Actualizar Preguntas
+                List<DTOPregunta> preguntas = ParserAdminUtil.procesarPreguntas(dtoinformacionadmin.getTexto());
+                preguntasServicio.updateAndRemove(preguntas);
+                //Cargar preguntas
+                preguntas = preguntasServicio.getTodasPreguntas();
+                String preguntasConvertidas = ParserAdminUtil.obtenerPreguntas(preguntas);
+                DTOInformacionAdmin info = new DTOInformacionAdmin();
+                info.setTexto(preguntasConvertidas);
+              return  "admin/preguntas";
             }
     }
 

@@ -48,18 +48,50 @@
 <h3 class="text-center text-warning pt-5">Preguntas</h3>
 <p class="text-center text-white pt-4">A continuación se muestran todos los campos que tiene una pregunta. Despues una lista de preguntas donde se pueden editar todas las preguntas de la aplicación. Al pulsar actualizar se eliminaran las existentes y se actualziaran con la nueva versión.</p>
 </br>
-</br>
+
+<!-- DEFINICION -->
 
 <div class="row">
     <div class="col-8 ">
-        <script th:inline="javascript">
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    pregunta: /*[[${pregunta}]]*/ {}
-                }
-            });
-        </script>
+        <pre>
+        <code class="text-center text-danger ">
+            <p class="text-center  text-white pt-3">Cabecera para marcar el inicio de una pregunta.</p>
+           &lt;PREGUNTA&gt;<br>
+            <p class="text-center  text-white pt-3">En orden encontraremos la prioridad respecto a otras preguntas.</p>
+            ORDEN=1;<br>
+            <p class="text-center  text-white pt-3">En texto el texto de la pregunta.</p>
+            TEXTO=Texto de la pregunta;<br>
+             <p class="text-center  text-white pt-3">En resultado la respuesta dependiendo de la opcion elegida 1-5.
+            <br>TIPO:ESTRUCTURAL/CREACIONAL/COMPORTAMIENTO -> Elige la categoria del patron
+            <br>SOLUCION:PATRON_SOLUCION -> Se proporciona el valor de la solución
+            <br>ELIMINAR:PATRON_ELIMINAR1,PATRON_ELIMINAR2,... -> Patrones a eliminar por no ser considerados solución </p>
+            RESULTADO=Respuesta1-Respuesta2-Respuesta3-Respuesta4-Respuesta5;<br>
+            <p class="text-center  text-white pt-3">En tipo se especifica el tipo de patron: ESTRUCTURAL/CREACIONAL/COMPORTAMIENTO/ENCONTRARTIPO.
+            <br>El ultimo tipo llevara a una respuesta SOLUCION:TIPO y se encargará de dirigir el cuestionario unicamente a un tipo.</p>
+            TIPO=Tipo de Patron;<br>
+        </code>
+        </pre>
+
+
+
+    </div>
+</div>
+
+</br>
+
+<!-- EDICION -->
+<h3 class="text-center text-warning pt-4">Edicion</h3>
+
+<div class="row justify-content-md-center">
+    <div class="col-8 ">
+        <form action="#" th:action="@{/admin/cuestionario}" th:object="${dtoinformacionadmin}" method="post">
+            </br>
+            <textarea class="form-control bg-secondary" id="exampleFormControlTextarea1" rows="30" th:field="*{texto}">
+            </textarea>
+            <!-- antes estaba en el textArea (dentro)[[${preguntas}]]-->
+            </br>
+            <input type="submit" class="btn btn-primary" />
+        </form>
     </div>
 </div>
 

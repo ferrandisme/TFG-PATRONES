@@ -6,6 +6,7 @@ import me.ferrandis.TFGPatrones.repository.PreguntaRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +37,20 @@ public class PreguntasServicioImp implements PreguntasServicio{
         return toDTO(preguntas);
     }
 
+    @Override
+    @Transactional
+    public void updateAndRemove(List<DTOPregunta> preguntas) {
+        preguntaRepository.deleteAll();
+        preguntaRepository.saveAll(toJPA(preguntas));
+    }
+
     private List<DTOPregunta>  toDTO(List<Pregunta> preguntas) {
         return modelMapper.map(preguntas, new TypeToken<List<DTOPregunta>>() {}.getType());
     }
+
+    private List<Pregunta>  toJPA(List<DTOPregunta> preguntas) {
+        return modelMapper.map(preguntas, new TypeToken<List<Pregunta>>() {}.getType());
+    }
+
 
 }

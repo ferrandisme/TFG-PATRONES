@@ -1,5 +1,12 @@
 package me.ferrandis.TFGPatrones.DTO;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DTOInfoCuestionario {
     public float puntuacion;
     public String nombre;
