@@ -1,6 +1,7 @@
 package me.ferrandis.TFGPatrones.utils;
 
 import io.micrometer.core.instrument.util.StringUtils;
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
 import me.ferrandis.TFGPatrones.model.Pregunta;
 
@@ -11,6 +12,7 @@ public class ParserAdminUtil {
 
 
     private static final String PREGUNTA = "<PREGUNTA>";
+    private static final String PATRON = "<PATRON>";
     private static final String FIN_LINEA = ";";
     private static final String SEPARADOR = "=";
     private static final String LISTA = "-";
@@ -20,9 +22,14 @@ public class ParserAdminUtil {
     private static final String TIPO = "TIPO";
     private static final String RESULTADO = "RESULTADO";
     private static final String SALTO = "\n";
+    private static final String NOMBRE = "NOMBRE";
+    private static final String RESUMEN = "RESUMEN";
+    private static final String SINERGIAS = "SINERGIAS";
+    private static final String TEXTO_EXPLICACION = "TEXTO EXPLICACION";
+    private static final String URL_IMAGENES = "URL IMAGENES";
+    private static final String DOCUMENTACION = "DOCUMENTACION";
 
     // De preguntas a usuario
-
     public static String obtenerPreguntas(List<DTOPregunta> preguntas){
         String result = "";
         for(DTOPregunta pregunta : preguntas){
@@ -36,12 +43,8 @@ public class ParserAdminUtil {
         return result;
     }
 
-    private static String construirLinea(String campo, String valor) {
-        return campo.toUpperCase(Locale.ROOT) + SEPARADOR + valor +  FIN_LINEA + SALTO;
-    }
 
     // De usuario a preguntas
-
     public static List<DTOPregunta> procesarPreguntas(String preguntasUsuario){
         List<DTOPregunta> result = new ArrayList<>();
         List<String> preguntas = Arrays.asList(preguntasUsuario.split(SALTO + PREGUNTA  + SALTO));
@@ -64,6 +67,46 @@ public class ParserAdminUtil {
         return result;
     }
 
+
+    // De patron a usuario
+    public static String obtenerPatrones(List<DTOPatron> patrones){
+        String result = "";
+        for(DTOPatron patron : patrones){
+            result += SALTO + PATRON + SALTO;
+            result += construirLinea(NOMBRE, patron.getNombre());
+            result += construirLinea(RESUMEN, patron.getResumen());
+            result += construirLinea(TEXTO_EXPLICACION, String.join(LISTA,patron.getTextoExplicacion()));
+            result += construirLinea(URL_IMAGENES, String.join(LISTA,patron.getURLImagenes()));
+            result += construirLinea(DOCUMENTACION, String.join(LISTA,patron.getDocumentacion()));
+            result += construirLinea(SINERGIAS, String.join(LISTA,patron.getSinergias()));
+        }
+        return result;
+    }
+
+    // De usuario a patron
+    public static List<DTOPatron> procesarPatrones(String patronesUsuario){
+        List<DTOPatron> result = new ArrayList<>();
+        List<String> patrones = Arrays.asList(patronesUsuario.split(SALTO + PATRON  + SALTO));
+        for(String datos : patrones){
+            List<String> lineas = Arrays.asList(datos.split(FIN_LINEA + SALTO));
+            if(lineas.size() >= 2){
+                DTOPatron patron = new DTOPatron();
+                patron.setNombre(encontrarCampo(NOMBRE, lineas));
+                patron.setResumen(encontrarCampo(RESUMEN, lineas));
+                patron.setTextoExplicacion(encontrarLista(TEXTO_EXPLICACION, lineas));
+                patron.setURLImagenes(encontrarLista(URL_IMAGENES, lineas));
+                patron.setDocumentacion(encontrarLista(DOCUMENTACION, lineas));
+                patron.setSinergias(encontrarLista(SINERGIAS, lineas));
+                result.add(patron);
+            }
+        }
+        return result;
+    }
+
+
+    //Utilidades
+
+
     private static List<String> encontrarLista(String campo, List<String> lineas){
         String valor = encontrarCampo(campo,lineas);
         if(!StringUtils.isBlank(valor)){
@@ -71,7 +114,7 @@ public class ParserAdminUtil {
             result.stream().map(String::trim).collect(Collectors.toList());
             return result;
         }
-        return null;
+        return new ArrayList<>();
     }
 
     private static String encontrarCampo(String campo, List<String> lineas){
@@ -80,6 +123,12 @@ public class ParserAdminUtil {
                 return linea.split(SEPARADOR)[1].trim();
             }
         }
-        return null;
+        return "";
     }
+
+
+    private static String construirLinea(String campo, String valor) {
+        return campo.toUpperCase(Locale.ROOT) + SEPARADOR + valor +  FIN_LINEA + SALTO;
+    }
+
 }

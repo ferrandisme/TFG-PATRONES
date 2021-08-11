@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import me.ferrandis.TFGPatrones.DTO.DTOEstadoCuestionario;
 import me.ferrandis.TFGPatrones.DTO.DTOInformacionAdmin;
+import me.ferrandis.TFGPatrones.DTO.DTOPatron;
 import me.ferrandis.TFGPatrones.DTO.DTOPregunta;
+import me.ferrandis.TFGPatrones.service.PatronesServicio;
 import me.ferrandis.TFGPatrones.service.PreguntasServicio;
 import me.ferrandis.TFGPatrones.utils.ParserAdminUtil;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -23,9 +25,12 @@ public class AdminModificadorController {
 
 
     private final PreguntasServicio preguntasServicio;
+    private final PatronesServicio patronesServicio;
 
-    public AdminModificadorController (PreguntasServicio preguntasServicio){
+
+    public AdminModificadorController (PreguntasServicio preguntasServicio, PatronesServicio patronesServicio){
         this.preguntasServicio = preguntasServicio;
+        this.patronesServicio = patronesServicio;
     }
 
 
@@ -59,7 +64,12 @@ public class AdminModificadorController {
 
     @GetMapping("/admin/patrones")
     public String obtenerPatrones(Model model) {
-        return "admin/preguntas";
+        List<DTOPatron> patrones = patronesServicio.getPatrones();
+        String patronesConvertidos = ParserAdminUtil.obtenerPatrones(patrones);
+        DTOInformacionAdmin info = new DTOInformacionAdmin();
+        info.setTexto(patronesConvertidos);
+        model.addAttribute("dtoinformacionadmin" ,info );
+        return "admin/patrones";
     }
 
     @GetMapping("/admin/configuracion")
@@ -67,9 +77,4 @@ public class AdminModificadorController {
         return "admin/configuracion";
     }
 
-    /*@GetMapping("/admin/pregunta/{id}")
-    public String editarOCrearPregunta(@PathVariable("id") String id, Model model) {
-        List<DTOPregunta> preguntas = preguntasServicio.getTodasPreguntas();
-        return "admin/preguntas";
-    }*/
 }
