@@ -46,7 +46,7 @@
 <!-- INFORMACION -->
 
 <h3 class="text-center text-warning pt-5">Patrones</h3>
-<p class="text-center text-white pt-4">A continuación se muestran todos los campos que tiene un patrón. Despues una lista de patrones donde se pueden editar todas las preguntas de la aplicación. Al pulsar actualizar se eliminaran las existentes y se actualizaran con la nueva versión.</p>
+<p class="text-center text-white pt-4">A continuación se muestran todos los campos que tiene un patrón. Despues una lista de patrones donde se pueden editar todas las preguntas de la aplicación. </br> Al pulsar actualizar se eliminaran las existentes y se actualizaran con la nueva versión.</p>
 </br>
 
 <!-- DEFINICION -->
@@ -56,19 +56,22 @@
         <pre>
         <code class="text-center text-danger ">
             <p class="text-center  text-white pt-3">Cabecera para marcar el inicio de una pregunta.</p>
-           &lt;PREGUNTA&gt;<br>
-            <p class="text-center  text-white pt-3">En orden encontraremos la prioridad respecto a otras preguntas.</p>
-            ORDEN=1;<br>
-            <p class="text-center  text-white pt-3">En texto el texto de la pregunta.</p>
-            TEXTO=Texto de la pregunta;<br>
-             <p class="text-center  text-white pt-3">En resultado la respuesta dependiendo de la opcion elegida 1-5.
-            <br>TIPO:ESTRUCTURAL/CREACIONAL/COMPORTAMIENTO -> Elige la categoria del patron
-            <br>SOLUCION:PATRON_SOLUCION -> Se proporciona el valor de la solución
-            <br>ELIMINAR:PATRON_ELIMINAR1,PATRON_ELIMINAR2,... -> Patrones a eliminar por no ser considerados solución </p>
-            RESULTADO=Respuesta1-Respuesta2-Respuesta3-Respuesta4-Respuesta5;<br>
-            <p class="text-center  text-white pt-3">En tipo se especifica el tipo de patron: ESTRUCTURAL/CREACIONAL/COMPORTAMIENTO/ENCONTRARTIPO.
-            <br>El ultimo tipo llevara a una respuesta SOLUCION:TIPO y se encargará de dirigir el cuestionario unicamente a un tipo.</p>
-            TIPO=Tipo de Patron;<br>
+            &lt;PATRON&gt;<br>
+            <p class="text-center  text-white pt-3">El nombre del patron. Lo identificará para referenciarse desde preguntas o URL.</p>
+            NOMBRE=Nombre del Patron;<br>
+            <p class="text-center  text-white pt-3">El nombre del patron. Lo identificará para referenciarse desde preguntas o URL.</p>
+            RESUMEN=Breve descripción del patrón;<br>
+            <p class="text-center  text-white pt-3">Texto de la explicación de uso del patron. Ira relacionado en orden con imagenes (misma cantidad). *</p>
+            TEXTO EXPLICACION=Texto1-Texto2;<br>
+            <p class="text-center  text-white pt-3">URl directo a las imagenes relacionadas con el texto de la explicación. *</p>
+            URL IMAGENES=Imagen1,Imagen2;<br>
+            <p class="text-center  text-white pt-3">Enlaces a documentación para obtener mas información del patrón *</p>
+            DOCUMENTACION=Enlace1-Enlace2-Enlace3-Enlace4;<br>
+            <p class="text-center  text-white pt-3">Posibles sinergias a utilziar con el patrón. *</p>
+            SINERGIAS=Sinergia1-Sinergia2-Sinergia3
+            <br><br>
+            <p class="text-center  text-white pt-2">(*) Este campo no es obligatorio. Si no existe  dejar el campo vacio: CAMPO=;</p>
+
         </code>
         </pre>
     </div>
