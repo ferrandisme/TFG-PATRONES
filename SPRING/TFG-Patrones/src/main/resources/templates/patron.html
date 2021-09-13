@@ -136,8 +136,8 @@
                     <td colspan="2"> No existe ejemplo para este patron </td>
                 </tr>
                 <tr th:each="descripcion, iterStat : ${descripciones}">
-                    <td  style="padding: 50px; font-size: 110%; width: 60.00%; margin: 0px auto;">
-                        <p class="text-center" th:text="${descripcion}"></p>
+                    <td  style="padding: 50px; font-size: 110%; width: 60.00%; margin: 0px auto; text-align: justify; text-justify: inter-word;">
+                        <p class="text-justify" th:text="${descripcion}"></p>
                     </td>
                     <td style="padding: 50px; width: 40.00%; margin: 0px auto;">
                         <img th:src="@{${imagenes[iterStat.index]}}"  class="img-fluid" alt="Responsive image"/>
