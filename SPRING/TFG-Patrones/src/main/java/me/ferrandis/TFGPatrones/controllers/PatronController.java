@@ -56,7 +56,12 @@ public class PatronController {
                     formated = StringUtils.split(formated, "//")[1];
                 }
                 formated = StringUtils.capitalize(formated);
+
+                if(formated.trim().equalsIgnoreCase("refactoring")){
+                    formated = "Refactoring Guru";
+                }
                 nombreDocumentacion.add(formated);
+
             }
         }
         model.addAttribute("nombreDocumentacion",nombreDocumentacion);
