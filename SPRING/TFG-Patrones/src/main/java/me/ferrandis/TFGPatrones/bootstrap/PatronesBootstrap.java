@@ -25,25 +25,32 @@ public class PatronesBootstrap implements ApplicationListener<ContextRefreshedEv
     public final CuestionarioServicio cuestionarioServicio;
     public final PatronRepository patronRepository;
     public final PreguntaRepository preguntaRepository;
+    public final PreguntasServicio preguntasServicio;
 
-    public PatronesBootstrap(PatronesServicio patronesServicio, CuestionarioServicio cuestionarioServicio, PatronRepository patronRepository, PreguntaRepository preguntaRepository){
+    public PatronesBootstrap(PatronesServicio patronesServicio, CuestionarioServicio cuestionarioServicio, PatronRepository patronRepository, PreguntaRepository preguntaRepository, PreguntasServicio preguntasServicio){
         this.patronesServicio = patronesServicio;
         this.cuestionarioServicio = cuestionarioServicio;
         this.patronRepository = patronRepository;
         this.preguntaRepository = preguntaRepository;
+        this.preguntasServicio = preguntasServicio;
     }
 
 
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        log.error("ACTIVADO MODO DE BORRADO DE BD EN CADA INICIO");
-        patronesServicio.deleteAll();
-        cuestionarioServicio.deleteAll();
-        preguntaRepository.deleteAll();
-        if (patronesServicio.getPatrones().size() == 0)
-            cargarPatrones();
-        log.debug("[!] Cargado set inicial de datos");
+        if(patronesServicio.getPatrones().size() == 0 &&cuestionarioServicio.getTest().size() == 0 &&  preguntasServicio.getTodasPreguntas().size() == 0) {
+            log.error("LA BASE DE DATOS ESTA VACIA. POBLANDO DE DATOS");
+            log.warn("IMPORTANTE ==>> Si no tienes mongodb configurado esta opperacion fallara");
+            patronesServicio.deleteAll();
+            cuestionarioServicio.deleteAll();
+            preguntaRepository.deleteAll();
+            if (patronesServicio.getPatrones().size() == 0)
+                cargarPatrones();
+            log.debug("[!] Cargado set inicial de datos");
+        }else{
+            log.info("Se ha encontrado información correctamente en la base de datos.");
+        }
     }
 
     public void cargarPatrones(){
