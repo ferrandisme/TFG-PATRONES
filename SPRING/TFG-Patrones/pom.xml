@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>me.ferrandis</groupId>
 	<artifactId>TFG-Patrones</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>TFG-Patrones</name>
 	<description>TFG patrones de diseño</description>
 	<properties>
