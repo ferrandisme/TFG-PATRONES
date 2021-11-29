@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>FINDPATTERN</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<body style="background-color:#313131;">
+
+<!-- NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <a class="navbar-brand text-warning" href="#"> &nbsp; FINDPATTERN - ADMINISTRACIÓN</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/admin">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/admin/patrones">Patrones</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/admin/cuestionario">Cuestionario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/admin/configuracion">Configuración</a>
+            </li>
+            <li class="nav-item">
+                <form th:action="@{/logout}" method="post">
+                    <input class="btn btn-secondary text-light"  type="submit" value="Cerrar sesion"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- INFORMACION -->
+
+<h3 class="text-center text-warning pt-5">Preguntas</h3>
+<p class="text-center text-white pt-4">A continuación se muestran todos los campos que tiene una pregunta. Despues una lista de preguntas donde se pueden editar todas las preguntas de la aplicación.</br> Al pulsar actualizar se eliminaran las existentes y se actualizaran con la nueva versión.</p>
+</br>
+
+<!-- DEFINICION -->
+
+<div class="row" >
+    <div class="col-8 " style="padding: 50px; font-size: 110%; width: 70.00%; margin: 0px auto; text-align: justify; text-justify: inter-word;">
+        <pre >
+        <code class="text-center " style="color: #ffcc33">
+            <p class="text-center  text-white pt-3">Cabecera para marcar el inicio de una pregunta.</p>
+           &lt;PREGUNTA&gt;<br>
+            <p class="text-center  text-white pt-3">En orden encontraremos la prioridad respecto a otras preguntas.</p>
+            ORDEN=1;<br>
+            <p class="text-center  text-white pt-3">En texto el texto de la pregunta.</p>
+            TEXTO=Texto de la pregunta;<br>
+             <p class="text-center  text-white pt-3">En resultado la respuesta dependiendo de la opcion elegida 1-5.
+            <br>TIPO:ESTRUCTURAL/CREACIONAL/COMPORTAMIENTO -> Elige la categoria del patron
+            <br>SOLUCION:PATRON_SOLUCION -> Se proporciona el valor de la solución
+            <br>ELIMINAR:PATRON_ELIMINAR1,PATRON_ELIMINAR2,... -> Patrones a eliminar por no ser considerados solución </p>
+            RESULTADO=Respuesta1-Respuesta2-Respuesta3-Respuesta4-Respuesta5;<br>
+            <p class="text-center  text-white pt-3">En tipo se especifica el tipo de patron: ESTRUCTURAL/CREACIONAL/COMPORTAMIENTO/ENCONTRARTIPO.
+            <br>El ultimo tipo llevara a una respuesta SOLUCION:TIPO y se encargará de dirigir el cuestionario unicamente a un tipo.</p>
+            TIPO=Tipo de Patron;<br>
+        </code>
+        </pre>
+    </div>
+</div>
+
+</br>
+
+<!-- EDICION -->
+<h3 class="text-center text-warning pt-4">Edicion</h3>
+
+<div class="row justify-content-md-center">
+    <div class="col-8 ">
+        <form action="#" th:action="@{/admin/cuestionario}" th:object="${dtoinformacionadmin}" method="post">
+            </br>
+            <textarea class="form-control bg-secondary" id="exampleFormControlTextarea1" rows="30" th:field="*{texto}">
+            </textarea>
+            <!-- antes estaba en el textArea (dentro)[[${preguntas}]]-->
+            </br>
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+
+<!-- CREDITOS-->
+</br>
+</br>
+
+<h6 class="row justify-content-md-center text-secondary">Proyecto programado por Adrian Ferrandis Homsi para un TFG de la UPV tutorizado por Vicente Pelechano</h6>
+
+
+</br>
+</br>
+
+<div class="row justify-content-center">
+    <div class = "col-auto">
+        <form th:action="@{/logout}" method="post">
+            <input class="btn btn-secondary"  type="submit" value="Cerrar sesion"/>
+        </form>
+
+    </div>
+</div>
+
+<!-- SCRIPT-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+</body>
+</html>
